@@ -8,12 +8,14 @@
 
 import UIKit
 import StorageService
+import iOSIntPackage
 
 class ProfileViewController: UIViewController {
     
     var tableView = UITableView(frame: .zero, style: .plain)
     let cellPostsID = "cellPostsID"
     let cellPhotosID = "cellPhotosID"
+    //let filter = ImageProcessor()
 
     
     override func viewDidLoad() {
@@ -199,6 +201,10 @@ extension ProfileViewController: UITableViewDataSource {
         case let n where n > 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellPostsID) as! PostTableViewCell
             cell.post = PostsStorage.posts[indexPath.row-1]
+            
+//            if let image = UIImage(named: cell.post!.image) {
+//                filter.processImage(sourceImage: image, filter: Filters.filters[indexPath.row-1]) {
+//                    (image) in cell.postImageView.image = image}}
             return cell
             
         default:
