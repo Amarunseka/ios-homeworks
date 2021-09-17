@@ -7,19 +7,30 @@
 
 import UIKit
 import StorageService
+import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
+    
+    private let filterProcessor = ImageProcessor()
+    private let filters: [ColorFilter] = ColorFilter.allCases
+
     
     var post: Post? {
         didSet {
             titleLabel.text = post?.title
-            postImageView.image = UIImage(named: post?.image ?? "")
             descriptionLabel.text = post?.description
             authorLabel.text = "Author: \(post?.author ?? "")"
             likesLabel.text = "Likes: \(post?.likes ?? 0)"
             viewsLabel.text = "Views: \(post?.views ?? 0)"
+            
+            
+            if let image = UIImage(named: post?.image ?? "face.smiling") {
+                filterProcessor.processImage(sourceImage: image, filter: filters.randomElement() ?? .chrome) {
+                    (image) in postImageView.image = image
+                }
             }
         }
+    }
 
     
     var titleLabel: UILabel = {

@@ -56,7 +56,6 @@ class ProfileViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
     }
     
-
     
     
     // MARK: - Animation
@@ -199,6 +198,7 @@ extension ProfileViewController: UITableViewDataSource {
         case let n where n > 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellPostsID) as! PostTableViewCell
             cell.post = PostsStorage.posts[indexPath.row-1]
+            
             return cell
             
         default:
