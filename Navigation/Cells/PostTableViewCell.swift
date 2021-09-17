@@ -23,7 +23,6 @@ class PostTableViewCell: UITableViewCell {
             likesLabel.text = "Likes: \(post?.likes ?? 0)"
             viewsLabel.text = "Views: \(post?.views ?? 0)"
             
-            
             if let image = UIImage(named: post?.image ?? "face.smiling") {
                 filterProcessor.processImage(sourceImage: image, filter: filters.randomElement() ?? .chrome) {
                     (image) in postImageView.image = image
@@ -33,7 +32,7 @@ class PostTableViewCell: UITableViewCell {
     }
 
     
-    var titleLabel: UILabel = {
+    private var titleLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
@@ -43,7 +42,7 @@ class PostTableViewCell: UITableViewCell {
         return label
     }()
     
-    var postImageView: UIImageView = {
+    private var postImageView: UIImageView = {
         var image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
@@ -52,7 +51,7 @@ class PostTableViewCell: UITableViewCell {
     }()
 
 
-    var descriptionLabel: UILabel = {
+    private var descriptionLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -63,7 +62,7 @@ class PostTableViewCell: UITableViewCell {
     }()
 
     
-    var authorLabel: UILabel = {
+    private var authorLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -72,7 +71,7 @@ class PostTableViewCell: UITableViewCell {
         return label
     }()
     
-    var likesLabel: UILabel = {
+    private var likesLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -80,7 +79,7 @@ class PostTableViewCell: UITableViewCell {
         return label
     }()
 
-    var viewsLabel: UILabel = {
+    private var viewsLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -105,7 +104,7 @@ class PostTableViewCell: UITableViewCell {
 // MARK: - Setup Post View
 private extension PostTableViewCell {
 
-    func setupViews(){
+    private func setupViews(){
         contentView.backgroundColor = .systemGray6
         contentView.addSubview(titleLabel)
         contentView.addSubview(postImageView)
@@ -117,7 +116,7 @@ private extension PostTableViewCell {
         setupViewConstraints()
     }
     
-    func setupViewConstraints(){
+    private func setupViewConstraints(){
 
         titleLabel.setContentHuggingPriority(.required, for: .vertical)
         descriptionLabel.setContentHuggingPriority(.required, for: .vertical)
@@ -133,7 +132,6 @@ private extension PostTableViewCell {
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             titleLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -32),
 
-            
             
             postImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             postImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),

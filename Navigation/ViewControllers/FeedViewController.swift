@@ -11,16 +11,16 @@ import StorageService
 class FeedViewController: UIViewController {
 
     var postInfo = TitlePostPage(title: "Breaking news")
-    var stackView = UIStackView()
+    private var stackView = UIStackView()
     
-    let buttonToPostFirst = UIButton(type: .system)
-    let buttonToPostSecond = UIButton(type: .system)
+    private let buttonToPostFirst = UIButton(type: .system)
+    private let buttonToPostSecond = UIButton(type: .system)
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Feed"
-        view.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        view.backgroundColor = .customColorBlue
         
         createButton(button: buttonToPostFirst, title: "THE POST", color: .systemGreen)
         createButton(button: buttonToPostSecond, title: "THE POST\n(again)", color: .systemTeal)
@@ -30,7 +30,7 @@ class FeedViewController: UIViewController {
     }
     
     
-    func configureStackView(){
+    private func configureStackView(){
         buttonToPostFirst.heightAnchor.constraint(equalToConstant: 70).isActive = true
         buttonToPostFirst.widthAnchor.constraint(equalToConstant: 150).isActive = true
 
@@ -43,7 +43,7 @@ class FeedViewController: UIViewController {
     }
     
     
-    func setStackViewConstrains(){
+    private func setStackViewConstrains(){
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         stackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
@@ -57,7 +57,7 @@ class FeedViewController: UIViewController {
 
 extension FeedViewController {
     
-    func createButton(button: UIButton, title: String, color: UIColor){
+    private func createButton(button: UIButton, title: String, color: UIColor){
         
         button.setTitle(title, for: .normal)
         button.backgroundColor = color

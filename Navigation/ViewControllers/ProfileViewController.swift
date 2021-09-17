@@ -9,12 +9,26 @@
 import UIKit
 import StorageService
 
+
 class ProfileViewController: UIViewController {
     
-    var tableView = UITableView(frame: .zero, style: .plain)
-    let cellPostsID = "cellPostsID"
-    let cellPhotosID = "cellPhotosID"
+    private let tableView = UITableView(frame: .zero, style: .plain)
+    private let cellPostsID = "cellPostsID"
+    private let cellPhotosID = "cellPhotosID"
+    let userService: UserServiceProtocol
+    let userName: String
 
+    
+    init(userService: UserServiceProtocol, userName: String) {
+        self.userService = userService
+        self.userName = userName
+        super.init(nibName: nil, bundle: nil)
+        }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +46,7 @@ class ProfileViewController: UIViewController {
     
 // MARK: - Setups
     
-    func setupTableView(){
+    private func setupTableView(){
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .systemGray6
@@ -44,7 +58,7 @@ class ProfileViewController: UIViewController {
     }
 
     
-    func setupConstraints(){
+    private func setupConstraints(){
         let constraints = [
             
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -57,7 +71,6 @@ class ProfileViewController: UIViewController {
     }
     
     
-    
     // MARK: - Animation
 
     private var avatarImageView: UIImageView?
@@ -65,7 +78,7 @@ class ProfileViewController: UIViewController {
     private var crossButton: UIButton?
     
 
-    @objc func avatarResize(sender: UITapGestureRecognizer) {
+    @objc private func avatarResize(sender: UITapGestureRecognizer) {
         
         self.view.layoutIfNeeded()
         
@@ -221,6 +234,12 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let profileHeader = ProfileHeaderView()
+        let userInfo = userService.createUser(userName: userName)
+        
+        profileHeader.fullNameLabel.text = userInfo?.userName
+        profileHeader.avatarImageView.image = userInfo?.userAvatar
+        profileHeader.statusLabel.text = userInfo?.userStatus
+        
         profileHeader.avatarImageView.isUserInteractionEnabled = true
         profileHeader.avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(avatarResize)))
         profileHeader.backgroundColor = .systemGray6
@@ -243,6 +262,7 @@ extension ProfileViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: false)
     }
 }
+
 
 
 
