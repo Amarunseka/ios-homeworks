@@ -28,7 +28,6 @@
 		458CBC3426E107F900915CA1 /* PhotosStorageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CBBE926E0F9E000915CA1 /* PhotosStorageFile.swift */; };
 		458CBC8D26EF877700915CA1 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 458CBC8C26EF877700915CA1 /* iOSIntPackage */; };
 		458CBC8F26EF988300915CA1 /* PostsStorageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CBBE726E0F9D200915CA1 /* PostsStorageFile.swift */; };
-		458CBC9126EF98BB00915CA1 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CBC9026EF98BB00915CA1 /* Filters.swift */; };
 		F47C8C17850C5C48D5CE7146 /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6882C9CB6B724620F5A001 /* Pods_Navigation.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,7 +81,6 @@
 		458CBC2726E107C300915CA1 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		458CBC2926E107C300915CA1 /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		458CBC2A26E107C300915CA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		458CBC9026EF98BB00915CA1 /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
 		8C04E2B836B5379A25B98A4F /* Pods-Navigation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.debug.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.debug.xcconfig"; sourceTree = "<group>"; };
 		E92FC96268B7DCD40078E97D /* Pods-StorageService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService.release.xcconfig"; path = "Target Support Files/Pods-StorageService/Pods-StorageService.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,7 +153,6 @@
 		458CBBCC26E0F68C00915CA1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				458CBC9026EF98BB00915CA1 /* Filters.swift */,
 				458CBBC126E0E53400915CA1 /* Assets.xcassets */,
 				458CBBC326E0E53400915CA1 /* LaunchScreen.storyboard */,
 				458CBBC626E0E53400915CA1 /* Info.plist */,
@@ -423,7 +420,6 @@
 				458CBBE626E0F9B600915CA1 /* ProfileHeaderView.swift in Sources */,
 				458CBBDA26E0F90E00915CA1 /* LogInViewController.swift in Sources */,
 				458CBBEC26E0FA5300915CA1 /* MainTabBarController.swift in Sources */,
-				458CBC9126EF98BB00915CA1 /* Filters.swift in Sources */,
 				458CBBD826E0F8FF00915CA1 /* InfoViewController.swift in Sources */,
 				458CBBE026E0F95A00915CA1 /* PostTableViewCell.swift in Sources */,
 				458CBBDC26E0F92200915CA1 /* ProfileViewController.swift in Sources */,

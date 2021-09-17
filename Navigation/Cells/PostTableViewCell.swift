@@ -11,7 +11,9 @@ import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
     
-    let filter = ImageProcessor()
+    private let filterProcessor = ImageProcessor()
+    private let filters: [ColorFilter] = ColorFilter.allCases
+
     
     var post: Post? {
         didSet {
@@ -21,8 +23,9 @@ class PostTableViewCell: UITableViewCell {
             likesLabel.text = "Likes: \(post?.likes ?? 0)"
             viewsLabel.text = "Views: \(post?.views ?? 0)"
             
-            if let image = UIImage(named: post!.image) {
-                filter.processImage(sourceImage: image, filter: Filters.filters.randomElement() ?? .chrome) {
+            
+            if let image = UIImage(named: post?.image ?? "face.smiling") {
+                filterProcessor.processImage(sourceImage: image, filter: filters.randomElement() ?? .chrome) {
                     (image) in postImageView.image = image
                 }
             }
