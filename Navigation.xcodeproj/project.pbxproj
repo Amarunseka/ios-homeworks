@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		18AC8181C88949E20775BF53 /* Pods_StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C1291E3E0F4BE9CB3BFCE2 /* Pods_StorageService.framework */; };
+		4586111B26FA0BA300269593 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586111A26FA0BA300269593 /* Checker.swift */; };
+		4586111D26FA0BE000269593 /* LoginVCDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586111C26FA0BE000269593 /* LoginVCDelegateProtocol.swift */; };
+		4586111F26FA0BF700269593 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586111E26FA0BF700269593 /* LoginInspector.swift */; };
+		4586112126FA0C1000269593 /* LoginFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586112026FA0C1000269593 /* LoginFactoryProtocol.swift */; };
+		4586112326FA0C3200269593 /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586112226FA0C3200269593 /* LoginFactory.swift */; };
 		458CBBB926E0E53100915CA1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CBBB826E0E53100915CA1 /* AppDelegate.swift */; };
 		458CBBC226E0E53400915CA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 458CBBC126E0E53400915CA1 /* Assets.xcassets */; };
 		458CBBC526E0E53400915CA1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458CBBC326E0E53400915CA1 /* LaunchScreen.storyboard */; };
@@ -67,6 +72,11 @@
 		20C1291E3E0F4BE9CB3BFCE2 /* Pods_StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23BFA7C0F62E273954E08492 /* Pods-Navigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.release.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.release.xcconfig"; sourceTree = "<group>"; };
 		37985909E3167867533EF7C9 /* Pods-StorageService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService.debug.xcconfig"; path = "Target Support Files/Pods-StorageService/Pods-StorageService.debug.xcconfig"; sourceTree = "<group>"; };
+		4586111A26FA0BA300269593 /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
+		4586111C26FA0BE000269593 /* LoginVCDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCDelegateProtocol.swift; sourceTree = "<group>"; };
+		4586111E26FA0BF700269593 /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
+		4586112026FA0C1000269593 /* LoginFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactoryProtocol.swift; sourceTree = "<group>"; };
+		4586112226FA0C3200269593 /* LoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactory.swift; sourceTree = "<group>"; };
 		458CBBB526E0E53100915CA1 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		458CBBB826E0E53100915CA1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		458CBBC126E0E53400915CA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -132,6 +142,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		4586111926FA0B8000269593 /* AuthorizationService */ = {
+			isa = PBXGroup;
+			children = (
+				4586111A26FA0BA300269593 /* Checker.swift */,
+				4586111C26FA0BE000269593 /* LoginVCDelegateProtocol.swift */,
+				4586111E26FA0BF700269593 /* LoginInspector.swift */,
+				4586112026FA0C1000269593 /* LoginFactoryProtocol.swift */,
+				4586112226FA0C3200269593 /* LoginFactory.swift */,
+			);
+			path = AuthorizationService;
+			sourceTree = "<group>";
+		};
 		458CBBAC26E0E53100915CA1 = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				458CBBED26E0FAE200915CA1 /* Aplication */,
+				4586111926FA0B8000269593 /* AuthorizationService */,
 				458CBBCE26E0F83200915CA1 /* ViewControllers */,
 				458CBBCF26E0F84400915CA1 /* Cells */,
 				458CBBD026E0F84E00915CA1 /* Profile */,
@@ -442,20 +465,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				45D503AA26F5236500387102 /* TestUser.swift in Sources */,
+				4586111B26FA0BA300269593 /* Checker.swift in Sources */,
 				45D503A426F5231400387102 /* UserServiceProtocol.swift in Sources */,
 				458CBBDE26E0F93600915CA1 /* PhotosViewController.swift in Sources */,
+				4586112126FA0C1000269593 /* LoginFactoryProtocol.swift in Sources */,
 				45D503AF26F5241900387102 /* ImageAlpha.swift in Sources */,
 				458CBBB926E0E53100915CA1 /* AppDelegate.swift in Sources */,
 				458CBBE226E0F96C00915CA1 /* PhotosTableViewCell.swift in Sources */,
 				458CBBD426E0F8D800915CA1 /* FeedViewController.swift in Sources */,
+				4586111D26FA0BE000269593 /* LoginVCDelegateProtocol.swift in Sources */,
 				458CBBE426E0F98800915CA1 /* PhotosCollectionViewCell.swift in Sources */,
 				458CBBE626E0F9B600915CA1 /* ProfileHeaderView.swift in Sources */,
 				458CBBDA26E0F90E00915CA1 /* LogInViewController.swift in Sources */,
 				45D503A626F5232D00387102 /* User.swift in Sources */,
+				4586112326FA0C3200269593 /* LoginFactory.swift in Sources */,
 				458CBBEC26E0FA5300915CA1 /* MainTabBarController.swift in Sources */,
 				458CBBD826E0F8FF00915CA1 /* InfoViewController.swift in Sources */,
 				458CBBE026E0F95A00915CA1 /* PostTableViewCell.swift in Sources */,
 				45D503AD26F523FC00387102 /* UIColor.swift in Sources */,
+				4586111F26FA0BF700269593 /* LoginInspector.swift in Sources */,
 				458CBBDC26E0F92200915CA1 /* ProfileViewController.swift in Sources */,
 				458CBBD626E0F8EF00915CA1 /* PostViewController.swift in Sources */,
 				45D503A826F5234C00387102 /* CurrentUser.swift in Sources */,

@@ -32,7 +32,7 @@ class PostTableViewCell: UITableViewCell {
     }
 
     
-    private var titleLabel: UILabel = {
+    var titleLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
@@ -42,7 +42,7 @@ class PostTableViewCell: UITableViewCell {
         return label
     }()
     
-    private var postImageView: UIImageView = {
+    var postImageView: UIImageView = {
         var image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
@@ -51,7 +51,7 @@ class PostTableViewCell: UITableViewCell {
     }()
 
 
-    private var descriptionLabel: UILabel = {
+    var descriptionLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -62,7 +62,7 @@ class PostTableViewCell: UITableViewCell {
     }()
 
     
-    private var authorLabel: UILabel = {
+    var authorLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -71,7 +71,7 @@ class PostTableViewCell: UITableViewCell {
         return label
     }()
     
-    private var likesLabel: UILabel = {
+    var likesLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -79,7 +79,7 @@ class PostTableViewCell: UITableViewCell {
         return label
     }()
 
-    private var viewsLabel: UILabel = {
+    var viewsLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -104,7 +104,7 @@ class PostTableViewCell: UITableViewCell {
 // MARK: - Setup Post View
 private extension PostTableViewCell {
 
-    private func setupViews(){
+    func setupViews(){
         contentView.backgroundColor = .systemGray6
         contentView.addSubview(titleLabel)
         contentView.addSubview(postImageView)
@@ -116,7 +116,7 @@ private extension PostTableViewCell {
         setupViewConstraints()
     }
     
-    private func setupViewConstraints(){
+    func setupViewConstraints(){
 
         titleLabel.setContentHuggingPriority(.required, for: .vertical)
         descriptionLabel.setContentHuggingPriority(.required, for: .vertical)

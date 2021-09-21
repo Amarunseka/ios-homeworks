@@ -46,7 +46,7 @@ class ProfileViewController: UIViewController {
     
 // MARK: - Setups
     
-    private func setupTableView(){
+    func setupTableView(){
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .systemGray6
@@ -58,7 +58,7 @@ class ProfileViewController: UIViewController {
     }
 
     
-    private func setupConstraints(){
+    func setupConstraints(){
         let constraints = [
             
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -78,7 +78,7 @@ class ProfileViewController: UIViewController {
     private var crossButton: UIButton?
     
 
-    @objc private func avatarResize(sender: UITapGestureRecognizer) {
+    @objc func avatarResize(sender: UITapGestureRecognizer) {
         
         self.view.layoutIfNeeded()
         
@@ -240,6 +240,8 @@ extension ProfileViewController: UITableViewDelegate {
         profileHeader.avatarImageView.image = userInfo?.userAvatar
         profileHeader.statusLabel.text = userInfo?.userStatus
         
+        profileHeader.showAlert = { [self] in showAlertDeleteStatus() }
+        
         profileHeader.avatarImageView.isUserInteractionEnabled = true
         profileHeader.avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(avatarResize)))
         profileHeader.backgroundColor = .systemGray6
@@ -261,8 +263,21 @@ extension ProfileViewController: UITableViewDelegate {
 
         tableView.deselectRow(at: indexPath, animated: false)
     }
+    
+    
+    
+    func showAlertDeleteStatus () {
+        let alert = UIAlertController(title: "Внимание", message: "Вы хотите очистить статуc", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "ОК", style: .default) {_ in
+            
+        }
+        let cancel = UIAlertAction(title: "Отмена", style: .default)
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+    }
 }
-
 
 
 

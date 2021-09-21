@@ -17,8 +17,8 @@ class PhotosViewController: UIViewController {
         return collectionView
     }()
     
-    private let indentBetweenItems: CGFloat = 8
-    private let cellCollectionPhotosID = "cellCollectionPhotosID"
+    let indentBetweenItems: CGFloat = 8
+    let cellCollectionPhotosID = "cellCollectionPhotosID"
     
     
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class PhotosViewController: UIViewController {
     
     
     // MARK: - Setups
-    private func setupMainView(){
+    func setupMainView(){
         navigationController?.navigationBar.isHidden = false
         title = "Photo Gallery"
         view.backgroundColor = .white
@@ -47,7 +47,7 @@ class PhotosViewController: UIViewController {
     }
     
     
-    private func setupCollectionView(){
+    func setupCollectionView(){
         collectionView.backgroundColor = .white
         collectionView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: cellCollectionPhotosID)
         collectionView.dataSource = self
@@ -55,14 +55,14 @@ class PhotosViewController: UIViewController {
     }
     
     
-    private func setupConstraints(){
+    func setupConstraints(){
         collectionView.translatesAutoresizingMaskIntoConstraints = false
        
         [
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ]
         .forEach{ $0.isActive = true}
     }
@@ -124,4 +124,3 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
         present(image, animated: true)
     }
 }
-

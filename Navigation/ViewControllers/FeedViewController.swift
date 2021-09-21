@@ -11,16 +11,18 @@ import StorageService
 class FeedViewController: UIViewController {
 
     var postInfo = TitlePostPage(title: "Breaking news")
-    private var stackView = UIStackView()
+    var stackView = UIStackView()
     
-    private let buttonToPostFirst = UIButton(type: .system)
-    private let buttonToPostSecond = UIButton(type: .system)
+    let buttonToPostFirst = UIButton(type: .system)
+    let buttonToPostSecond = UIButton(type: .system)
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Feed"
         view.backgroundColor = .customColorBlue
+//        tabBarController?.tabBar.backgroundColor = .customColorGray
+//        navigationController?.navigationBar.backgroundColor = .customColorGray
         
         createButton(button: buttonToPostFirst, title: "THE POST", color: .systemGreen)
         createButton(button: buttonToPostSecond, title: "THE POST\n(again)", color: .systemTeal)
@@ -30,7 +32,7 @@ class FeedViewController: UIViewController {
     }
     
     
-    private func configureStackView(){
+    func configureStackView(){
         buttonToPostFirst.heightAnchor.constraint(equalToConstant: 70).isActive = true
         buttonToPostFirst.widthAnchor.constraint(equalToConstant: 150).isActive = true
 
@@ -43,7 +45,7 @@ class FeedViewController: UIViewController {
     }
     
     
-    private func setStackViewConstrains(){
+    func setStackViewConstrains(){
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         stackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
@@ -57,7 +59,7 @@ class FeedViewController: UIViewController {
 
 extension FeedViewController {
     
-    private func createButton(button: UIButton, title: String, color: UIColor){
+    func createButton(button: UIButton, title: String, color: UIColor){
         
         button.setTitle(title, for: .normal)
         button.backgroundColor = color
