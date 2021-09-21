@@ -10,7 +10,7 @@ import StorageService
 
 class PhotosTableViewCell: UITableViewCell {
     
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Photos"
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
@@ -20,7 +20,7 @@ class PhotosTableViewCell: UITableViewCell {
         return label
     }()
 
-    let arrowButton: UIButton = {
+    private let arrowButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(systemName: "arrow.right"), for: .normal)
         button.tintColor = .black
@@ -28,10 +28,10 @@ class PhotosTableViewCell: UITableViewCell {
     }()
     
     
-    var firstPhotoImageView = UIImageView()
-    var secondPhotoImageView = UIImageView()
-    var thirdPhotoImageView = UIImageView()
-    var fourthPhotoImageView = UIImageView()
+    private var firstPhotoImageView = UIImageView()
+    private var secondPhotoImageView = UIImageView()
+    private var thirdPhotoImageView = UIImageView()
+    private var fourthPhotoImageView = UIImageView()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -56,7 +56,7 @@ class PhotosTableViewCell: UITableViewCell {
     }
 
     
-    func setupViewConstraints() {
+    private func setupViewConstraints() {
         titleLabel.setContentHuggingPriority(.required, for: .vertical)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         arrowButton.translatesAutoresizingMaskIntoConstraints = false
@@ -71,8 +71,10 @@ class PhotosTableViewCell: UITableViewCell {
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: sideAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: sideAnchor),
 
+            
             arrowButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
             arrowButton.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -sideAnchor),
+            
             
             firstPhotoImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: sideAnchor),
             firstPhotoImageView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
@@ -80,18 +82,21 @@ class PhotosTableViewCell: UITableViewCell {
             firstPhotoImageView.heightAnchor.constraint(equalTo: firstPhotoImageView.widthAnchor),
             firstPhotoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
+            
             secondPhotoImageView.topAnchor.constraint(equalTo: firstPhotoImageView.topAnchor),
             secondPhotoImageView.leadingAnchor.constraint(equalTo: firstPhotoImageView.trailingAnchor, constant: betweenAnchor),
             secondPhotoImageView.bottomAnchor.constraint(equalTo: firstPhotoImageView.bottomAnchor),
             secondPhotoImageView.widthAnchor.constraint(equalTo: firstPhotoImageView.widthAnchor),
             secondPhotoImageView.heightAnchor.constraint(equalTo: firstPhotoImageView.widthAnchor),
 
+            
             thirdPhotoImageView.topAnchor.constraint(equalTo: firstPhotoImageView.topAnchor),
             thirdPhotoImageView.leadingAnchor.constraint(equalTo: secondPhotoImageView.trailingAnchor, constant: betweenAnchor),
             thirdPhotoImageView.bottomAnchor.constraint(equalTo: firstPhotoImageView.bottomAnchor),
             thirdPhotoImageView.widthAnchor.constraint(equalTo: firstPhotoImageView.widthAnchor),
             thirdPhotoImageView.heightAnchor.constraint(equalTo: firstPhotoImageView.heightAnchor),
 
+            
             fourthPhotoImageView.topAnchor.constraint(equalTo: firstPhotoImageView.topAnchor),
             fourthPhotoImageView.leadingAnchor.constraint(equalTo: thirdPhotoImageView.trailingAnchor, constant: betweenAnchor),
             fourthPhotoImageView.bottomAnchor.constraint(equalTo: firstPhotoImageView.bottomAnchor),
@@ -118,4 +123,5 @@ extension PhotosTableViewCell {
         return view
     }
 }
+
 

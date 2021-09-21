@@ -15,7 +15,7 @@ class ProfileHeaderView: UIView {
     
     let avatarImageView: UIImageView = {
         let badgerImage = UIImageView()
-        badgerImage.image = UIImage(named: "honeybadger")
+        //badgerImage.image = UIImage(named: "honeybadger")
         badgerImage.contentMode = .scaleToFill
         return badgerImage
     }()
@@ -34,17 +34,16 @@ class ProfileHeaderView: UIView {
 
     let statusLabel: UILabel = {
         let text = UILabel()
-        text.font = .systemFont(ofSize: 14, weight: .regular)
-        text.text = "Looking to fress somebody"
-        text.sizeToFit()
         text.numberOfLines = 0
+        text.font = .systemFont(ofSize: 14, weight: .regular)
+        text.sizeToFit()
         text.backgroundColor = .clear
         text.textColor = .darkGray
         return text
     }()
     
     
-    let setStatusButton: UIButton  = {
+    private let setStatusButton: UIButton  = {
         let button = UIButton(type: .system)
         button.backgroundColor = .systemBlue
         button.setTitle("Edit status", for: .normal)
@@ -53,7 +52,7 @@ class ProfileHeaderView: UIView {
     }()
     
     
-    let statusTextField: UITextField = {
+    private let statusTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .white
         textField.placeholder = "write something"
@@ -64,7 +63,7 @@ class ProfileHeaderView: UIView {
         return textField
     }()
     
-    let footerLineView: UIImageView = {
+    private let footerLineView: UIImageView = {
         let view = UIImageView()
         view.backgroundColor = .systemGray2
         return view
@@ -76,7 +75,7 @@ class ProfileHeaderView: UIView {
         self.backgroundColor = .systemGray6
 
         setupView()
-        setupFullNameLabel()
+        //setupFullNameLabel()
         setupSetStatusButton()
         setupConstraints()
         setupStatusTextField()
@@ -91,7 +90,7 @@ class ProfileHeaderView: UIView {
     
 // MARK: - Setups
     
-    func setupView(){
+    private func setupView(){
         addSubview(avatarImageView)
         addSubview(fullNameLabel)
         addSubview(statusLabel)
@@ -101,7 +100,7 @@ class ProfileHeaderView: UIView {
     }
     
     
-    func setupAvatar() {
+    private func setupAvatar() {
         avatarImageView.layer.cornerRadius = 4
         avatarImageView.layer.cornerRadius = avatarImageView.bounds.height / 2
         avatarImageView.clipsToBounds = true
@@ -110,7 +109,7 @@ class ProfileHeaderView: UIView {
     }
     
     
-    func setupFullNameLabel(){
+    private func setupFullNameLabel(){
         let textFullNameLabel = NSMutableAttributedString(string: "Honeybadger don't care")
         let don_tCareText = (textFullNameLabel.string as NSString).range(of: "don't care")
         
@@ -123,7 +122,7 @@ class ProfileHeaderView: UIView {
     }
     
     
-    func setupSetStatusButton(){
+    private func setupSetStatusButton(){
         setStatusButton.layer.cornerRadius = 4
         setStatusButton.layer.shadowOpacity = 0.7
         setStatusButton.layer.shadowOffset = CGSize(width: 4, height: 4)
@@ -133,14 +132,14 @@ class ProfileHeaderView: UIView {
     }
 
     
-    func setupStatusTextField(){
+    private func setupStatusTextField(){
         statusTextField.layer.borderWidth = 1
         statusTextField.layer.borderColor = UIColor.black.cgColor
         statusTextField.layer.cornerRadius = 12
         statusTextField.addTarget(self, action: #selector(statusTextChanged(_:)), for: .editingChanged)
     }
     
-    func setupFooterLineView(){
+    private func setupFooterLineView(){
         footerLineView.layer.shadowOpacity = 1
         footerLineView.layer.shadowOffset = CGSize(width: 0, height: 2)
         footerLineView.layer.shadowRadius = 4
@@ -150,7 +149,7 @@ class ProfileHeaderView: UIView {
 
     // MARK: - Constraints
     
-    func setupConstraints(){
+    private func setupConstraints(){
         
         avatarImageView.snp.makeConstraints { (make) in
             make.top.equalTo(safeAreaLayoutGuide).inset(16)
@@ -179,7 +178,7 @@ class ProfileHeaderView: UIView {
             make.leading.equalTo(fullNameLabel)
             make.bottom.equalTo(setStatusButton.snp.top).inset(-50)
             make.trailing.equalTo(fullNameLabel)
-            make.height.equalTo(statusLabel.frame.height)
+            make.height.equalTo(20)
         }
 
         
@@ -202,7 +201,7 @@ class ProfileHeaderView: UIView {
     
 // MARK: - target functions
     
-    @objc func buttonPressed(){
+    @objc private func buttonPressed(){
         if statusTextField.text != nil {
             if !statusText.isEmpty {
                 statusLabel.text = statusText
@@ -211,7 +210,7 @@ class ProfileHeaderView: UIView {
     }
 
     
-    @objc func statusTextChanged(_ textField: UITextField) {
+    @objc private func statusTextChanged(_ textField: UITextField) {
         if textField.text != nil {
             statusText = textField.text ?? ""}
     }
@@ -221,3 +220,4 @@ class ProfileHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+

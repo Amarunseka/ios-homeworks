@@ -17,8 +17,8 @@ class PhotosViewController: UIViewController {
         return collectionView
     }()
     
-    let indentBetweenItems: CGFloat = 8
-    let cellCollectionPhotosID = "cellCollectionPhotosID"
+    private let indentBetweenItems: CGFloat = 8
+    private let cellCollectionPhotosID = "cellCollectionPhotosID"
     
     
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class PhotosViewController: UIViewController {
     
     
     // MARK: - Setups
-    func setupMainView(){
+    private func setupMainView(){
         navigationController?.navigationBar.isHidden = false
         title = "Photo Gallery"
         view.backgroundColor = .white
@@ -47,7 +47,7 @@ class PhotosViewController: UIViewController {
     }
     
     
-    func setupCollectionView(){
+    private func setupCollectionView(){
         collectionView.backgroundColor = .white
         collectionView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: cellCollectionPhotosID)
         collectionView.dataSource = self
@@ -55,14 +55,14 @@ class PhotosViewController: UIViewController {
     }
     
     
-    func setupConstraints(){
+    private func setupConstraints(){
         collectionView.translatesAutoresizingMaskIntoConstraints = false
        
         [
-            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ]
         .forEach{ $0.isActive = true}
     }
@@ -117,4 +117,11 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
             bottom: indentBetweenItems,
             right: indentBetweenItems)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let image = PhotoViewController()
+        image.imageView.image = PhotosImage.photos[indexPath.row]
+        present(image, animated: true)
+    }
 }
+

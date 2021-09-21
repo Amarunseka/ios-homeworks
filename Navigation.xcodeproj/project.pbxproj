@@ -28,6 +28,13 @@
 		458CBC3426E107F900915CA1 /* PhotosStorageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CBBE926E0F9E000915CA1 /* PhotosStorageFile.swift */; };
 		458CBC8D26EF877700915CA1 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 458CBC8C26EF877700915CA1 /* iOSIntPackage */; };
 		458CBC8F26EF988300915CA1 /* PostsStorageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CBBE726E0F9D200915CA1 /* PostsStorageFile.swift */; };
+		45D503A226F522E600387102 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D503A126F522E600387102 /* PhotoViewController.swift */; };
+		45D503A426F5231400387102 /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D503A326F5231400387102 /* UserServiceProtocol.swift */; };
+		45D503A626F5232D00387102 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D503A526F5232D00387102 /* User.swift */; };
+		45D503A826F5234C00387102 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D503A726F5234C00387102 /* CurrentUser.swift */; };
+		45D503AA26F5236500387102 /* TestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D503A926F5236500387102 /* TestUser.swift */; };
+		45D503AD26F523FC00387102 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D503AC26F523FC00387102 /* UIColor.swift */; };
+		45D503AF26F5241900387102 /* ImageAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D503AE26F5241900387102 /* ImageAlpha.swift */; };
 		F47C8C17850C5C48D5CE7146 /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6882C9CB6B724620F5A001 /* Pods_Navigation.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +88,13 @@
 		458CBC2726E107C300915CA1 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		458CBC2926E107C300915CA1 /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		458CBC2A26E107C300915CA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45D503A126F522E600387102 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		45D503A326F5231400387102 /* UserServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
+		45D503A526F5232D00387102 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		45D503A726F5234C00387102 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		45D503A926F5236500387102 /* TestUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUser.swift; sourceTree = "<group>"; };
+		45D503AC26F523FC00387102 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		45D503AE26F5241900387102 /* ImageAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAlpha.swift; sourceTree = "<group>"; };
 		8C04E2B836B5379A25B98A4F /* Pods-Navigation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.debug.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.debug.xcconfig"; sourceTree = "<group>"; };
 		E92FC96268B7DCD40078E97D /* Pods-StorageService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService.release.xcconfig"; path = "Target Support Files/Pods-StorageService/Pods-StorageService.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,6 +160,7 @@
 				458CBBCF26E0F84400915CA1 /* Cells */,
 				458CBBD026E0F84E00915CA1 /* Profile */,
 				458CBBCC26E0F68C00915CA1 /* Resources */,
+				45D503AB26F523D300387102 /* Extensions */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -169,6 +184,7 @@
 				458CBBD926E0F90E00915CA1 /* LogInViewController.swift */,
 				458CBBDB26E0F92200915CA1 /* ProfileViewController.swift */,
 				458CBBDD26E0F93600915CA1 /* PhotosViewController.swift */,
+				45D503A126F522E600387102 /* PhotoViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -187,6 +203,10 @@
 			isa = PBXGroup;
 			children = (
 				458CBBE526E0F9B600915CA1 /* ProfileHeaderView.swift */,
+				45D503A326F5231400387102 /* UserServiceProtocol.swift */,
+				45D503A526F5232D00387102 /* User.swift */,
+				45D503A726F5234C00387102 /* CurrentUser.swift */,
+				45D503A926F5236500387102 /* TestUser.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -217,6 +237,15 @@
 				458CBC2A26E107C300915CA1 /* Info.plist */,
 			);
 			path = StorageService;
+			sourceTree = "<group>";
+		};
+		45D503AB26F523D300387102 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				45D503AC26F523FC00387102 /* UIColor.swift */,
+				45D503AE26F5241900387102 /* ImageAlpha.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EE474AC22F3AC7A0B5A01372 /* Frameworks */ = {
@@ -412,18 +441,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45D503AA26F5236500387102 /* TestUser.swift in Sources */,
+				45D503A426F5231400387102 /* UserServiceProtocol.swift in Sources */,
 				458CBBDE26E0F93600915CA1 /* PhotosViewController.swift in Sources */,
+				45D503AF26F5241900387102 /* ImageAlpha.swift in Sources */,
 				458CBBB926E0E53100915CA1 /* AppDelegate.swift in Sources */,
 				458CBBE226E0F96C00915CA1 /* PhotosTableViewCell.swift in Sources */,
 				458CBBD426E0F8D800915CA1 /* FeedViewController.swift in Sources */,
 				458CBBE426E0F98800915CA1 /* PhotosCollectionViewCell.swift in Sources */,
 				458CBBE626E0F9B600915CA1 /* ProfileHeaderView.swift in Sources */,
 				458CBBDA26E0F90E00915CA1 /* LogInViewController.swift in Sources */,
+				45D503A626F5232D00387102 /* User.swift in Sources */,
 				458CBBEC26E0FA5300915CA1 /* MainTabBarController.swift in Sources */,
 				458CBBD826E0F8FF00915CA1 /* InfoViewController.swift in Sources */,
 				458CBBE026E0F95A00915CA1 /* PostTableViewCell.swift in Sources */,
+				45D503AD26F523FC00387102 /* UIColor.swift in Sources */,
 				458CBBDC26E0F92200915CA1 /* ProfileViewController.swift in Sources */,
 				458CBBD626E0F8EF00915CA1 /* PostViewController.swift in Sources */,
+				45D503A826F5234C00387102 /* CurrentUser.swift in Sources */,
+				45D503A226F522E600387102 /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

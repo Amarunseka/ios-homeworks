@@ -133,12 +133,13 @@ class LogInViewController: UIViewController {
         logInTextField.placeholder = "Email or phone"
         logInTextField.textColor = UIColor.black
         logInTextField.font = .systemFont(ofSize: 16, weight: .regular)
-        logInTextField.tintColor = UIColor(named: "AccentColor")
-        logInTextField.autocapitalizationType = .none
+        logInTextField.tintColor = .accentColor
+        logInTextField.autocapitalizationType = .sentences
         logInTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: logInTextField.frame.height))
         logInTextField.leftViewMode = .always
         logInTextField.layer.borderColor = UIColor.lightGray.cgColor
         logInTextField.layer.borderWidth = 0.5
+        logInTextField.delegate = self
     }
     
     
@@ -147,17 +148,15 @@ class LogInViewController: UIViewController {
         passwordTextField.placeholder = "Password"
         passwordTextField.textColor = UIColor.black
         passwordTextField.font = .systemFont(ofSize: 16, weight: .regular)
-        passwordTextField.tintColor = UIColor(named: "AccentColor")
-        
+        passwordTextField.tintColor = .accentColor
         passwordTextField.autocapitalizationType = .none
-        
         passwordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: passwordTextField.frame.height))
         passwordTextField.leftViewMode = .always
-        
         passwordTextField.layer.borderColor = UIColor.lightGray.cgColor
         passwordTextField.layer.borderWidth = 0.5
-        
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.delegate = self
+
     }
     
     
@@ -234,7 +233,18 @@ class LogInViewController: UIViewController {
     // MARK: - target functions
     
     @objc private func pushLogInButton(){
-        let segue = ProfileViewController()
+        guard let text = logInTextField.text else {return}
+        let user: UserServiceProtocol
+
+        #if DEBUG
+        user = TestUserService()
+        #else
+        user = CurrentUserService()
+        #endif
+        
+        guard user.createUser(userName: text) != nil else { return showAlert()}
+
+        let segue = ProfileViewController(userService: user, userName: text)
         navigationController?.pushViewController(segue, animated: true)
     }
     
@@ -256,13 +266,34 @@ class LogInViewController: UIViewController {
 
 // MARK: - other extensions
 
-extension UIImage {
-
-    func alpha(_ value:CGFloat) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        draw(at: CGPoint.zero, blendMode: .normal, alpha: value)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage!
+extension LogInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        pushLogInButton()
+        return true
+    }
+    
+    
+    private func showAlert() {
+        let alertController = UIAlertController(title: "Ошибка", message: "Неверное имя пользователя", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ок", style: .default) { _ in
+        }
+        
+        alertController.setValue(NSAttributedString(
+                                    string: alertController.title!,
+                                    attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.regular),
+                                                 NSAttributedString.Key.foregroundColor: UIColor.accentColor ?? .black]),
+                                 forKey: "attributedTitle")
+        
+        alertController.setValue(NSAttributedString(
+                                    string: alertController.message!,
+                                    attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15,weight: UIFont.Weight.regular),
+                                                 NSAttributedString.Key.foregroundColor: UIColor.red]),
+                                 forKey: "attributedMessage")
+        
+        alertController.view.tintColor = .customColorBlue
+        
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
