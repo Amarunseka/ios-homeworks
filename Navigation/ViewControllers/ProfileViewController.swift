@@ -11,7 +11,7 @@ import StorageService
 
 
 class ProfileViewController: UIViewController {
-    
+        
     private let tableView = UITableView(frame: .zero, style: .plain)
     private let cellPostsID = "cellPostsID"
     private let cellPhotosID = "cellPhotosID"
@@ -239,9 +239,7 @@ extension ProfileViewController: UITableViewDelegate {
         profileHeader.fullNameLabel.text = userInfo?.userName
         profileHeader.avatarImageView.image = userInfo?.userAvatar
         profileHeader.statusLabel.text = userInfo?.userStatus
-        
-        profileHeader.showAlert = { [self] in showAlertDeleteStatus() }
-        
+                
         profileHeader.avatarImageView.isUserInteractionEnabled = true
         profileHeader.avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(avatarResize)))
         profileHeader.backgroundColor = .systemGray6
@@ -262,20 +260,6 @@ extension ProfileViewController: UITableViewDelegate {
             navigationController?.pushViewController(photoViewController, animated: true)}
 
         tableView.deselectRow(at: indexPath, animated: false)
-    }
-    
-    
-    
-    func showAlertDeleteStatus () {
-        let alert = UIAlertController(title: "Внимание", message: "Вы хотите очистить статуc", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "ОК", style: .default) {_ in
-            
-        }
-        let cancel = UIAlertAction(title: "Отмена", style: .default)
-        
-        alert.addAction(ok)
-        alert.addAction(cancel)
-        present(alert, animated: true, completion: nil)
     }
 }
 

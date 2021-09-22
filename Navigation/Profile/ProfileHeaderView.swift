@@ -10,9 +10,7 @@ import UIKit
 import SnapKit
 
 class ProfileHeaderView: UIView {
-    
-    var showAlert: (() -> Void)?
-    
+        
     let avatarImageView: UIImageView = {
         let badgerImage = UIImageView()
         badgerImage.contentMode = .scaleToFill
@@ -38,6 +36,7 @@ class ProfileHeaderView: UIView {
         text.sizeToFit()
         text.backgroundColor = .clear
         text.textColor = .darkGray
+        //text.text = "Self some text"
         return text
     }()
     
@@ -203,8 +202,8 @@ class ProfileHeaderView: UIView {
     @objc func buttonPressed(){
         guard let text = statusTextField.text else {return}
         
-        if text.isEmpty == true {
-            if let tap = showAlert{ tap() }
+        if text.isEmpty == true && statusLabel.text?.isEmpty == false {
+            showAlertDeleteStatus()
         } else {
             statusLabel.text = text
             statusTextField.text = nil
@@ -218,4 +217,19 @@ class ProfileHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    func showAlertDeleteStatus () {
+        let alert = UIAlertController(title: "Внимание", message: "Вы хотите очистить статуc", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "ОК", style: .default) {_ in
+            self.statusLabel.text = nil
+        }
+        let cancel = UIAlertAction(title: "Отмена", style: .default)
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        UIApplication.shared.windows.last?.rootViewController?.present(alert, animated: true)
+
+    }
+    
 }
