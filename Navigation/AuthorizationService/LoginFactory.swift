@@ -12,9 +12,3 @@ class LoginFactory: LoginFactoryProtocol {
         return LoginInspector()
     }
 }
-//
-//struct MyLogInFactory: LoginFactory {
-//    
-//    func makeInspector () -> LogInInspector {
-//        return LogInInspector()
-//    }
