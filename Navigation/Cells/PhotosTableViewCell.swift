@@ -28,10 +28,10 @@ class PhotosTableViewCell: UITableViewCell {
     }()
     
     
-    var firstPhotoImageView = UIImageView()
-    var secondPhotoImageView = UIImageView()
-    var thirdPhotoImageView = UIImageView()
-    var fourthPhotoImageView = UIImageView()
+    private var firstPhotoImageView = UIImageView()
+    private var secondPhotoImageView = UIImageView()
+    private var thirdPhotoImageView = UIImageView()
+    private var fourthPhotoImageView = UIImageView()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

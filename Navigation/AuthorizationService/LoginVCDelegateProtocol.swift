@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol LoginViewControllerDelegate: AnyObject {
+protocol LoginViewControllerDelegateProtocol: AnyObject {
     
     func checkUserAuthentication(login: String, password:String) -> Bool
 }

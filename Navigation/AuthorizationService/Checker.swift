@@ -9,7 +9,7 @@ import Foundation
 
 class Checker {
     
-    static let data: Checker = .init()
+    static let shared: Checker = .init()
     
     private let authorizationUserInfo: [String: String]
 
@@ -25,10 +25,6 @@ class Checker {
     
     func checkAuthentication(login:String, password: String) -> Bool{
         
-        if authorizationUserInfo[login] == password {
-            return true
-        } else {
-            return false
-        }
+        return authorizationUserInfo[login] == password
     }
 }

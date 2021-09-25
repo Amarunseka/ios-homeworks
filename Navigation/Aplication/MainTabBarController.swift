@@ -18,7 +18,8 @@ class MainTabBarController: UITabBarController {
         
         if let loginVC = loginNVC.viewControllers.first as? LogInViewController {
             let loginFactory = LoginFactory()
-            loginVC.loginFactory = loginFactory}
+            loginVC.loginInspector = loginFactory.createLoginInspector()
+        }
         
         viewControllers = [feedNVC, loginNVC]
     }
