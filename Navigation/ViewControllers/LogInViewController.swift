@@ -9,7 +9,7 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
-    //weak var delegate: LoginViewControllerDelegateProtocol?
+    //weak var delegate: LoginViewControllerDelegate?
     var delegate: LoginViewControllerDelegateProtocol?
 
     private let scrollView: UIScrollView = {
@@ -174,7 +174,6 @@ class LogInViewController: UIViewController {
         logInButton.setBackgroundImage(backgroundOtherStates, for: .selected)
         logInButton.setBackgroundImage(backgroundOtherStates, for: .highlighted)
         logInButton.setBackgroundImage(backgroundOtherStates, for: .disabled)
-        
         logInButton.addTarget(self, action: #selector(pushLogInButton), for: .touchUpInside)
     }
     
@@ -252,7 +251,7 @@ class LogInViewController: UIViewController {
 //        if delegate?.check(login: login, password: password) == true {
         if let checkUserInfo = delegate,
            checkUserInfo.checkUserAuthentication(login: login, password: password) {
-            
+
             let segue = ProfileViewController(userService: user, userName: login)
             navigationController?.pushViewController(segue, animated: true)
         } else {
@@ -287,24 +286,29 @@ extension LogInViewController: UITextFieldDelegate {
     
     
     private func showAlert() {
-        let alertController = UIAlertController(title: "Ошибка", message: "Неверное имя пользователя или пароль", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ок", style: .default)
-        
-        alertController.setValue(NSAttributedString(
-                                    string: alertController.title!,
-                                    attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.regular),
-                                                 NSAttributedString.Key.foregroundColor: UIColor.accentColor ?? .black]),
-                                 forKey: "attributedTitle")
-        
-        alertController.setValue(NSAttributedString(
-                                    string: alertController.message!,
-                                    attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15,weight: UIFont.Weight.regular),
-                                                 NSAttributedString.Key.foregroundColor: UIColor.red]),
-                                 forKey: "attributedMessage")
+        let alertController = UIAlertController(title: "Ошибка!", message: "Неверное имя пользователя или пароль.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "ОK.", style: .default)
         
         alertController.view.tintColor = .customColorBlue
         
         alertController.addAction(okAction)
+        
+        if let title = alertController.title, let message = alertController.message {
+            alertController.setValue(NSAttributedString(
+                string: title,
+                attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.regular),
+                             NSAttributedString.Key.foregroundColor: UIColor.accentColor ?? .black]),
+                                     forKey: "attributedTitle")
+            
+            alertController.setValue(NSAttributedString(
+                string: message,
+                attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15,weight: UIFont.Weight.regular),
+                             NSAttributedString.Key.foregroundColor: UIColor.red]),
+                                     forKey: "attributedMessage")
+        }
+        
         self.present(alertController, animated: true, completion: nil)
+        
+        
     }
 }

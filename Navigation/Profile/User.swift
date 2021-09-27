@@ -20,5 +20,4 @@ class User {
         self.userAvatar = userAvatar
         self.userStatus = userStatus
     }
-    
 }
