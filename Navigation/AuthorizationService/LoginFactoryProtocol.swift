@@ -8,5 +8,5 @@
 import Foundation
 
 protocol LoginFactoryProtocol {
-    func createLoginInspector() -> LoginViewControllerDelegateProtocol
+    func createLoginInspector() -> LoginInspector
 }

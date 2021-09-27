@@ -202,7 +202,7 @@ class ProfileHeaderView: UIView {
     @objc func buttonPressed(){
         guard let text = statusTextField.text else {return}
         
-        if text.isEmpty == true && statusLabel.text?.isEmpty == false {
+        if text.isEmpty && statusLabel.text?.isEmpty == false {
             showAlertDeleteStatus()
         } else {
             statusLabel.text = text

@@ -10,7 +10,7 @@ import UIKit
 class LogInViewController: UIViewController {
     
     //weak var delegate: LoginViewControllerDelegateProtocol?
-    var loginInspector: LoginViewControllerDelegateProtocol?
+    var delegate: LoginViewControllerDelegateProtocol?
 
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -250,8 +250,8 @@ class LogInViewController: UIViewController {
 
 
 //        if delegate?.check(login: login, password: password) == true {
-        if let checkUserInfo = loginInspector,
-           checkUserInfo.checkUserAuthentication(login: login, password: password) ==  true {
+        if let checkUserInfo = delegate,
+           checkUserInfo.checkUserAuthentication(login: login, password: password) {
             
             let segue = ProfileViewController(userService: user, userName: login)
             navigationController?.pushViewController(segue, animated: true)
