@@ -10,12 +10,9 @@ import UIKit
 import SnapKit
 
 class ProfileHeaderView: UIView {
-
-    private var statusText = ""
-    
+        
     let avatarImageView: UIImageView = {
         let badgerImage = UIImageView()
-        //badgerImage.image = UIImage(named: "honeybadger")
         badgerImage.contentMode = .scaleToFill
         return badgerImage
     }()
@@ -39,11 +36,12 @@ class ProfileHeaderView: UIView {
         text.sizeToFit()
         text.backgroundColor = .clear
         text.textColor = .darkGray
+        //text.text = "Self some text"
         return text
     }()
     
     
-    private let setStatusButton: UIButton  = {
+    let setStatusButton: UIButton  = {
         let button = UIButton(type: .system)
         button.backgroundColor = .systemBlue
         button.setTitle("Edit status", for: .normal)
@@ -52,7 +50,7 @@ class ProfileHeaderView: UIView {
     }()
     
     
-    private let statusTextField: UITextField = {
+    let statusTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .white
         textField.placeholder = "write something"
@@ -63,7 +61,7 @@ class ProfileHeaderView: UIView {
         return textField
     }()
     
-    private let footerLineView: UIImageView = {
+    let footerLineView: UIImageView = {
         let view = UIImageView()
         view.backgroundColor = .systemGray2
         return view
@@ -90,7 +88,7 @@ class ProfileHeaderView: UIView {
     
 // MARK: - Setups
     
-    private func setupView(){
+    func setupView(){
         addSubview(avatarImageView)
         addSubview(fullNameLabel)
         addSubview(statusLabel)
@@ -100,7 +98,7 @@ class ProfileHeaderView: UIView {
     }
     
     
-    private func setupAvatar() {
+    func setupAvatar() {
         avatarImageView.layer.cornerRadius = 4
         avatarImageView.layer.cornerRadius = avatarImageView.bounds.height / 2
         avatarImageView.clipsToBounds = true
@@ -109,7 +107,7 @@ class ProfileHeaderView: UIView {
     }
     
     
-    private func setupFullNameLabel(){
+    func setupFullNameLabel(){
         let textFullNameLabel = NSMutableAttributedString(string: "Honeybadger don't care")
         let don_tCareText = (textFullNameLabel.string as NSString).range(of: "don't care")
         
@@ -122,7 +120,7 @@ class ProfileHeaderView: UIView {
     }
     
     
-    private func setupSetStatusButton(){
+    func setupSetStatusButton(){
         setStatusButton.layer.cornerRadius = 4
         setStatusButton.layer.shadowOpacity = 0.7
         setStatusButton.layer.shadowOffset = CGSize(width: 4, height: 4)
@@ -132,14 +130,14 @@ class ProfileHeaderView: UIView {
     }
 
     
-    private func setupStatusTextField(){
+    func setupStatusTextField(){
         statusTextField.layer.borderWidth = 1
         statusTextField.layer.borderColor = UIColor.black.cgColor
         statusTextField.layer.cornerRadius = 12
-        statusTextField.addTarget(self, action: #selector(statusTextChanged(_:)), for: .editingChanged)
+        statusTextField.tintColor = .customColorBlue
     }
     
-    private func setupFooterLineView(){
+    func setupFooterLineView(){
         footerLineView.layer.shadowOpacity = 1
         footerLineView.layer.shadowOffset = CGSize(width: 0, height: 2)
         footerLineView.layer.shadowRadius = 4
@@ -149,7 +147,7 @@ class ProfileHeaderView: UIView {
 
     // MARK: - Constraints
     
-    private func setupConstraints(){
+    func setupConstraints(){
         
         avatarImageView.snp.makeConstraints { (make) in
             make.top.equalTo(safeAreaLayoutGuide).inset(16)
@@ -201,23 +199,37 @@ class ProfileHeaderView: UIView {
     
 // MARK: - target functions
     
-    @objc private func buttonPressed(){
-        if statusTextField.text != nil {
-            if !statusText.isEmpty {
-                statusLabel.text = statusText
-            }
+    @objc func buttonPressed(){
+        guard let text = statusTextField.text else {return}
+        
+        if text.isEmpty && statusLabel.text?.isEmpty == false {
+            showAlertDeleteStatus()
+        } else {
+            statusLabel.text = text
+            statusTextField.text = nil
         }
     }
 
-    
-    @objc private func statusTextChanged(_ textField: UITextField) {
-        if textField.text != nil {
-            statusText = textField.text ?? ""}
+    func clearStatus(){
+        statusLabel.text = nil
     }
-
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
+    
+    
+    func showAlertDeleteStatus () {
+        let alert = UIAlertController(title: "Внимание", message: "Вы хотите очистить статуc", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "ОК", style: .default) {_ in
+            self.statusLabel.text = nil
+        }
+        let cancel = UIAlertAction(title: "Отмена", style: .default)
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        UIApplication.shared.windows.last?.rootViewController?.present(alert, animated: true)
 
+    }
+    
+}

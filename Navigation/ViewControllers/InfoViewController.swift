@@ -9,7 +9,7 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
-    private let buttonAlert: UIButton = {
+    let buttonAlert: UIButton = {
         let button = UIButton()
         button.setTitle("Alert", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30, weight: .regular)
@@ -32,19 +32,19 @@ class InfoViewController: UIViewController {
     }
     
     
-    private func setupView(){
+    func setupView(){
         self.view.backgroundColor = UIColor.purple
         self.view.addSubview(buttonAlert)
     }
     
     
-    private func setupButtonAlert( ){
+    func setupButtonAlert( ){
         buttonAlert.layer.cornerRadius = 15
         buttonAlert.layer.masksToBounds = true
     }
     
     
-    private func buttonAlertConstraints() {
+    func buttonAlertConstraints() {
         let constraints = [
             buttonAlert.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
             buttonAlert.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
@@ -55,7 +55,7 @@ class InfoViewController: UIViewController {
     }
     
     
-    @objc private func showAlert (parameterSender: Any) {
+    @objc func showAlert (parameterSender: Any) {
         let alert = UIAlertController(title: "Наташа мы все уронили", message: "Воообще все!!!", preferredStyle: .alert)
         let angryAnswer = UIAlertAction(title: "У кого то теперь будут новые варежки", style: .destructive)
         let kindAnswer = UIAlertAction(title: "Ну хотя бы выспалась", style: .default)
@@ -65,4 +65,3 @@ class InfoViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 }
-

@@ -8,6 +8,9 @@
 import UIKit
 
 class LogInViewController: UIViewController {
+    
+    //weak var delegate: LoginViewControllerDelegateProtocol?
+    var delegate: LoginViewControllerDelegateProtocol?
 
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -38,14 +41,14 @@ class LogInViewController: UIViewController {
     }()
     
     
-    private let logInTextField: UITextField = {
+    let logInTextField: UITextField = {
         let text = UITextField()
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
     
-    private let passwordTextField: UITextField = {
+    let passwordTextField: UITextField = {
         let text = UITextField()
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
@@ -233,19 +236,28 @@ class LogInViewController: UIViewController {
     // MARK: - target functions
     
     @objc private func pushLogInButton(){
-        guard let text = logInTextField.text else {return}
+        guard let login = logInTextField.text else {return}
+        guard let password = passwordTextField.text else {return}
+        
+        
         let user: UserServiceProtocol
-
+        
         #if DEBUG
         user = TestUserService()
         #else
         user = CurrentUserService()
         #endif
-        
-        guard user.createUser(userName: text) != nil else { return showAlert()}
 
-        let segue = ProfileViewController(userService: user, userName: text)
-        navigationController?.pushViewController(segue, animated: true)
+
+//        if delegate?.check(login: login, password: password) == true {
+        if let checkUserInfo = delegate,
+           checkUserInfo.checkUserAuthentication(login: login, password: password) {
+            
+            let segue = ProfileViewController(userService: user, userName: login)
+            navigationController?.pushViewController(segue, animated: true)
+        } else {
+            return showAlert()
+        }
     }
     
     
@@ -275,9 +287,8 @@ extension LogInViewController: UITextFieldDelegate {
     
     
     private func showAlert() {
-        let alertController = UIAlertController(title: "Ошибка", message: "Неверное имя пользователя", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ок", style: .default) { _ in
-        }
+        let alertController = UIAlertController(title: "Ошибка", message: "Неверное имя пользователя или пароль", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ок", style: .default)
         
         alertController.setValue(NSAttributedString(
                                     string: alertController.title!,
