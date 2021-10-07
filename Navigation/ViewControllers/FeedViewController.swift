@@ -27,6 +27,7 @@ class FeedViewController: UIViewController {
             placeholder: "Let's check your word",
             autoLayout: .yes)
         textField.addTarget(self, action: #selector(inputText), for: .editingChanged)
+        textField.delegate = self
         return textField
     }()
     
@@ -207,5 +208,15 @@ extension FeedViewController {
             
             vc.toCheckTheWordButton.setAttributedTitle(finishedButtonTitle, for: .normal)
         }
+    }
+}
+
+// MARK: - extension Textfield
+
+extension FeedViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        checkWord()
+        return true
     }
 }
