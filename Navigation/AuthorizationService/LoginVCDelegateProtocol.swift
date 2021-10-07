@@ -1,8 +1,8 @@
 //
-//  LoginVCDelegateProtocol.swift
+//  LoginViewControllerDelegate.swift
 //  Navigation
 //
-//  Created by Миша on 21.09.2021.
+//  Created by Миша on 20.09.2021.
 //
 
 import Foundation

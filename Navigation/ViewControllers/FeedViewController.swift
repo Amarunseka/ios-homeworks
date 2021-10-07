@@ -21,8 +21,6 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Feed"
         view.backgroundColor = .customColorBlue
-//        tabBarController?.tabBar.backgroundColor = .customColorGray
-//        navigationController?.navigationBar.backgroundColor = .customColorGray
         
         createButton(button: buttonToPostFirst, title: "THE POST", color: .systemGreen)
         createButton(button: buttonToPostSecond, title: "THE POST\n(again)", color: .systemTeal)
@@ -30,6 +28,7 @@ class FeedViewController: UIViewController {
         configureStackView()
         setStackViewConstrains()
     }
+
     
     
     func configureStackView(){

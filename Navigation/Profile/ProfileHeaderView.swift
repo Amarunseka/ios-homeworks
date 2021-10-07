@@ -220,16 +220,31 @@ class ProfileHeaderView: UIView {
     
     
     func showAlertDeleteStatus () {
-        let alert = UIAlertController(title: "Внимание", message: "Вы хотите очистить статуc", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "ОК", style: .default) {_ in
+        let alert = UIAlertController(title: "Внимание!", message: "Вы хотите очистить статуc?", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "ОК.", style: .default) {_ in
             self.statusLabel.text = nil
         }
-        let cancel = UIAlertAction(title: "Отмена", style: .default)
+        let cancel = UIAlertAction(title: "Отмена.", style: .default)
+
         
         alert.addAction(ok)
         alert.addAction(cancel)
+        
+        if let title = alert.title, let message = alert.message {
+            alert.setValue(NSAttributedString(
+                string: title,
+                attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.regular),
+                             NSAttributedString.Key.foregroundColor: UIColor.accentColor ?? .black]),
+                           forKey: "attributedTitle")
+            
+            alert.setValue(NSAttributedString(
+                string: message,
+                attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15,weight: UIFont.Weight.regular),
+                             NSAttributedString.Key.foregroundColor: UIColor.red]),
+                           forKey: "attributedMessage")
+        }
+        
         UIApplication.shared.windows.last?.rootViewController?.present(alert, animated: true)
-
     }
     
 }

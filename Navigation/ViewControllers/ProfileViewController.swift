@@ -13,8 +13,6 @@ import StorageService
 class ProfileViewController: UIViewController {
         
     private let tableView = UITableView(frame: .zero, style: .plain)
-    private let cellPostsID = "cellPostsID"
-    private let cellPhotosID = "cellPhotosID"
     let userService: UserServiceProtocol
     let userName: String
 
@@ -53,8 +51,8 @@ class ProfileViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: cellPostsID)
-        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: cellPhotosID)
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
     }
 
     
@@ -205,11 +203,13 @@ extension ProfileViewController: UITableViewDataSource {
         
         switch indexPath.row {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellPhotosID) as! PhotosTableViewCell
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: PhotosTableViewCell.self)) as! PhotosTableViewCell
             return cell
             
         case let n where n > 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellPostsID) as! PostTableViewCell
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: PostTableViewCell.self)) as! PostTableViewCell
             cell.post = PostsStorage.posts[indexPath.row-1]
             
             return cell
