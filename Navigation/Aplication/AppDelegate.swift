@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let appearanceNB = UINavigationBarAppearance()
     let appearanceTB = UITabBarAppearance()
-    //let loginInspector = LoginInspector()
+    //let loginInspector = LoginInspector()/
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
