@@ -141,9 +141,5 @@ extension PhotosViewController: ImageLibrarySubscriber {
         guard (images.count - 1) == collectionView.numberOfItems(inSection: 0) else {return}
         let indexPath = IndexPath(item: images.count - 1, section: 0)
         collectionView.insertItems(at: [indexPath])
-        
-//        collectionView.reloadData()
     }
-    
-    
 }

@@ -10,7 +10,7 @@ import StorageService
 
 class PhotosTableViewCell: UITableViewCell {
     
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Photos"
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
@@ -20,9 +20,10 @@ class PhotosTableViewCell: UITableViewCell {
         return label
     }()
 
-    let arrowButton: UIButton = {
-        let button = UIButton()
-        button.setBackgroundImage(UIImage(systemName: "arrow.right"), for: .normal)
+    private let arrowButton: CustomButton = {
+        let button = CustomButton(
+            backgroundImage: UIImage(systemName: "arrow.right"),
+            autoLayout: .yes)
         button.tintColor = .black
         return button
     }()
@@ -56,10 +57,9 @@ class PhotosTableViewCell: UITableViewCell {
     }
 
     
-    func setupViewConstraints() {
+    private func setupViewConstraints() {
         titleLabel.setContentHuggingPriority(.required, for: .vertical)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        arrowButton.translatesAutoresizingMaskIntoConstraints = false
 
         let sideAnchor: CGFloat = 12
         let betweenAnchor: CGFloat = 8
