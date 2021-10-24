@@ -108,8 +108,8 @@ class ProfileViewController: UIViewController {
             crossButton = CustomButton(
                 backgroundColor: .clear,
                 backgroundImage: UIImage(systemName: "multiply.circle")
-            ) {
-                    self.reversViewAnimate()}
+            ) {[weak self] in
+                    self?.reversViewAnimate()}
             crossButton?.sizeToFit()
             crossButton?.tintColor = .black
             crossButton?.transform = crossButton!.transform.scaledBy(x: 1.5, y: 1.5)

@@ -59,8 +59,8 @@ class LogInViewController: UIViewController {
             title: "Log in",
             backgroundImage: UIImage(named: "blue_pixel"),
             fontSize: 18
-            ){
-                self.pushLogInButton()}
+            ){[weak self] in
+                self?.pushLogInButton()}
         
         button.layer.cornerRadius = 10
         button.clipsToBounds = true

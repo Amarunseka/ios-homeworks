@@ -45,8 +45,8 @@ class ProfileHeaderView: UIView {
             title: "Edit status",
             titleColor: .white,
             backgroundColor: .systemBlue,
-            fontSize: 18){
-                self.buttonPressed()}
+            fontSize: 18){ [weak self] in
+                self?.buttonPressed()}
         return button
     }()
     

@@ -27,8 +27,8 @@ class PhotoViewController: UINavigationController {
         let button = CustomButton(
             backgroundColor:.clear,
             backgroundImage: UIImage(systemName: "multiply.circle")
-        ) {
-                self.dismiss(animated: true)
+        ) { [weak self] in
+                self?.dismiss(animated: true)
             }
         button.tintColor = .black
         return button

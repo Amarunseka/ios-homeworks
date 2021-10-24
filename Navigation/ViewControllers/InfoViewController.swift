@@ -15,8 +15,8 @@ class InfoViewController: UIViewController {
                backgroundColor: .systemRed,
                fontSize: 30,
                fontWeight: .regular
-               ){
-                   self.showAlert()
+               ){ [weak self] in
+                   self?.showAlert()
                }
         return button
     }()
