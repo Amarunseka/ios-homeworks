@@ -24,11 +24,9 @@ class CustomButton: UIButton {
         fontSize: CGFloat = 0,
         fontWeight: UIFont.Weight = .regular,
         textAlignment: NSTextAlignment = .center,
-        sizeToFit: ChoiceParameter = .no,
         highlighted: ChoiceParameter = .no,
-        autoLayout: ChoiceParameter = .no,
         lineBreak: NSLineBreakMode = .byTruncatingTail,
-        buttonAction: @escaping (()-> ()) = {}
+        buttonAction: @escaping (()-> ())
     ) {
         self.buttonAction = buttonAction
         super.init(frame: .zero)
@@ -41,9 +39,7 @@ class CustomButton: UIButton {
         self.titleLabel?.font = .systemFont(ofSize: fontSize, weight: fontWeight)
         self.titleLabel?.textAlignment = textAlignment
         
-        if sizeToFit == .yes {self.sizeToFit()}
         if highlighted == .yes {self.showsTouchWhenHighlighted = true}
-        if autoLayout == .yes {self.translatesAutoresizingMaskIntoConstraints = false}
         
         self.titleLabel?.lineBreakMode = lineBreak
         self.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)

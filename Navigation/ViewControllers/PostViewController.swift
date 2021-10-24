@@ -9,7 +9,7 @@ import UIKit
 
 class PostViewController: UIViewController {
  
-    private let titleFromFeedViewController = FeedViewController(checkerText: nil)
+    private var titleFromFeedViewController = FeedViewController(checkerText: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()

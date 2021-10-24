@@ -44,14 +44,18 @@ class FeedViewController: UIViewController {
     }()
     
     
-    private lazy var toPostButton = createButton(title: "THE POST", fontSize: 20, color: .systemGreen) {
+    private lazy var toPostButton = createButton(
+        title: "THE POST", fontSize: 20, color: .systemGreen) {
+        [weak self] in
         let postVC = PostViewController()
-        self.navigationController?.pushViewController(postVC, animated: true)
+        self?.navigationController?.pushViewController(postVC, animated: true)
     }
     
     
-    private lazy var toCheckTheWordButton = createButton(title: "Check the word:\n...", fontSize: 18, color: .systemTeal) {
-        self.checkWord()
+    private lazy var toCheckTheWordButton = createButton(
+        title: "Check the word:\n...", fontSize: 18, color: .systemTeal) {
+        [weak self] in
+        self?.checkWord()
     }
 
     
@@ -76,6 +80,7 @@ class FeedViewController: UIViewController {
         configureStackView()
         setupConstrains()
         setupObservation()
+        print(view.frame.size.height)
     }
 
     
@@ -85,7 +90,7 @@ class FeedViewController: UIViewController {
         self.view.addSubview(stackView)
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
-        stackView.spacing = 100
+        stackView.spacing = view.frame.size.height / 10
         stackView.addArrangedSubview(toPostButton)
         stackView.addArrangedSubview(toCheckTheWordButton)
     }
@@ -93,21 +98,23 @@ class FeedViewController: UIViewController {
     
     private func setupConstrains(){
         let constraints = [
+            
             toPostButton.heightAnchor.constraint(equalToConstant: 70),
             toPostButton.widthAnchor.constraint(equalToConstant: 150),
             
             stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            stackView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 300),
+            stackView.bottomAnchor.constraint(equalTo: textField.topAnchor, constant: -40),
             
             textField.widthAnchor.constraint(equalToConstant: 300),
             textField.heightAnchor.constraint(equalToConstant: 40),
             textField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            textField.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
+            textField.bottomAnchor.constraint(equalTo: checkResultLabel.topAnchor, constant: -10),
             
             checkResultLabel.widthAnchor.constraint(equalTo: textField.widthAnchor),
             checkResultLabel.heightAnchor.constraint(equalTo: textField.heightAnchor),
             checkResultLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            checkResultLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 10)
+            checkResultLabel.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,
+                                                     constant: -(view.frame.size.height / 5))
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -127,9 +134,7 @@ extension FeedViewController {
             fontSize: fontSize,
             fontWeight: .regular,
             textAlignment: .center,
-            sizeToFit: .yes,
             highlighted: .yes,
-            autoLayout: .yes,
             lineBreak: .byWordWrapping,
             buttonAction: action)
         
@@ -147,10 +152,10 @@ extension FeedViewController {
 extension FeedViewController {
     
     private func checkWord(){
-        guard self.textField.text?.isEmpty != true,
-              let text = self.textField.text,
-              let checker = checkerText
-        else {return}
+        guard let text = textField.text,
+        !text.isEmpty,
+        let checker = checkerText
+        else { return }
 
         
         let showResult: (String, String) -> NSMutableAttributedString = {input, result in

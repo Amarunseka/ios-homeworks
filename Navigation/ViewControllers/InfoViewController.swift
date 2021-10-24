@@ -14,9 +14,8 @@ class InfoViewController: UIViewController {
                title: "Alert",
                backgroundColor: .systemRed,
                fontSize: 30,
-               fontWeight: .regular,
-               sizeToFit: .yes,
-               autoLayout: .yes){
+               fontWeight: .regular
+               ){
                    self.showAlert()
                }
         return button
@@ -47,6 +46,8 @@ class InfoViewController: UIViewController {
     
     
     private func buttonAlertConstraints(){
+        buttonAlert.translatesAutoresizingMaskIntoConstraints = false
+        
         let constraints = [
             buttonAlert.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
             buttonAlert.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),

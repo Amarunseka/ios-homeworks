@@ -58,8 +58,8 @@ class LogInViewController: UIViewController {
         let button = CustomButton(
             title: "Log in",
             backgroundImage: UIImage(named: "blue_pixel"),
-            fontSize: 18,
-            autoLayout: .yes){
+            fontSize: 18
+            ){
                 self.pushLogInButton()}
         
         button.layer.cornerRadius = 10
@@ -180,6 +180,8 @@ class LogInViewController: UIViewController {
     // MARK: - Constraints
     
     private func setupMainViewConstraints(){
+        logInButton.translatesAutoresizingMaskIntoConstraints = false
+        
         let constraints = [
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
