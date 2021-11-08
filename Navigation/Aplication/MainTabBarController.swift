@@ -9,12 +9,18 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
-    
+    let checker = CheckText()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let feedNVC = generateVC(vc: FeedViewController(), title: "Feed", imageName: "027-video game")
-        let loginNVC = generateVC(vc: LogInViewController(), title: "Profile", imageName: "033-computer")
+        let feedNVC = generateVC(vc: FeedViewController(checkerText: checker),
+                                 title: "Feed",
+                                 imageName: "027-video game")
+        
+        let loginNVC = generateVC(vc: LogInViewController(),
+                                  title: "Profile",
+                                  imageName: "033-computer")
         
         if let loginVC = loginNVC.viewControllers.first as? LogInViewController {
             let loginFactory = LoginFactory()
@@ -24,7 +30,7 @@ class MainTabBarController: UITabBarController {
         viewControllers = [feedNVC, loginNVC]
     }
     
-    func generateVC(vc: UIViewController, title: String, imageName: String) -> UINavigationController {
+    private func generateVC(vc: UIViewController, title: String, imageName: String) -> UINavigationController {
         vc.navigationItem.title = title
         let controller = UINavigationController(rootViewController: vc)
         controller.title = title

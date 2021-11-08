@@ -36,16 +36,17 @@ class ProfileHeaderView: UIView {
         text.sizeToFit()
         text.backgroundColor = .clear
         text.textColor = .darkGray
-        //text.text = "Self some text"
         return text
     }()
     
     
-    let setStatusButton: UIButton  = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = .systemBlue
-        button.setTitle("Edit status", for: .normal)
-        button.setTitleColor(.white, for: .normal)
+    lazy var setStatusButton: CustomButton = {
+        let button = CustomButton(
+            title: "Edit status",
+            titleColor: .white,
+            backgroundColor: .systemBlue,
+            fontSize: 18){ [weak self] in
+                self?.buttonPressed()}
         return button
     }()
     
@@ -73,7 +74,6 @@ class ProfileHeaderView: UIView {
         self.backgroundColor = .systemGray6
 
         setupView()
-        //setupFullNameLabel()
         setupSetStatusButton()
         setupConstraints()
         setupStatusTextField()
@@ -105,20 +105,7 @@ class ProfileHeaderView: UIView {
         avatarImageView.layer.borderWidth = 3
         avatarImageView.layer.borderColor = UIColor.white.cgColor
     }
-    
-    
-    func setupFullNameLabel(){
-        let textFullNameLabel = NSMutableAttributedString(string: "Honeybadger don't care")
-        let don_tCareText = (textFullNameLabel.string as NSString).range(of: "don't care")
-        
-        textFullNameLabel.setAttributes([
-            .foregroundColor: UIColor.red,
-            .font: UIFont.systemFont(ofSize: 20, weight: .bold)
-        ], range: don_tCareText)
-        
-        self.fullNameLabel.attributedText = textFullNameLabel
-    }
-    
+
     
     func setupSetStatusButton(){
         setStatusButton.layer.cornerRadius = 4
@@ -126,7 +113,6 @@ class ProfileHeaderView: UIView {
         setStatusButton.layer.shadowOffset = CGSize(width: 4, height: 4)
         setStatusButton.layer.shadowRadius = 4
         setStatusButton.layer.shadowColor = UIColor.black.cgColor
-        setStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
 
     
@@ -220,11 +206,15 @@ class ProfileHeaderView: UIView {
     
     
     func showAlertDeleteStatus () {
-        let alert = UIAlertController(title: "Внимание!", message: "Вы хотите очистить статуc?", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "ОК.", style: .default) {_ in
+        let alert = UIAlertController(
+            title: "Внимание!",
+            message: "Вы хотите очистить статуc?",
+            preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "ОК", style: .default) {_ in
             self.statusLabel.text = nil
         }
-        let cancel = UIAlertAction(title: "Отмена.", style: .default)
+        let cancel = UIAlertAction(title: "Отмена", style: .default)
 
         
         alert.addAction(ok)
@@ -246,5 +236,4 @@ class ProfileHeaderView: UIView {
         
         UIApplication.shared.windows.last?.rootViewController?.present(alert, animated: true)
     }
-    
 }

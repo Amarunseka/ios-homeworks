@@ -14,7 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let appearanceNB = UINavigationBarAppearance()
     let appearanceTB = UITabBarAppearance()
-    //let loginInspector = LoginInspector()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -25,12 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBar.appearance().backgroundColor = .customColorGray
         setupNB()
         
-//        if let tabController = window?.rootViewController as? MainTabBarController,
-//           let loginNavigation = tabController.viewControllers?.last as? UINavigationController,
-//           let loginController = loginNavigation.viewControllers.first as? LogInViewController {
-//            loginController.delegate = loginInspector
-//        }
-
         return true
     }
     

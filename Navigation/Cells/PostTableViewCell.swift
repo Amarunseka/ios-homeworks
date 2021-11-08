@@ -32,7 +32,7 @@ class PostTableViewCell: UITableViewCell {
     }
 
     
-    var titleLabel: UILabel = {
+    private var titleLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
@@ -42,7 +42,7 @@ class PostTableViewCell: UITableViewCell {
         return label
     }()
     
-    var postImageView: UIImageView = {
+    private var postImageView: UIImageView = {
         var image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFit
@@ -51,7 +51,7 @@ class PostTableViewCell: UITableViewCell {
     }()
 
 
-    var descriptionLabel: UILabel = {
+    private var descriptionLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -62,7 +62,7 @@ class PostTableViewCell: UITableViewCell {
     }()
 
     
-    var authorLabel: UILabel = {
+    private var authorLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -71,7 +71,7 @@ class PostTableViewCell: UITableViewCell {
         return label
     }()
     
-    var likesLabel: UILabel = {
+    private var likesLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -79,7 +79,7 @@ class PostTableViewCell: UITableViewCell {
         return label
     }()
 
-    var viewsLabel: UILabel = {
+    private var viewsLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)

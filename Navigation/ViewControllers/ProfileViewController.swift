@@ -13,8 +13,8 @@ import StorageService
 class ProfileViewController: UIViewController {
         
     private let tableView = UITableView(frame: .zero, style: .plain)
-    let userService: UserServiceProtocol
-    let userName: String
+    private let userService: UserServiceProtocol
+    private let userName: String
 
     
     init(userService: UserServiceProtocol, userName: String) {
@@ -44,7 +44,7 @@ class ProfileViewController: UIViewController {
     
 // MARK: - Setups
     
-    func setupTableView(){
+    private func setupTableView(){
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .systemGray6
@@ -56,7 +56,7 @@ class ProfileViewController: UIViewController {
     }
 
     
-    func setupConstraints(){
+    private func setupConstraints(){
         let constraints = [
             
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -73,7 +73,7 @@ class ProfileViewController: UIViewController {
 
     private var avatarImageView: UIImageView?
     private var backgroundView:  UIView?
-    private var crossButton: UIButton?
+    private var crossButton: CustomButton?
     
 
     @objc func avatarResize(sender: UITapGestureRecognizer) {
@@ -105,12 +105,17 @@ class ProfileViewController: UIViewController {
         
         
         func setupCrossButton(){
-            crossButton = UIButton(type: .system)
-            crossButton?.setBackgroundImage(UIImage(systemName: "multiply.circle"), for: .normal)
+            crossButton = CustomButton(
+                backgroundColor: .clear,
+                backgroundImage: UIImage(systemName: "multiply.circle")
+            ) {[weak self] in
+                    self?.reversViewAnimate()}
             crossButton?.sizeToFit()
             crossButton?.tintColor = .black
             crossButton?.transform = crossButton!.transform.scaledBy(x: 1.5, y: 1.5)
             crossButton?.alpha = 0
+            crossButton?.isUserInteractionEnabled = true
+
         }
         setupCrossButton()
         
@@ -156,11 +161,8 @@ class ProfileViewController: UIViewController {
             })
         })
 
-        
         avatarImageView?.isUserInteractionEnabled = true
-        crossButton?.isUserInteractionEnabled = true
         
-        crossButton?.addTarget(self, action: #selector(self.reversViewAnimate), for: .touchUpInside)
         self.view.layoutIfNeeded()
     }
     
@@ -224,7 +226,6 @@ extension ProfileViewController: UITableViewDataSource {
             return PostsStorage.posts.count + 1
     }
 }
-
     
     
 // MARK: - UITableViewDelegate

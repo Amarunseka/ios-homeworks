@@ -8,10 +8,32 @@
 import UIKit
 import SnapKit
 
-class PhotoViewController: UIViewController {
+class PhotoViewController: UINavigationController {
     
     private let scrollView = UIScrollView()
     private let containerView = UIView()
+    
+    
+    private let backgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .systemGray
+        view.alpha = 0.7
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    
+    private lazy var crossCloseWindowButton: CustomButton = {
+        let button = CustomButton(
+            backgroundColor:.clear,
+            backgroundImage: UIImage(systemName: "multiply.circle")
+        ) { [weak self] in
+                self?.dismiss(animated: true)
+            }
+        button.tintColor = .black
+        return button
+    }()
+
     
     let imageView: UIImageView = {
         let view = UIImageView()
@@ -22,7 +44,7 @@ class PhotoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationBar.isHidden = true
         setupView()
         setupConstraints()
     }
@@ -31,6 +53,8 @@ class PhotoViewController: UIViewController {
     private func setupView() {
         self.view.addSubview(scrollView)
         scrollView.addSubview(containerView)
+        containerView.addSubview(backgroundView)
+        containerView.addSubview(crossCloseWindowButton)
         containerView.addSubview(imageView)
     }
 
@@ -45,7 +69,17 @@ class PhotoViewController: UIViewController {
         containerView.snp.makeConstraints{make in
             make.top.bottom.leading.trailing.width.equalTo(scrollView)
         }
-
+        
+        
+        backgroundView.snp.makeConstraints{make in
+            make.top.centerX.width.height.bottom.equalTo(containerView)
+        }
+        
+        
+        crossCloseWindowButton.snp.makeConstraints{make in
+            make.top.trailing.equalTo(backgroundView).inset(10)
+        }
+        
         
         imageView.snp.makeConstraints{make in
             make.top.centerX.width.bottom.equalTo(containerView)

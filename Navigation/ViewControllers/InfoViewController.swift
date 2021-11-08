@@ -9,20 +9,21 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
-    let buttonAlert: UIButton = {
-        let button = UIButton()
-        button.setTitle("Alert", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 30, weight: .regular)
-        button.backgroundColor = .systemRed
-        button.sizeToFit()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(showAlert(parameterSender:)), for: .touchUpInside)
+    private lazy var buttonAlert: CustomButton = {
+        let button = CustomButton(
+               title: "Alert",
+               backgroundColor: .systemRed,
+               fontSize: 30,
+               fontWeight: .regular
+               ){ [weak self] in
+                   self?.showAlert()
+               }
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupView()
         buttonAlertConstraints()
     }
@@ -32,19 +33,21 @@ class InfoViewController: UIViewController {
     }
     
     
-    func setupView(){
+    private func setupView(){
         self.view.backgroundColor = UIColor.purple
         self.view.addSubview(buttonAlert)
     }
     
     
-    func setupButtonAlert( ){
+    private func setupButtonAlert( ){
         buttonAlert.layer.cornerRadius = 15
         buttonAlert.layer.masksToBounds = true
     }
     
     
-    func buttonAlertConstraints() {
+    private func buttonAlertConstraints(){
+        buttonAlert.translatesAutoresizingMaskIntoConstraints = false
+        
         let constraints = [
             buttonAlert.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
             buttonAlert.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
@@ -55,7 +58,7 @@ class InfoViewController: UIViewController {
     }
     
     
-    @objc func showAlert (parameterSender: Any) {
+    private func showAlert() {
         let alert = UIAlertController(title: "Наташа мы все уронили", message: "Воообще все!!!", preferredStyle: .alert)
         let angryAnswer = UIAlertAction(title: "У кого то теперь будут новые варежки", style: .destructive)
         let kindAnswer = UIAlertAction(title: "Ну хотя бы выспалась", style: .default)

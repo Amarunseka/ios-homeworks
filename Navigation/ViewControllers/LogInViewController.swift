@@ -9,7 +9,6 @@ import UIKit
 
 class LogInViewController: UIViewController {
     
-    //weak var delegate: LoginViewControllerDelegate?
     var delegate: LoginViewControllerDelegateProtocol?
 
     private let scrollView: UIScrollView = {
@@ -41,23 +40,30 @@ class LogInViewController: UIViewController {
     }()
     
     
-    let logInTextField: UITextField = {
+    private let logInTextField: UITextField = {
         let text = UITextField()
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
     
-    let passwordTextField: UITextField = {
+    private let passwordTextField: UITextField = {
         let text = UITextField()
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
     
-    private let logInButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var logInButton: CustomButton = {
+        let button = CustomButton(
+            title: "Log in",
+            backgroundImage: UIImage(named: "blue_pixel"),
+            fontSize: 18
+            ){[weak self] in
+                self?.pushLogInButton()}
+        
+        button.layer.cornerRadius = 10
+        button.clipsToBounds = true
         return button
     }()
 
@@ -97,17 +103,16 @@ class LogInViewController: UIViewController {
     private func setupMainView(){
         navigationController?.navigationBar.isHidden = true
         view.backgroundColor = .white
-        
+
         view.addSubview(scrollView)
         scrollView.addSubview(containerView)
-        
         containerView.addSubview(logoView)
         containerView.addSubview(authenticationLabel)
         containerView.addSubview(logInButton)
         
+        setupLogInButton()
         setupScrollView()
         setupAuthenticationLabel()
-        setupLogInButton()
         setupMainViewConstraints()
     }
     
@@ -165,22 +170,18 @@ class LogInViewController: UIViewController {
     
     private func setupLogInButton(){
         let backgroundOtherStates = UIImage(named: "blue_pixel")!.alpha(0.8)
-        
-        logInButton.setTitle("Log In", for: .normal)
-        logInButton.setTitleColor(.white, for: .normal)
-        logInButton.layer.cornerRadius = 10
-        logInButton.clipsToBounds = true
-        logInButton.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
+
         logInButton.setBackgroundImage(backgroundOtherStates, for: .selected)
         logInButton.setBackgroundImage(backgroundOtherStates, for: .highlighted)
         logInButton.setBackgroundImage(backgroundOtherStates, for: .disabled)
-        logInButton.addTarget(self, action: #selector(pushLogInButton), for: .touchUpInside)
     }
     
     
     // MARK: - Constraints
     
     private func setupMainViewConstraints(){
+        logInButton.translatesAutoresizingMaskIntoConstraints = false
+        
         let constraints = [
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -248,7 +249,6 @@ class LogInViewController: UIViewController {
         #endif
 
 
-//        if delegate?.check(login: login, password: password) == true {
         if let checkUserInfo = delegate,
            checkUserInfo.checkUserAuthentication(login: login, password: password) {
 

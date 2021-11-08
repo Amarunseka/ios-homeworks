@@ -40,6 +40,9 @@
 		45D503AA26F5236500387102 /* TestUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D503A926F5236500387102 /* TestUser.swift */; };
 		45D503AD26F523FC00387102 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D503AC26F523FC00387102 /* UIColor.swift */; };
 		45D503AF26F5241900387102 /* ImageAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D503AE26F5241900387102 /* ImageAlpha.swift */; };
+		45E2C685270F224300B58BC3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C684270F224300B58BC3 /* CustomButton.swift */; };
+		45E2C687270F227200B58BC3 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C686270F227200B58BC3 /* CustomTextField.swift */; };
+		45E2C689270F229400B58BC3 /* CheckerText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C688270F229400B58BC3 /* CheckerText.swift */; };
 		F47C8C17850C5C48D5CE7146 /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6882C9CB6B724620F5A001 /* Pods_Navigation.framework */; };
 /* End PBXBuildFile section */
 
@@ -105,6 +108,9 @@
 		45D503A926F5236500387102 /* TestUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUser.swift; sourceTree = "<group>"; };
 		45D503AC26F523FC00387102 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		45D503AE26F5241900387102 /* ImageAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAlpha.swift; sourceTree = "<group>"; };
+		45E2C684270F224300B58BC3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		45E2C686270F227200B58BC3 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		45E2C688270F229400B58BC3 /* CheckerText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerText.swift; sourceTree = "<group>"; };
 		8C04E2B836B5379A25B98A4F /* Pods-Navigation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.debug.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.debug.xcconfig"; sourceTree = "<group>"; };
 		E92FC96268B7DCD40078E97D /* Pods-StorageService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService.release.xcconfig"; path = "Target Support Files/Pods-StorageService/Pods-StorageService.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,6 +188,7 @@
 				458CBBCE26E0F83200915CA1 /* ViewControllers */,
 				458CBBCF26E0F84400915CA1 /* Cells */,
 				458CBBD026E0F84E00915CA1 /* Profile */,
+				45E2C68B270F267400B58BC3 /* Models */,
 				458CBBCC26E0F68C00915CA1 /* Resources */,
 				45D503AB26F523D300387102 /* Extensions */,
 			);
@@ -191,6 +198,7 @@
 		458CBBCC26E0F68C00915CA1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				45E2C68A270F262F00B58BC3 /* CustomElements */,
 				458CBBC126E0E53400915CA1 /* Assets.xcassets */,
 				458CBBC326E0E53400915CA1 /* LaunchScreen.storyboard */,
 				458CBBC626E0E53400915CA1 /* Info.plist */,
@@ -269,6 +277,23 @@
 				45D503AE26F5241900387102 /* ImageAlpha.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		45E2C68A270F262F00B58BC3 /* CustomElements */ = {
+			isa = PBXGroup;
+			children = (
+				45E2C684270F224300B58BC3 /* CustomButton.swift */,
+				45E2C686270F227200B58BC3 /* CustomTextField.swift */,
+			);
+			path = CustomElements;
+			sourceTree = "<group>";
+		};
+		45E2C68B270F267400B58BC3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				45E2C688270F229400B58BC3 /* CheckerText.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		EE474AC22F3AC7A0B5A01372 /* Frameworks */ = {
@@ -464,10 +489,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45E2C687270F227200B58BC3 /* CustomTextField.swift in Sources */,
 				45D503AA26F5236500387102 /* TestUser.swift in Sources */,
 				4586111B26FA0BA300269593 /* Checker.swift in Sources */,
 				45D503A426F5231400387102 /* UserServiceProtocol.swift in Sources */,
 				458CBBDE26E0F93600915CA1 /* PhotosViewController.swift in Sources */,
+				45E2C689270F229400B58BC3 /* CheckerText.swift in Sources */,
+				45E2C685270F224300B58BC3 /* CustomButton.swift in Sources */,
 				4586112126FA0C1000269593 /* LoginFactoryProtocol.swift in Sources */,
 				45D503AF26F5241900387102 /* ImageAlpha.swift in Sources */,
 				458CBBB926E0E53100915CA1 /* AppDelegate.swift in Sources */,
