@@ -9,35 +9,15 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
-    let checker = CheckText()
+    let feedCoordinator = FeedCoordinator(navigationController: UINavigationController())
+    let loginCoordinator = LoginCoordinator(navigationController: UINavigationController())
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        feedCoordinator.start()
+        loginCoordinator.start()
+
         
-        let feedNVC = generateVC(vc: FeedViewController(checkerText: checker),
-                                 title: "Feed",
-                                 imageName: "027-video game")
-        
-        let loginNVC = generateVC(vc: LogInViewController(),
-                                  title: "Profile",
-                                  imageName: "033-computer")
-        
-        if let loginVC = loginNVC.viewControllers.first as? LogInViewController {
-            let loginFactory = LoginFactory()
-            loginVC.delegate = loginFactory.createLoginInspector()
-        }
-        
-        viewControllers = [feedNVC, loginNVC]
-    }
-    
-    private func generateVC(vc: UIViewController, title: String, imageName: String) -> UINavigationController {
-        vc.navigationItem.title = title
-        let controller = UINavigationController(rootViewController: vc)
-        controller.title = title
-        
-        if let image = UIImage(named: imageName) {
-            controller.tabBarItem.selectedImage = image.withRenderingMode(.alwaysOriginal)
-            controller.tabBarItem.image = image.withRenderingMode(.alwaysTemplate)}
-        return controller
+        viewControllers = [feedCoordinator.navigationController, loginCoordinator.navigationController]
     }
 }

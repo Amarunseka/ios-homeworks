@@ -11,17 +11,16 @@ import StorageService
 
 
 class ProfileViewController: UIViewController {
+    
+    private var viewModel: ProfileViewModel
         
     private let tableView = UITableView(frame: .zero, style: .plain)
-    private let userService: UserServiceProtocol
-    private let userName: String
 
     
-    init(userService: UserServiceProtocol, userName: String) {
-        self.userService = userService
-        self.userName = userName
+    init(viewModel: ProfileViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        }
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -51,8 +50,13 @@ class ProfileViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: String(describing: PostTableViewCell.self))
-        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
+        tableView.register(
+            PostTableViewCell.self,
+            forCellReuseIdentifier: String(describing: PostTableViewCell.self))
+        
+        tableView.register(
+            PhotosTableViewCell.self,
+            forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
     }
 
     
@@ -107,15 +111,13 @@ class ProfileViewController: UIViewController {
         func setupCrossButton(){
             crossButton = CustomButton(
                 backgroundColor: .clear,
-                backgroundImage: UIImage(systemName: "multiply.circle")
-            ) {[weak self] in
+                backgroundImage: UIImage(systemName: "multiply.circle")) {
+                    [weak self] in
                     self?.reversViewAnimate()}
-            crossButton?.sizeToFit()
             crossButton?.tintColor = .black
             crossButton?.transform = crossButton!.transform.scaledBy(x: 1.5, y: 1.5)
             crossButton?.alpha = 0
             crossButton?.isUserInteractionEnabled = true
-
         }
         setupCrossButton()
         
@@ -235,11 +237,10 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let profileHeader = ProfileHeaderView()
-        let userInfo = userService.createUser(userName: userName)
         
-        profileHeader.fullNameLabel.text = userInfo?.userName
-        profileHeader.avatarImageView.image = userInfo?.userAvatar
-        profileHeader.statusLabel.text = userInfo?.userStatus
+        profileHeader.fullNameLabel.text = viewModel.outputUserInfo?.userName
+        profileHeader.avatarImageView.image = viewModel.outputUserInfo?.userAvatar
+        profileHeader.statusLabel.text = viewModel.outputUserInfo?.userStatus
                 
         profileHeader.avatarImageView.isUserInteractionEnabled = true
         profileHeader.avatarImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(avatarResize)))
@@ -257,8 +258,8 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
         if indexPath.row == 0 {
-            let photoViewController = PhotosViewController()
-            navigationController?.pushViewController(photoViewController, animated: true)}
+            viewModel.segueToGallery()
+        }
 
         tableView.deselectRow(at: indexPath, animated: false)
     }

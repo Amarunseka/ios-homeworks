@@ -22,8 +22,7 @@ class PhotosTableViewCell: UITableViewCell {
 
     private let arrowButton: CustomButton = {
         let button = CustomButton(
-            backgroundImage: UIImage(systemName: "arrow.right")
-            ){}
+            backgroundImage: UIImage(systemName: "arrow.right")){}
         button.tintColor = .black
         return button
     }()
@@ -61,7 +60,6 @@ class PhotosTableViewCell: UITableViewCell {
         titleLabel.setContentHuggingPriority(.required, for: .vertical)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         arrowButton.translatesAutoresizingMaskIntoConstraints = false
-
 
         let sideAnchor: CGFloat = 12
         let betweenAnchor: CGFloat = 8

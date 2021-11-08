@@ -26,8 +26,8 @@ class PhotoViewController: UINavigationController {
     private lazy var crossCloseWindowButton: CustomButton = {
         let button = CustomButton(
             backgroundColor:.clear,
-            backgroundImage: UIImage(systemName: "multiply.circle")
-        ) { [weak self] in
+            backgroundImage: UIImage(systemName: "multiply.circle")) {
+                [weak self] in
                 self?.dismiss(animated: true)
             }
         button.tintColor = .black
