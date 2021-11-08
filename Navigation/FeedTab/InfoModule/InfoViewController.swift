@@ -28,6 +28,11 @@ class InfoViewController: UIViewController {
         buttonAlertConstraints()
         setupButtonAlert ()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+   
+    }
 
 
     private func setupView(){

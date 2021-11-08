@@ -31,6 +31,5 @@ class LoginViewModel {
     
     func segueToProfile() {
         coordinator?.segueToProfile()
-        print("2")
     }
 }

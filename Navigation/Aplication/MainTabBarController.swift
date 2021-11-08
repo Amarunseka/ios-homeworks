@@ -10,7 +10,7 @@ import UIKit
 class MainTabBarController: UITabBarController {
     
     let feedCoordinator = FeedCoordinator(navigationController: UINavigationController())
-    let loginCoordinator = LoginCoordinator(navigationController: UINavigationController())
+    let loginCoordinator = LoginCoordinator()
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -102,6 +102,12 @@ class LogInViewController: UIViewController {
     }
     
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.coordinator?.childDidFinish(viewModel.coordinator)
+    }
+    
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
@@ -250,11 +256,10 @@ class LogInViewController: UIViewController {
         guard
             let login = logInTextField.text,
             let password = passwordTextField.text
-        else {return print("no1")}
+        else {return}
         
         if viewModel.checkAuthorization(login: login, password: password) {
             viewModel.segueToProfile()
-            print("1")
         } else {
             showAlert()
         }

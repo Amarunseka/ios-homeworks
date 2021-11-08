@@ -15,6 +15,8 @@ class ProfileCoordinator: Coordinator {
     var navigationController: UINavigationController
     
     var userName: String
+    private lazy var module = ModuleFactory.createProfileCoordinator(user: userName)
+
     
     init(navigationController:UINavigationController, userName: String){
         self.navigationController = navigationController
@@ -22,16 +24,25 @@ class ProfileCoordinator: Coordinator {
     }
     
     func start() {
-        let vm = ProfileViewModel(inputUserName: userName)
-        let vc = ProfileViewController(viewModel: vm)
-        print("4")
-        vm.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        module.viewModel.coordinator = self
+        navigationController.pushViewController(module, animated: true)
     }
     
     
     func segueToGallery() {
         let photoViewController = PhotosViewController()
         navigationController.pushViewController(photoViewController, animated: true)}
+}
 
+// MARK: - Extension remove Child
+extension ProfileCoordinator {
+    
+    func childDidFinish(_ child: Coordinator?) {
+        for (index, coordinator) in childCoordinators.enumerated() {
+            if coordinator === child {
+                childCoordinators.remove(at: index)
+                break
+            }
+        }
+    }
 }

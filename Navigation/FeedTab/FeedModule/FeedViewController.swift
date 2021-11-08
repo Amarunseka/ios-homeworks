@@ -86,6 +86,11 @@ class FeedViewController: UIViewController {
         setupObservation()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.coordinator?.childDidFinish(viewModel.coordinator)
+    }
+    
     
     private func setupView(){
         self.title = "Feed"

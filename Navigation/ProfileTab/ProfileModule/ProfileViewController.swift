@@ -12,7 +12,7 @@ import StorageService
 
 class ProfileViewController: UIViewController {
     
-    private var viewModel: ProfileViewModel
+    var viewModel: ProfileViewModel
         
     private let tableView = UITableView(frame: .zero, style: .plain)
 
@@ -39,6 +39,12 @@ class ProfileViewController: UIViewController {
         setupTableView()
         setupConstraints()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.coordinator?.childDidFinish(viewModel.coordinator)
+    }
+
 
     
 // MARK: - Setups

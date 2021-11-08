@@ -9,7 +9,6 @@ import UIKit
 
 class PostViewController: UIViewController {
     
-    weak var coordinator: PostCoordinator?
     let viewModel: PostViewModel
  
     private let titleFromFeedViewController = FeedViewModel(checkerText: nil)
@@ -28,6 +27,13 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
         setupView()
     }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.coordinator?.childDidFinish(viewModel.coordinator)
+    }
+    
         
     private func setupView(){
         self.view.backgroundColor = UIColor.lightGray
@@ -43,3 +49,5 @@ class PostViewController: UIViewController {
         viewModel.presentToInfo()
     }
 }
+
+

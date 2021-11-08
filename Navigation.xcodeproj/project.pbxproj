@@ -13,13 +13,14 @@
 		45306B1D27390D9500D1516B /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B1C27390D9500D1516B /* FeedCoordinator.swift */; };
 		45306B1F27390E5500D1516B /* PostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B1E27390E5500D1516B /* PostCoordinator.swift */; };
 		45306B2127390E6600D1516B /* PostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B2027390E6600D1516B /* PostViewModel.swift */; };
-		45306B2327390E8C00D1516B /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B2227390E8C00D1516B /* InfoViewModel.swift */; };
 		45306B292739119500D1516B /* UITabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B282739119500D1516B /* UITabBarItem.swift */; };
 		45306B2B273911B100D1516B /* UIVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B2A273911B100D1516B /* UIVC.swift */; };
 		45306B2D273913CA00D1516B /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B2C273913CA00D1516B /* LoginCoordinator.swift */; };
 		45306B2F27391C1100D1516B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B2E27391C1100D1516B /* LoginViewModel.swift */; };
 		45306B3127391C4D00D1516B /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B3027391C4D00D1516B /* ProfileCoordinator.swift */; };
 		45306B3327391C6900D1516B /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B3227391C6900D1516B /* ProfileViewModel.swift */; };
+		45306B362739244100D1516B /* CreateModuleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B352739244100D1516B /* CreateModuleProtocol.swift */; };
+		45306B382739246100D1516B /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B372739246100D1516B /* ModuleFactory.swift */; };
 		4586111B26FA0BA300269593 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586111A26FA0BA300269593 /* Checker.swift */; };
 		4586111D26FA0BE000269593 /* LoginVCDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586111C26FA0BE000269593 /* LoginVCDelegateProtocol.swift */; };
 		4586111F26FA0BF700269593 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4586111E26FA0BF700269593 /* LoginInspector.swift */; };
@@ -92,13 +93,14 @@
 		45306B1C27390D9500D1516B /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		45306B1E27390E5500D1516B /* PostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCoordinator.swift; sourceTree = "<group>"; };
 		45306B2027390E6600D1516B /* PostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModel.swift; sourceTree = "<group>"; };
-		45306B2227390E8C00D1516B /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
 		45306B282739119500D1516B /* UITabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarItem.swift; sourceTree = "<group>"; };
 		45306B2A273911B100D1516B /* UIVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVC.swift; sourceTree = "<group>"; };
 		45306B2C273913CA00D1516B /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		45306B2E27391C1100D1516B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		45306B3027391C4D00D1516B /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		45306B3227391C6900D1516B /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		45306B352739244100D1516B /* CreateModuleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateModuleProtocol.swift; sourceTree = "<group>"; };
+		45306B372739246100D1516B /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
 		4586111A26FA0BA300269593 /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
 		4586111C26FA0BE000269593 /* LoginVCDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCDelegateProtocol.swift; sourceTree = "<group>"; };
 		4586111E26FA0BF700269593 /* LoginInspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspector.swift; sourceTree = "<group>"; };
@@ -205,7 +207,6 @@
 		45306B1927390CC900D1516B /* InfoModule */ = {
 			isa = PBXGroup;
 			children = (
-				45306B2227390E8C00D1516B /* InfoViewModel.swift */,
 				458CBBD726E0F8FF00915CA1 /* InfoViewController.swift */,
 			);
 			path = InfoModule;
@@ -250,6 +251,15 @@
 			path = PhotoModule;
 			sourceTree = "<group>";
 		};
+		45306B342739240600D1516B /* CreationModules */ = {
+			isa = PBXGroup;
+			children = (
+				45306B352739244100D1516B /* CreateModuleProtocol.swift */,
+				45306B372739246100D1516B /* ModuleFactory.swift */,
+			);
+			path = CreationModules;
+			sourceTree = "<group>";
+		};
 		4586111926FA0B8000269593 /* AuthorizationService */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +297,7 @@
 			children = (
 				458CBBED26E0FAE200915CA1 /* Aplication */,
 				4586111926FA0B8000269593 /* AuthorizationService */,
+				45306B342739240600D1516B /* CreationModules */,
 				45306B1627390C0500D1516B /* FeedTab */,
 				45306B2427390EB100D1516B /* ProfileTab */,
 				458CBBCF26E0F84400915CA1 /* Cells */,
@@ -610,6 +621,7 @@
 				458CBBEC26E0FA5300915CA1 /* MainTabBarController.swift in Sources */,
 				458CBBD826E0F8FF00915CA1 /* InfoViewController.swift in Sources */,
 				45306B2B273911B100D1516B /* UIVC.swift in Sources */,
+				45306B382739246100D1516B /* ModuleFactory.swift in Sources */,
 				458CBBE026E0F95A00915CA1 /* PostTableViewCell.swift in Sources */,
 				45306B2F27391C1100D1516B /* LoginViewModel.swift in Sources */,
 				45D503AD26F523FC00387102 /* UIColor.swift in Sources */,
@@ -619,7 +631,7 @@
 				45D503A826F5234C00387102 /* CurrentUser.swift in Sources */,
 				45306B3327391C6900D1516B /* ProfileViewModel.swift in Sources */,
 				45D503A226F522E600387102 /* PhotoViewController.swift in Sources */,
-				45306B2327390E8C00D1516B /* InfoViewModel.swift in Sources */,
+				45306B362739244100D1516B /* CreateModuleProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
