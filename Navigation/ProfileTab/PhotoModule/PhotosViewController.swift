@@ -12,13 +12,20 @@ import iOSIntPackage
 class PhotosViewController: UIViewController {
 
     private let imagePublisherFacade = ImagePublisherFacade()
+    private let imageProcessor = ImageProcessor()
     private var photoForPublisher: [UIImage] = []
+
     
     private lazy var collectionView: UICollectionView = {
         let layoutCollectionView = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layoutCollectionView)
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layoutCollectionView)
         return collectionView
     }()
+    
+    
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
     
     private let indentBetweenItems: CGFloat = 8
     
@@ -26,10 +33,10 @@ class PhotosViewController: UIViewController {
         super.viewDidLoad()
         setupMainView()
         setupConstraints()
-        
-        imagePublisherFacade.subscribe(self)
-        imagePublisherFacade.addImagesWithTimer(time: 0.8, repeat: PhotosImage.photos.count * 2, userImages: PhotosImage.photos)
+        setupActivityIndicator()
+        receivePhoto()
     }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -52,13 +59,66 @@ class PhotosViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(collectionView)
     }
+
+    
+    private func receivePhoto(){
+        
+        var currentPhotoForPublisher: [UIImage] = []
+        let start = Date()
+        let userCalendar = Calendar.current
+        let requestedComponent: Set<Calendar.Component> = [.second, .nanosecond]
+
+
+        imageProcessor.processImagesOnThread(
+            sourceImages: PhotosImage.photos,
+            filter: .noir,
+            qos: .default) { [self]
+                images in
+                for image in images {
+                    currentPhotoForPublisher.append(UIImage(cgImage: image!))
+                }
+                
+                DispatchQueue.main.async { [self] in
+                    imagePublisherFacade.subscribe(self)
+                    imagePublisherFacade.addImagesWithTimer(
+                        time: 0.8,
+                        repeat: currentPhotoForPublisher.count * 2,
+                        userImages: currentPhotoForPublisher)
+                    self.collectionView.reloadData()
+                    activityIndicator.stopAnimating()
+                    
+                    let dateStop = Date()
+                    let timeDifference = userCalendar.dateComponents(
+                        requestedComponent,
+                        from: dateStop,
+                        to: start)
+                    
+                    print("\(timeDifference.second! * -1).\(timeDifference.nanosecond! * -1)")
+                }
+            }
+    }
+    
+    // фильтр - noir, qos - default = 4.997
+    // фильтр - noir, qos - userInteractive = 5.339
+    // фильтр - colorInvert, qos - userInteractive = 4.984
+    // фильтр - colorInvert, qos - background = 26.346
+    // фильтр - gaussianBlur(radius: 0.7), qos - background = 18.654
     
     
     private func setupCollectionView(){
         collectionView.backgroundColor = .white
-        collectionView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: PhotosCollectionViewCell.self))
+        collectionView.register(
+            PhotosCollectionViewCell.self,
+            forCellWithReuseIdentifier: String(describing: PhotosCollectionViewCell.self))
         collectionView.dataSource = self
         collectionView.delegate = self
+    }
+    
+    
+    private func setupActivityIndicator(){
+        activityIndicator.center = self.view.center
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
     }
     
     
@@ -89,6 +149,7 @@ extension PhotosViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: PhotosCollectionViewCell.self),
             for: indexPath) as! PhotosCollectionViewCell
+        
         cell.photoImage.image = photoForPublisher[indexPath.row]
         return cell
     }
