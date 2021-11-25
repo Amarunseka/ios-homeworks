@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FeedCoordinator: NSObject, Coordinator {
+class FeedCoordinator: Coordinator {
     lazy var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     private let module = ModuleFactory.createFeedModule()
@@ -31,19 +31,3 @@ class FeedCoordinator: NSObject, Coordinator {
         child.parentCoordinator = self
     }
 }
-
-
-
-// MARK: - Extension remove Child
-extension FeedCoordinator {
-
-    func childDidFinish(_ child: Coordinator?) {
-        for (index, coordinator) in childCoordinators.enumerated() {
-            if coordinator === child {
-                childCoordinators.remove(at: index)
-                break
-            }
-        }
-    }
-}
-

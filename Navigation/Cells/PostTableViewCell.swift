@@ -24,7 +24,9 @@ class PostTableViewCell: UITableViewCell {
             viewsLabel.text = "Views: \(post?.views ?? 0)"
             
             if let image = UIImage(named: post?.image ?? "face.smiling") {
-                filterProcessor.processImage(sourceImage: image, filter: filters.randomElement() ?? .chrome) {
+                filterProcessor.processImage(
+                    sourceImage: image,
+                    filter: filters.randomElement() ?? .chrome) {
                     (image) in postImageView.image = image
                 }
             }

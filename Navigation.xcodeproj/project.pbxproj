@@ -56,6 +56,7 @@
 		45E2C685270F224300B58BC3 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C684270F224300B58BC3 /* CustomButton.swift */; };
 		45E2C687270F227200B58BC3 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C686270F227200B58BC3 /* CustomTextField.swift */; };
 		45E2C689270F229400B58BC3 /* CheckerText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E2C688270F229400B58BC3 /* CheckerText.swift */; };
+		45F30FA5273D4F580016DEC0 /* BruteForse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F30FA4273D4F580016DEC0 /* BruteForse.swift */; };
 		F47C8C17850C5C48D5CE7146 /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C6882C9CB6B724620F5A001 /* Pods_Navigation.framework */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +138,7 @@
 		45E2C684270F224300B58BC3 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		45E2C686270F227200B58BC3 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		45E2C688270F229400B58BC3 /* CheckerText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerText.swift; sourceTree = "<group>"; };
+		45F30FA4273D4F580016DEC0 /* BruteForse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BruteForse.swift; sourceTree = "<group>"; };
 		8C04E2B836B5379A25B98A4F /* Pods-Navigation.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.debug.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.debug.xcconfig"; sourceTree = "<group>"; };
 		E92FC96268B7DCD40078E97D /* Pods-StorageService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService.release.xcconfig"; path = "Target Support Files/Pods-StorageService/Pods-StorageService.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -395,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				45E2C688270F229400B58BC3 /* CheckerText.swift */,
+				45F30FA4273D4F580016DEC0 /* BruteForse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				45306B2D273913CA00D1516B /* LoginCoordinator.swift in Sources */,
 				45306B1F27390E5500D1516B /* PostCoordinator.swift in Sources */,
 				45E2C689270F229400B58BC3 /* CheckerText.swift in Sources */,
+				45F30FA5273D4F580016DEC0 /* BruteForse.swift in Sources */,
 				45E2C685270F224300B58BC3 /* CustomButton.swift in Sources */,
 				45306B3127391C4D00D1516B /* ProfileCoordinator.swift in Sources */,
 				4586112126FA0C1000269593 /* LoginFactoryProtocol.swift in Sources */,

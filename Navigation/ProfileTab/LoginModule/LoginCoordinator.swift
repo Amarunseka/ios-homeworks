@@ -32,17 +32,3 @@ class LoginCoordinator: NSObject, Coordinator {
         child.parentCoordinator = self
     }
 }
-
-
-// MARK: - Extension remove Child
-extension LoginCoordinator {
-    
-    func childDidFinish(_ child: Coordinator?) {
-        for (index, coordinator) in childCoordinators.enumerated() {
-            if coordinator === child {
-                childCoordinators.remove(at: index)
-                break
-            }
-        }
-    }
-}

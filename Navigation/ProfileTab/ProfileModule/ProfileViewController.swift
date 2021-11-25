@@ -13,6 +13,7 @@ import StorageService
 class ProfileViewController: UIViewController {
     
     var viewModel: ProfileViewModel
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
         
     private let tableView = UITableView(frame: .zero, style: .plain)
 
@@ -30,14 +31,20 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .systemGray6
+        setupActivityIndicator()
+        
+        DispatchQueue.main.async { [self] in
         #if DEBUG
         view.backgroundColor = .systemGray6
         #else
         view.backgroundColor = .green
         #endif
-        
-        setupTableView()
-        setupConstraints()
+            
+            setupTableView()
+            setupConstraints()
+            activityIndicator.stopAnimating()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -63,6 +70,13 @@ class ProfileViewController: UIViewController {
         tableView.register(
             PhotosTableViewCell.self,
             forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
+    }
+    
+    
+    private func setupActivityIndicator(){
+        activityIndicator.center = self.view.center
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
     }
 
     
@@ -120,6 +134,7 @@ class ProfileViewController: UIViewController {
                 backgroundImage: UIImage(systemName: "multiply.circle")) {
                     [weak self] in
                     self?.reversViewAnimate()}
+            crossButton?.sizeToFit()
             crossButton?.tintColor = .black
             crossButton?.transform = crossButton!.transform.scaledBy(x: 1.5, y: 1.5)
             crossButton?.alpha = 0
@@ -136,35 +151,35 @@ class ProfileViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
     
         
-        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: { [self] in
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1){
-                self.avatarImageView?.bounds.size.width = UIScreen.main.bounds.width
-                self.avatarImageView?.bounds.size.height = UIScreen.main.bounds.width * heightAvatar
+                avatarImageView?.bounds.size.width = UIScreen.main.bounds.width
+                avatarImageView?.bounds.size.height = UIScreen.main.bounds.width * heightAvatar
             }
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){
-                self.avatarImageView?.center = CGPoint(
-                    x: self.view.bounds.midX,
-                    y: self.view.bounds.midY)
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){ [self] in
+                avatarImageView?.center = CGPoint(
+                    x: view.bounds.midX,
+                    y: view.bounds.midY)
             }
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){
-                self.avatarImageView?.layer.cornerRadius = 0
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){ [self] in
+                avatarImageView?.layer.cornerRadius = 0
             }
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){
-                self.backgroundView?.alpha = 0.7
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){ [self] in
+                backgroundView?.alpha = 0.7
             }
             
         }, completion: {finished in
-            UIView.animateKeyframes(withDuration: 0.3, delay: 0, options: [], animations: {
+            UIView.animateKeyframes(withDuration: 0.3, delay: 0, options: [], animations: { [self] in
                 UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.2) {
-                    if self.avatarImageView != nil && self.crossButton != nil{
-                        self.crossButton?.frame.origin = CGPoint(
-                            x: self.avatarImageView!.frame.maxX - self.crossButton!.bounds.size.width * 1.5,
+                    if avatarImageView != nil && crossButton != nil{
+                        crossButton?.frame.origin = CGPoint(
+                            x: avatarImageView!.frame.maxX - crossButton!.bounds.size.width * 1.5,
                             y: 0)
                     }
                 }
                 
-                UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.8) {
-                    self.crossButton?.alpha = 1
+                UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.8) { [self] in
+                    crossButton?.alpha = 1
                 }
             })
         })
@@ -177,27 +192,27 @@ class ProfileViewController: UIViewController {
     
     @objc func reversViewAnimate(){
         self.view.layoutIfNeeded()
-        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: {
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: { [self] in
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){
-                self.crossButton?.alpha = 0
-                self.crossButton = nil
+                crossButton?.alpha = 0
+                crossButton = nil
             }
 
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){
-                self.backgroundView?.alpha = 0
-                self.backgroundView = nil
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){ [self] in
+                backgroundView?.alpha = 0
+                backgroundView = nil
             }
             
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){
-                self.avatarImageView?.alpha = 0
-                self.avatarImageView?.layer.cornerRadius = self.view.bounds.height / 2
-                self.avatarImageView?.frame = CGRect(
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){ [self] in
+                avatarImageView?.alpha = 0
+                avatarImageView?.layer.cornerRadius = view.bounds.height / 2
+                avatarImageView?.frame = CGRect(
                     x: 1,
                     y: 1,
                     width: 1,
                     height: 1)
-                self.avatarImageView = nil
-                self.tabBarController?.tabBar.isHidden = false
+                avatarImageView = nil
+                tabBarController?.tabBar.isHidden = false
             }
         })
         self.view.layoutIfNeeded()

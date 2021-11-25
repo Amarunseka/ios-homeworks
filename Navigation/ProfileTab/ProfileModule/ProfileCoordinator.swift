@@ -33,16 +33,3 @@ class ProfileCoordinator: Coordinator {
         let photoViewController = PhotosViewController()
         navigationController.pushViewController(photoViewController, animated: true)}
 }
-
-// MARK: - Extension remove Child
-extension ProfileCoordinator {
-    
-    func childDidFinish(_ child: Coordinator?) {
-        for (index, coordinator) in childCoordinators.enumerated() {
-            if coordinator === child {
-                childCoordinators.remove(at: index)
-                break
-            }
-        }
-    }
-}
