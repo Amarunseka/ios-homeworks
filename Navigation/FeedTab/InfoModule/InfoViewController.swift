@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class InfoViewController: UIViewController {
     
@@ -14,8 +15,8 @@ class InfoViewController: UIViewController {
                title: "Alert",
                backgroundColor: .systemRed,
                fontSize: 30,
-               fontWeight: .regular
-               ){ [weak self] in
+               fontWeight: .regular){
+                   [weak self] in
                    self?.showAlert()
                }
         return button
@@ -23,16 +24,17 @@ class InfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
         buttonAlertConstraints()
-    }
-    
-    override func viewWillLayoutSubviews() {
         setupButtonAlert ()
     }
     
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+   
+    }
+
+
     private func setupView(){
         self.view.backgroundColor = UIColor.purple
         self.view.addSubview(buttonAlert)
@@ -46,15 +48,11 @@ class InfoViewController: UIViewController {
     
     
     private func buttonAlertConstraints(){
-        buttonAlert.translatesAutoresizingMaskIntoConstraints = false
-        
-        let constraints = [
-            buttonAlert.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
-            buttonAlert.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            buttonAlert.widthAnchor.constraint(equalToConstant: 150),
-            buttonAlert.heightAnchor.constraint(equalToConstant: 70)
-        ]
-        NSLayoutConstraint.activate(constraints)
+        buttonAlert.snp.makeConstraints{ make in
+            make.centerX.centerY.equalToSuperview()
+            make.height.equalTo(70)
+            make.width.equalTo(150)
+        }
     }
     
     

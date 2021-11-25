@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import SnapKit
 
 class LogInViewController: UIViewController {
     
-    var delegate: LoginViewControllerDelegateProtocol?
+    var viewModel: LoginViewModel
 
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
@@ -58,15 +59,25 @@ class LogInViewController: UIViewController {
         let button = CustomButton(
             title: "Log in",
             backgroundImage: UIImage(named: "blue_pixel"),
-            fontSize: 18
-            ){[weak self] in
+            fontSize: 18) {
+                [weak self] in
                 self?.pushLogInButton()}
         
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         return button
     }()
-
+    
+    
+    init(viewModel: LoginViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     //MARK: - overrides
     
     override func viewDidLoad() {
@@ -88,6 +99,12 @@ class LogInViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.coordinator?.childDidFinish(viewModel.coordinator)
     }
     
     
@@ -236,26 +253,15 @@ class LogInViewController: UIViewController {
     // MARK: - target functions
     
     @objc private func pushLogInButton(){
-        guard let login = logInTextField.text else {return}
-        guard let password = passwordTextField.text else {return}
+        guard
+            let login = logInTextField.text,
+            let password = passwordTextField.text
+        else {return}
         
-        
-        let user: UserServiceProtocol
-        
-        #if DEBUG
-        user = TestUserService()
-        #else
-        user = CurrentUserService()
-        #endif
-
-
-        if let checkUserInfo = delegate,
-           checkUserInfo.checkUserAuthentication(login: login, password: password) {
-
-            let segue = ProfileViewController(userService: user, userName: login)
-            navigationController?.pushViewController(segue, animated: true)
+        if viewModel.checkAuthorization(login: login, password: password) {
+            viewModel.segueToProfile()
         } else {
-            return showAlert()
+            showAlert()
         }
     }
     
@@ -286,12 +292,17 @@ extension LogInViewController: UITextFieldDelegate {
     
     
     private func showAlert() {
-        let alertController = UIAlertController(title: "Ошибка!", message: "Неверное имя пользователя или пароль.", preferredStyle: .alert)
+        let alertController = UIAlertController(
+            title: "Ошибка!",
+            message: "Неверное имя пользователя или пароль.",
+            preferredStyle: .alert)
+        
+        
         let okAction = UIAlertAction(title: "ОK.", style: .default)
         
         alertController.view.tintColor = .customColorBlue
-        
         alertController.addAction(okAction)
+        
         
         if let title = alertController.title, let message = alertController.message {
             alertController.setValue(NSAttributedString(
@@ -308,7 +319,5 @@ extension LogInViewController: UITextFieldDelegate {
         }
         
         self.present(alertController, animated: true, completion: nil)
-        
-        
     }
 }
