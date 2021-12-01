@@ -47,7 +47,7 @@ class LoginViewModel {
             "1", "2", "3", "4", "5", "6", "7", "8", "9",
             "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",]
         
-        for _ in 0...3 {
+        for _ in 0..<1 {
             if let char = storage.randomElement() {
                 tempPassword += char
             }
@@ -59,7 +59,7 @@ class LoginViewModel {
     func findPassword(){
         guard
             let password = password,
-            password.count > 1
+            password.count > 0
         else {return}
         foundedPassword = bruteForce.bruteForce(passwordToUnlock: password)
     }

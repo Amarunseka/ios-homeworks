@@ -75,7 +75,9 @@ class PhotosViewController: UIViewController {
             qos: .default) { [self]
                 images in
                 for image in images {
-                    currentPhotoForPublisher.append(UIImage(cgImage: image!))
+                    if let image = image {
+                        currentPhotoForPublisher.append(UIImage(cgImage: image))
+                    }
                 }
                 
                 DispatchQueue.main.async {

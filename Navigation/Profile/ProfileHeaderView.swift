@@ -69,6 +69,16 @@ class ProfileHeaderView: UIView {
         return view
     }()
     
+    var timeUntilReload = 10
+    lazy var timerUntilReload: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .systemGray4
+        label.layer.borderWidth = 2
+        label.layer.borderColor = UIColor.systemBlue.cgColor
+        label.text = "Time until reload: \(timeUntilReload)"
+        return label
+    }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,6 +89,7 @@ class ProfileHeaderView: UIView {
         setupConstraints()
         setupStatusTextField()
         setupFooterLineView()
+        setupTimerUntilReload()
     }
     
     override func layoutSubviews() {
@@ -96,6 +107,7 @@ class ProfileHeaderView: UIView {
         addSubview(setStatusButton)
         addSubview(statusTextField)
         addSubview(footerLineView)
+        addSubview(timerUntilReload)
     }
     
     
@@ -129,6 +141,31 @@ class ProfileHeaderView: UIView {
         footerLineView.layer.shadowOffset = CGSize(width: 0, height: 2)
         footerLineView.layer.shadowRadius = 4
         footerLineView.layer.shadowColor = UIColor.black.cgColor
+    }
+    
+    
+    func setupTimerUntilReload(){
+        timerUntilReload.layer.cornerRadius = 4
+        timerUntilReload.layer.shadowOpacity = 0.7
+        timerUntilReload.layer.shadowOffset = CGSize(width: 4, height: 4)
+        timerUntilReload.layer.shadowRadius = 4
+        timerUntilReload.layer.shadowColor = UIColor.black.cgColor
+    }
+    
+    
+    func startTimer(){
+        let timer = Timer.scheduledTimer(
+            withTimeInterval: 1,
+            repeats: true,
+            block: { [self] timer in
+                if timeUntilReload < 0 {
+                    timeUntilReload -= 1
+                } else if timeUntilReload == 0 {
+                    
+                    timeUntilReload = 10
+                }
+            })
+
     }
     
 
@@ -180,6 +217,14 @@ class ProfileHeaderView: UIView {
             make.height.equalTo(2)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
+        }
+        
+        
+        timerUntilReload.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().offset(-10)
+            make.height.equalTo(40)
+            make.width.equalTo(100)
         }
     }
     
