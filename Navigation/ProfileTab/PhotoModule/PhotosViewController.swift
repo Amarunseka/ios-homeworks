@@ -78,12 +78,14 @@ class PhotosViewController: UIViewController {
                     currentPhotoForPublisher.append(UIImage(cgImage: image!))
                 }
                 
-                DispatchQueue.main.async { [self] in
+                DispatchQueue.main.async {
                     imagePublisherFacade.subscribe(self)
+                    
                     imagePublisherFacade.addImagesWithTimer(
                         time: 0.8,
                         repeat: currentPhotoForPublisher.count * 2,
                         userImages: currentPhotoForPublisher)
+                    
                     self.collectionView.reloadData()
                     activityIndicator.stopAnimating()
                     
