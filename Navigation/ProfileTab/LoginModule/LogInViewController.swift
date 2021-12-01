@@ -84,7 +84,7 @@ class LogInViewController: UIViewController {
                 self?.viewModel.generatePassword()
                 self?.passwordTextField.text = self?.viewModel.password
                 self?.passwordTextField.isSecureTextEntry = true
-                self?.findPasswordButton.alpha = 1
+                self?.findPasswordButton.isHidden = false
             }
         
         button.layer.cornerRadius = 10
@@ -100,6 +100,7 @@ class LogInViewController: UIViewController {
             fontSize: 18) {
                 [weak self] in
                 self?.activityIndicator.startAnimating()
+                self?.generatePasswordButton.isHidden = true
                 
                 self?.queue.async() {
                     self?.viewModel.findPassword()
@@ -107,13 +108,14 @@ class LogInViewController: UIViewController {
                         self?.passwordTextField.text = self?.viewModel.foundedPassword
                         self?.passwordTextField.isSecureTextEntry = false
                         self?.activityIndicator.stopAnimating()
+                        self?.generatePasswordButton.isHidden = false
                     }
                 }
             }
         
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
-        button.alpha = 0
+        button.isHidden = true
         return button
     }()
     
