@@ -18,6 +18,8 @@ class MainTabBarController: UITabBarController {
         loginCoordinator.start()
 
         
-        viewControllers = [feedCoordinator.navigationController, loginCoordinator.navigationController]
+        viewControllers = [
+            feedCoordinator.navigationController,
+            loginCoordinator.navigationController]
     }
 }
