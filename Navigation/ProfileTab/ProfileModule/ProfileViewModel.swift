@@ -40,3 +40,4 @@ class ProfileViewModel {
         coordinator?.segueToGallery()
     }
 }
+

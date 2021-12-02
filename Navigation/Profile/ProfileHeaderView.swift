@@ -69,13 +69,15 @@ class ProfileHeaderView: UIView {
         return view
     }()
     
-    var timeUntilReload = 10
     lazy var timerUntilReload: UILabel = {
         let label = UILabel()
         label.backgroundColor = .systemGray4
-        label.layer.borderWidth = 2
+        label.layer.borderWidth = 1
         label.layer.borderColor = UIColor.systemBlue.cgColor
-        label.text = "Time until reload: \(timeUntilReload)"
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 10, weight: .regular)
+        label.textColor = .systemRed
         return label
     }()
     
@@ -152,22 +154,6 @@ class ProfileHeaderView: UIView {
         timerUntilReload.layer.shadowColor = UIColor.black.cgColor
     }
     
-    
-    func startTimer(){
-        let timer = Timer.scheduledTimer(
-            withTimeInterval: 1,
-            repeats: true,
-            block: { [self] timer in
-                if timeUntilReload < 0 {
-                    timeUntilReload -= 1
-                } else if timeUntilReload == 0 {
-                    
-                    timeUntilReload = 10
-                }
-            })
-
-    }
-    
 
     // MARK: - Constraints
     
@@ -222,7 +208,7 @@ class ProfileHeaderView: UIView {
         
         timerUntilReload.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(10)
-            make.trailing.equalToSuperview().offset(-10)
+            make.trailing.equalToSuperview().inset(16)
             make.height.equalTo(40)
             make.width.equalTo(100)
         }
@@ -283,3 +269,4 @@ class ProfileHeaderView: UIView {
         UIApplication.shared.windows.last?.rootViewController?.present(alert, animated: true)
     }
 }
+

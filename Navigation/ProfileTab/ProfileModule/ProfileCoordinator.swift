@@ -33,3 +33,4 @@ class ProfileCoordinator: Coordinator {
         let photoViewController = PhotosViewController()
         navigationController.pushViewController(photoViewController, animated: true)}
 }
+
