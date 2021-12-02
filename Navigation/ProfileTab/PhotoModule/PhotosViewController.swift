@@ -75,15 +75,19 @@ class PhotosViewController: UIViewController {
             qos: .default) { [self]
                 images in
                 for image in images {
-                    currentPhotoForPublisher.append(UIImage(cgImage: image!))
+                    if let image = image {
+                        currentPhotoForPublisher.append(UIImage(cgImage: image))
+                    }
                 }
                 
-                DispatchQueue.main.async { [self] in
+                DispatchQueue.main.async {
                     imagePublisherFacade.subscribe(self)
+                    
                     imagePublisherFacade.addImagesWithTimer(
                         time: 0.8,
                         repeat: currentPhotoForPublisher.count * 2,
                         userImages: currentPhotoForPublisher)
+                    
                     self.collectionView.reloadData()
                     activityIndicator.stopAnimating()
                     
