@@ -323,6 +323,6 @@ extension ProfileViewController {
     
     func stopTimer(){
         timer.invalidate()
-        self.profileHeader.timerUntilReload.text = "RELOAD DATA"
+        self.profileHeader.timerUntilReload.text = "RELOAD DATA"//
     }
 }
