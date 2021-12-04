@@ -14,8 +14,9 @@ class ProfileViewController: UIViewController {
     
     var viewModel: ProfileViewModel
     private let activityIndicator = UIActivityIndicatorView(style: .large)
-        
+    let profileHeader = ProfileHeaderView()
     private let tableView = UITableView(frame: .zero, style: .plain)
+    var timer = Timer()
 
     
     init(viewModel: ProfileViewModel) {
@@ -44,12 +45,19 @@ class ProfileViewController: UIViewController {
             setupTableView()
             setupConstraints()
             activityIndicator.stopAnimating()
+            showAlert()
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewModel.coordinator?.childDidFinish(viewModel.coordinator)
+        startTimer()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopTimer()
     }
 
 
@@ -77,6 +85,11 @@ class ProfileViewController: UIViewController {
         activityIndicator.center = self.view.center
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
+    }
+    
+    private func showAlert(){
+        guard let alert = viewModel.outputAlert else {return}
+        present(alert, animated: true)
     }
 
     
@@ -150,32 +163,40 @@ class ProfileViewController: UIViewController {
         
         self.tabBarController?.tabBar.isHidden = true
     
-        UIView.animate(
-            withDuration: 0.5,
-            delay: 0, options: []) {[self] in
+        
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: { [self] in
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1){
                 avatarImageView?.bounds.size.width = UIScreen.main.bounds.width
                 avatarImageView?.bounds.size.height = UIScreen.main.bounds.width * heightAvatar
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){ [self] in
                 avatarImageView?.center = CGPoint(
                     x: view.bounds.midX,
                     y: view.bounds.midY)
-                avatarImageView?.layer.cornerRadius = 0
-                backgroundView?.alpha = 0.7
-                
-            } completion: { finished in
-                UIView.animateKeyframes(withDuration: 0.3, delay: 0, options: [], animations: { [self] in
-                    UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.2) {
-                        if avatarImageView != nil && crossButton != nil{
-                            crossButton?.frame.origin = CGPoint(
-                                x: avatarImageView!.frame.maxX - crossButton!.bounds.size.width * 1.5,
-                                y: 0)
-                        }
-                    }
-                    UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.8) { [self] in
-                        crossButton?.alpha = 1
-                    }
-                })
             }
-        
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){ [self] in
+                avatarImageView?.layer.cornerRadius = 0
+            }
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){ [self] in
+                backgroundView?.alpha = 0.7
+            }
+            
+        }, completion: {finished in
+            UIView.animateKeyframes(withDuration: 0.3, delay: 0, options: [], animations: { [self] in
+                UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.2) {
+                    if avatarImageView != nil && crossButton != nil{
+                        crossButton?.frame.origin = CGPoint(
+                            x: avatarImageView!.frame.maxX - crossButton!.bounds.size.width * 1.5,
+                            y: 0)
+                    }
+                }
+                
+                UIView.addKeyframe(withRelativeStartTime: 0.3, relativeDuration: 0.8) { [self] in
+                    crossButton?.alpha = 1
+                }
+            })
+        })
+
         avatarImageView?.isUserInteractionEnabled = true
         
         self.view.layoutIfNeeded()
@@ -184,13 +205,18 @@ class ProfileViewController: UIViewController {
     
     @objc func reversViewAnimate(){
         self.view.layoutIfNeeded()
-        
-        UIView.animate(
-            withDuration: 0.5) { [self] in
+        UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: { [self] in
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){
                 crossButton?.alpha = 0
                 crossButton = nil
+            }
+
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){ [self] in
                 backgroundView?.alpha = 0
                 backgroundView = nil
+            }
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){ [self] in
                 avatarImageView?.alpha = 0
                 avatarImageView?.layer.cornerRadius = view.bounds.height / 2
                 avatarImageView?.frame = CGRect(
@@ -201,7 +227,7 @@ class ProfileViewController: UIViewController {
                 avatarImageView = nil
                 tabBarController?.tabBar.isHidden = false
             }
-
+        })
         self.view.layoutIfNeeded()
     }
 }
@@ -244,8 +270,6 @@ extension ProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let profileHeader = ProfileHeaderView()
-        
         profileHeader.fullNameLabel.text = viewModel.outputUserInfo?.userName
         profileHeader.avatarImageView.image = viewModel.outputUserInfo?.userAvatar
         profileHeader.statusLabel.text = viewModel.outputUserInfo?.userStatus
@@ -273,7 +297,32 @@ extension ProfileViewController: UITableViewDelegate {
     }
 }
 
-
-
-
-
+// MARK: - Timer
+extension ProfileViewController {
+    func startTimer(){
+        var time = 10
+        timer = Timer.scheduledTimer(
+            withTimeInterval: 1,
+            repeats: true,
+            block: { [weak self] _ in
+                if time > 0 {
+                    time -= 1
+                } else if time == 0 {
+                    self?.tableView.reloadData()
+                    sleep(1)
+                    time = 10
+                }
+                if time != 0 {
+                    self?.profileHeader.timerUntilReload.text = "Time until reload:\n \(time)"
+                } else {
+                    self?.profileHeader.timerUntilReload.text = "RELOAD DATA"
+                }
+            })
+        RunLoop.current.add(timer, forMode: .common)
+    }
+    
+    func stopTimer(){
+        timer.invalidate()
+        self.profileHeader.timerUntilReload.text = "RELOAD DATA"
+    }
+}

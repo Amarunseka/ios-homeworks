@@ -63,14 +63,13 @@ class PhotosViewController: UIViewController {
     
     private func receivePhoto(){
         
+        // MARK: - ДЗ-11 задача №3 (2)
+        guard let photoForUse = try? receivePhotoError() else {return}
+        
         var currentPhotoForPublisher: [UIImage] = []
-        let start = Date()
-        let userCalendar = Calendar.current
-        let requestedComponent: Set<Calendar.Component> = [.second, .nanosecond]
-
-
+        
         imageProcessor.processImagesOnThread(
-            sourceImages: PhotosImage.photos,
+            sourceImages: photoForUse,
             filter: .noir,
             qos: .default) { [self]
                 images in
@@ -90,23 +89,9 @@ class PhotosViewController: UIViewController {
                     
                     self.collectionView.reloadData()
                     activityIndicator.stopAnimating()
-                    
-                    let dateStop = Date()
-                    let timeDifference = userCalendar.dateComponents(
-                        requestedComponent,
-                        from: dateStop,
-                        to: start)
-                    
-                    print("\(timeDifference.second! * -1).\(timeDifference.nanosecond! * -1)")
                 }
             }
     }
-    
-    // фильтр - noir, qos - default = 4.997
-    // фильтр - noir, qos - userInteractive = 5.339
-    // фильтр - colorInvert, qos - userInteractive = 4.984
-    // фильтр - colorInvert, qos - background = 26.346
-    // фильтр - gaussianBlur(radius: 0.7), qos - background = 18.654
     
     
     private func setupCollectionView(){
@@ -206,5 +191,19 @@ extension PhotosViewController: ImageLibrarySubscriber {
         guard (images.count - 1) == collectionView.numberOfItems(inSection: 0) else {return}
         let indexPath = IndexPath(item: images.count - 1, section: 0)
         collectionView.insertItems(at: [indexPath])
+    }
+}
+
+// MARK: - ДЗ-11 задача №3 (2)
+// не смог найти подходящую функцию поэтому придумал такой вариант
+extension PhotosViewController {
+    
+    func receivePhotoError() throws -> [UIImage] {
+        
+        if let photo: [UIImage] = PhotosImage.photos {
+            return photo
+        } else {
+            throw NSError(domain: "Фото не найдены", code: 1)
+        }
     }
 }

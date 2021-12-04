@@ -11,13 +11,7 @@ import SnapKit
 class LogInViewController: UIViewController {
     
     var viewModel: LoginViewModel
-    let queue = DispatchQueue(
-        label: "Finding password",
-        qos: .utility,
-        attributes: .concurrent,
-        target: .global())
     
-
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
@@ -73,54 +67,6 @@ class LogInViewController: UIViewController {
         button.clipsToBounds = true
         return button
     }()
-    
-    private lazy var generatePasswordButton: CustomButton = {
-        let button = CustomButton(
-            title: "Generate the password",
-            backgroundColor: .systemBrown,
-            fontSize: 18) {
-                [weak self] in
-        
-                self?.viewModel.generatePassword()
-                self?.passwordTextField.text = self?.viewModel.password
-                self?.passwordTextField.isSecureTextEntry = true
-                self?.findPasswordButton.isHidden = false
-            }
-        
-        button.layer.cornerRadius = 10
-        button.clipsToBounds = true
-        return button
-    }()
-    
-    
-    private lazy var findPasswordButton: CustomButton = {
-        let button = CustomButton(
-            title: "Find the password",
-            backgroundColor: .systemRed,
-            fontSize: 18) {
-                [weak self] in
-                self?.activityIndicator.startAnimating()
-                self?.generatePasswordButton.isHidden = true
-                
-                self?.queue.async() {
-                    self?.viewModel.findPassword()
-                    DispatchQueue.main.async {
-                        self?.passwordTextField.text = self?.viewModel.foundedPassword
-                        self?.passwordTextField.isSecureTextEntry = false
-                        self?.activityIndicator.stopAnimating()
-                        self?.generatePasswordButton.isHidden = false
-                    }
-                }
-            }
-        
-        button.layer.cornerRadius = 10
-        button.clipsToBounds = true
-        button.isHidden = true
-        return button
-    }()
-    
-    
-    private let activityIndicator = UIActivityIndicatorView(style: .medium)
     
     
     init(viewModel: LoginViewModel) {
@@ -184,11 +130,7 @@ class LogInViewController: UIViewController {
         containerView.addSubview(logoView)
         containerView.addSubview(authenticationLabel)
         containerView.addSubview(logInButton)
-        containerView.addSubview(generatePasswordButton)
-        containerView.addSubview(findPasswordButton)
-        containerView.addSubview(activityIndicator)
-        
-        
+
         setupLogInButton()
         setupScrollView()
         setupAuthenticationLabel()
@@ -253,16 +195,6 @@ class LogInViewController: UIViewController {
         logInButton.setBackgroundImage(backgroundOtherStates, for: .selected)
         logInButton.setBackgroundImage(backgroundOtherStates, for: .highlighted)
         logInButton.setBackgroundImage(backgroundOtherStates, for: .disabled)
-        
-        
-        generatePasswordButton.setBackgroundImage(backgroundOtherStates, for: .selected)
-        generatePasswordButton.setBackgroundImage(backgroundOtherStates, for: .highlighted)
-        generatePasswordButton.setBackgroundImage(backgroundOtherStates, for: .disabled)
-
-        
-        findPasswordButton.setBackgroundImage(backgroundOtherStates, for: .selected)
-        findPasswordButton.setBackgroundImage(backgroundOtherStates, for: .highlighted)
-        findPasswordButton.setBackgroundImage(backgroundOtherStates, for: .disabled)
     }
     
     
@@ -270,10 +202,6 @@ class LogInViewController: UIViewController {
     
     private func setupMainViewConstraints(){
         logInButton.translatesAutoresizingMaskIntoConstraints = false
-        generatePasswordButton.translatesAutoresizingMaskIntoConstraints = false
-        findPasswordButton.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        
         let constraints = [
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -304,23 +232,7 @@ class LogInViewController: UIViewController {
             logInButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             logInButton.widthAnchor.constraint(equalTo: authenticationLabel.widthAnchor),
             logInButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            
-            activityIndicator.topAnchor.constraint(equalTo: logInButton.bottomAnchor, constant: 10),
-            activityIndicator.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            
-            
-            generatePasswordButton.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor, constant: 10),
-            generatePasswordButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            generatePasswordButton.widthAnchor.constraint(equalToConstant: view.frame.width / 2),
-            generatePasswordButton.heightAnchor.constraint(equalToConstant: 50),
-            
-            
-            findPasswordButton.topAnchor.constraint(equalTo: generatePasswordButton.bottomAnchor, constant: 15),
-            findPasswordButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            findPasswordButton.widthAnchor.constraint(equalToConstant: view.frame.width / 2),
-            findPasswordButton.heightAnchor.constraint(equalToConstant: 50),
-            findPasswordButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            logInButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
         ]
 
         NSLayoutConstraint.activate(constraints)
@@ -344,20 +256,31 @@ class LogInViewController: UIViewController {
     // MARK: - target functions
     
     @objc private func pushLogInButton(){
-//        guard
-//            let login = logInTextField.text,
-//            let password = passwordTextField.text
-//        else {return}
-//
-//        if viewModel.checkAuthorization(login: login, password: password) {
-//            viewModel.segueToProfile()
-//        } else {
-//            showAlert()
-//        }
-
+        guard
+            let login = logInTextField.text,
+            let password = passwordTextField.text
+        else {return}
         
-        logInTextField.text = "Amarunseka"
-        viewModel.segueToProfile()
+        
+        // MARK: - ДЗ-11 Задача 1 (2)
+        do {
+            try viewModel.checkAuthorization(login: login, password: password)
+            viewModel.segueToProfile()
+        } catch AuthenticationErrors.loginIsEmpty {
+            showAlert(for: .loginIsEmpty)
+        } catch AuthenticationErrors.passwordIsEmpty {
+            showAlert(for: .passwordIsEmpty)
+        } catch AuthenticationErrors.userNotFound {
+            showAlert(for: .userNotFound)
+        } catch {
+            print("")
+        }
+        
+    }
+    
+    func showAlert(for error: AuthenticationErrors) {
+        let alert = ShowAlert.showAlert(error.localizedDescription)
+        present(alert, animated: true)
     }
     
     
@@ -383,36 +306,5 @@ extension LogInViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         pushLogInButton()
         return true
-    }
-    
-    
-    private func showAlert() {
-        let alertController = UIAlertController(
-            title: "Ошибка!",
-            message: "Неверное имя пользователя или пароль.",
-            preferredStyle: .alert)
-        
-        
-        let okAction = UIAlertAction(title: "ОK.", style: .default)
-        
-        alertController.view.tintColor = .customColorBlue
-        alertController.addAction(okAction)
-        
-        
-        if let title = alertController.title, let message = alertController.message {
-            alertController.setValue(NSAttributedString(
-                string: title,
-                attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.regular),
-                             NSAttributedString.Key.foregroundColor: UIColor.accentColor ?? .black]),
-                                     forKey: "attributedTitle")
-            
-            alertController.setValue(NSAttributedString(
-                string: message,
-                attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15,weight: UIFont.Weight.regular),
-                             NSAttributedString.Key.foregroundColor: UIColor.red]),
-                                     forKey: "attributedMessage")
-        }
-        
-        self.present(alertController, animated: true, completion: nil)
     }
 }

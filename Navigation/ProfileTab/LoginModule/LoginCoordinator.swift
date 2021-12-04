@@ -11,10 +11,7 @@ class LoginCoordinator: NSObject, Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController = UINavigationController()
     
-    //var userName: String?
-    // для задачи с бутфорсом
-    var userName = "Amarunseka"
-
+    var userName: String?
     
     private let module = ModuleFactory.createLoginModule()
     
@@ -27,7 +24,7 @@ class LoginCoordinator: NSObject, Coordinator {
     
     
     func segueToProfile(){
-        //guard let userName = userName else {return} // !бутфорс
+        guard let userName = userName else {return}
         
         let child = ProfileCoordinator(navigationController: navigationController, userName: userName)
         childCoordinators.append(child)
@@ -35,3 +32,4 @@ class LoginCoordinator: NSObject, Coordinator {
         child.parentCoordinator = self
     }
 }
+

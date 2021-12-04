@@ -112,9 +112,11 @@ class PhotosTableViewCell: UITableViewCell {
 extension PhotosTableViewCell {
     
     private func createImage(_ index: Int) -> UIImageView {
+        // удалить после ДЗ 11!
+        guard let photo = PhotosImage.photos else {return UIImageView()}
         
         let view = UIImageView()
-        view.image = PhotosImage.photos[index]
+        view.image = photo[index]
         view.contentMode = .scaleAspectFill
         view.layer.cornerRadius = 6
         view.clipsToBounds = true
