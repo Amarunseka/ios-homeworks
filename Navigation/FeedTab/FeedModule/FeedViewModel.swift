@@ -76,7 +76,7 @@ extension FeedViewModel {
 
         outputLabel = label
     }
-    
+
     
     // customise textResult
     private func setupResultText(to checked: String, result: String) -> NSMutableAttributedString{

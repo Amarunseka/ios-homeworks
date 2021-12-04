@@ -45,6 +45,7 @@ class ProfileViewController: UIViewController {
             setupConstraints()
             activityIndicator.stopAnimating()
             startTimer()
+            showAlert()
         }
     }
     
@@ -78,6 +79,11 @@ class ProfileViewController: UIViewController {
         activityIndicator.center = self.view.center
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
+    }
+    
+    private func showAlert(){
+        guard let alert = viewModel.outputAlert else {return}
+        present(alert, animated: true)
     }
 
     
@@ -289,22 +295,20 @@ extension ProfileViewController: UITableViewDelegate {
         let timer = Timer.scheduledTimer(
             withTimeInterval: 1,
             repeats: true,
-            block: { _ in
+            block: { [weak self] _ in
                 if time > 0 {
                     time -= 1
                 } else if time == 0 {
-                    self.tableView.reloadData()
+                    self?.tableView.reloadData()
                     sleep(1)
                     time = 10
                 }
                 if time != 0 {
-                    self.profileHeader.timerUntilReload.text = "Time until reload:\n \(time)"
-                } else { self.profileHeader.timerUntilReload.text = "RELOAD DATA"
+                    self?.profileHeader.timerUntilReload.text = "Time until reload:\n \(time)"
+                } else { self?.profileHeader.timerUntilReload.text = "RELOAD DATA"
                 }
-               
             })
         RunLoop.current.add(timer, forMode: .common)
-        timer.fire()
     }
 }
 

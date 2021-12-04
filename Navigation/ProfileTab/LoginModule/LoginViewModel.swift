@@ -12,26 +12,37 @@ class LoginViewModel {
     
     weak var coordinator: LoginCoordinator?
     var delegate: LoginViewControllerDelegateProtocol
-
     
     init(delegate: LoginViewControllerDelegateProtocol) {
         self.delegate = delegate
     }
 
     
-    func checkAuthorization(login: String, password: String) -> Bool {
-        
-        if delegate.checkUserAuthentication(login: login, password: password) {
-            coordinator?.userName = login
-            return true
+    // MARK: - ДЗ-11 Задача №1 (1)
+    func checkAuthorization(login: String, password: String) throws {
+
+        var user: [String] = []
+
+        if login.count > 0, password.count > 0 {
+            user.append(login)
+            user.append(password)
+        } else if login.count <= 0 {
+            throw AuthenticationErrors.loginIsEmpty
+        } else if password.count <= 0 {
+            throw AuthenticationErrors.passwordIsEmpty
+        }
+
+
+        if delegate.checkUserAuthentication(login: user[0], password: user[1]) {
+            coordinator?.userName = user[0]
         } else {
-            return false
+            throw AuthenticationErrors.userNotFound
         }
     }
     
     
     func segueToProfile() {
-            coordinator?.segueToProfile()
+        coordinator?.segueToProfile()
     }
 }
 
