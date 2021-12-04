@@ -63,10 +63,13 @@ class PhotosViewController: UIViewController {
     
     private func receivePhoto(){
         
+        // MARK: - ДЗ-11 задача №3 (2)
+        guard let photoForUse = try? receivePhotoError() else {return}
+        
         var currentPhotoForPublisher: [UIImage] = []
         
         imageProcessor.processImagesOnThread(
-            sourceImages: PhotosImage.photos,
+            sourceImages: photoForUse,
             filter: .noir,
             qos: .default) { [self]
                 images in
@@ -188,5 +191,19 @@ extension PhotosViewController: ImageLibrarySubscriber {
         guard (images.count - 1) == collectionView.numberOfItems(inSection: 0) else {return}
         let indexPath = IndexPath(item: images.count - 1, section: 0)
         collectionView.insertItems(at: [indexPath])
+    }
+}
+
+// MARK: - ДЗ-11 задача №3 (2)
+// не смог найти подходящую функцию поэтому придумал такой вариант
+extension PhotosViewController {
+    
+    func receivePhotoError() throws -> [UIImage] {
+        
+        if let photo: [UIImage] = PhotosImage.photos {
+            return photo
+        } else {
+            throw NSError(domain: "Фото не найдены", code: 1)
+        }
     }
 }

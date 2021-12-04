@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController {
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     let profileHeader = ProfileHeaderView()
     private let tableView = UITableView(frame: .zero, style: .plain)
+    var timer = Timer()
 
     
     init(viewModel: ProfileViewModel) {
@@ -44,7 +45,6 @@ class ProfileViewController: UIViewController {
             setupTableView()
             setupConstraints()
             activityIndicator.stopAnimating()
-            startTimer()
             showAlert()
         }
     }
@@ -52,6 +52,12 @@ class ProfileViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewModel.coordinator?.childDidFinish(viewModel.coordinator)
+        startTimer()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopTimer()
     }
 
 
@@ -289,10 +295,13 @@ extension ProfileViewController: UITableViewDelegate {
 
         tableView.deselectRow(at: indexPath, animated: false)
     }
-    
+}
+
+// MARK: - Timer
+extension ProfileViewController {
     func startTimer(){
         var time = 10
-        let timer = Timer.scheduledTimer(
+        timer = Timer.scheduledTimer(
             withTimeInterval: 1,
             repeats: true,
             block: { [weak self] _ in
@@ -305,23 +314,15 @@ extension ProfileViewController: UITableViewDelegate {
                 }
                 if time != 0 {
                     self?.profileHeader.timerUntilReload.text = "Time until reload:\n \(time)"
-                } else { self?.profileHeader.timerUntilReload.text = "RELOAD DATA"
+                } else {
+                    self?.profileHeader.timerUntilReload.text = "RELOAD DATA"
                 }
             })
         RunLoop.current.add(timer, forMode: .common)
     }
+    
+    func stopTimer(){
+        timer.invalidate()
+        self.profileHeader.timerUntilReload.text = "RELOAD DATA"
+    }
 }
-
-
-/*
- С помощью таймера можно обновлять данные в режиме реального времени например торгов, для построения графики.
- 
- Прохождение каких нибудь тестов на время, где вопросы обновляются через n времени
- 
- Любые действия нуждающиеся в обновлении данных в заданный промежуток времени
- */
-
-
-
-
-
