@@ -306,7 +306,7 @@ extension ProfileViewController {
                     self?.profileHeader.timerUntilReload.text = "RELOAD DATA"
                 }
             })
-        RunLoop.current.add(timer, forMode: .common)
+        RunLoop.current.add(timer, forMode: .common)//
     }
     
     func stopTimer(){
