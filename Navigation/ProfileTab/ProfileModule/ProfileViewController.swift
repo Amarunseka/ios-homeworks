@@ -106,7 +106,7 @@ class ProfileViewController: UIViewController {
     }
     
     
-    // MARK: - Animation
+// MARK: - Animation
 
     private var avatarImageView: UIImageView?
     private var backgroundView:  UIView?
@@ -168,16 +168,10 @@ class ProfileViewController: UIViewController {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1){
                 avatarImageView?.bounds.size.width = UIScreen.main.bounds.width
                 avatarImageView?.bounds.size.height = UIScreen.main.bounds.width * heightAvatar
-            }
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){ [self] in
                 avatarImageView?.center = CGPoint(
                     x: view.bounds.midX,
                     y: view.bounds.midY)
-            }
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){ [self] in
                 avatarImageView?.layer.cornerRadius = 0
-            }
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){ [self] in
                 backgroundView?.alpha = 0.7
             }
             
@@ -209,14 +203,8 @@ class ProfileViewController: UIViewController {
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){
                 crossButton?.alpha = 0
                 crossButton = nil
-            }
-
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){ [self] in
                 backgroundView?.alpha = 0
                 backgroundView = nil
-            }
-            
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){ [self] in
                 avatarImageView?.alpha = 0
                 avatarImageView?.layer.cornerRadius = view.bounds.height / 2
                 avatarImageView?.frame = CGRect(
