@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0y-qm-BJv">
+                                <rect key="frame" x="87" y="841" width="240" height="21"/>
+                                <color key="tintColor" red="0.0" green="0.099523153739999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="Bf7-uM-DsM"/>
+                                    <constraint firstAttribute="height" constant="21" id="NkE-8e-OR6"/>
+                                    <constraint firstAttribute="width" constant="240" id="fDC-yJ-suQ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="kgJ-fH-J7o"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="Homework by Amarunseka">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.099523153738362069" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="19" name="BradleyHandITCTT-Bold"/>
+                                            <font key="NSOriginalFont" size="17" name="BradleyHandITCTT-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="a51-3L-P48">
+                                <rect key="frame" x="57" y="298" width="300" height="299.5"/>
+                                <color key="tintColor" red="0.0" green="0.099523153739999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="9bx-Cv-s1f"/>
+                                    <constraint firstAttribute="width" constant="300" id="fC0-XH-cTo"/>
+                                </constraints>
+                                <imageReference key="image" image="laptopcomputer.and.iphone" catalog="system" symbolScale="large"/>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" scale="default" weight="thin">
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                </preferredSymbolConfiguration>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="CHBCL" translatesAutoresizingMaskIntoConstraints="NO" id="PJL-f3-HFy" userLabel="CHB">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="eBD-GW-MhF"/>
+                                    <constraint firstAttribute="width" constant="50" id="uhP-cd-wDe"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="CHBCL" translatesAutoresizingMaskIntoConstraints="NO" id="LRN-C5-0Dw" userLabel="CHS">
+                                <rect key="frame" x="281" y="447" width="24" height="24"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.37739009229340226" green="0.88742849553944103" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="LRN-C5-0Dw" firstAttribute="top" secondItem="a51-3L-P48" secondAttribute="top" constant="149" id="AaV-nC-UdB"/>
+                            <constraint firstItem="PJL-f3-HFy" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ETP-wk-xAF"/>
+                            <constraint firstItem="K0y-qm-BJv" firstAttribute="top" secondItem="LRN-C5-0Dw" secondAttribute="bottom" constant="370" id="Fmc-9Y-O6l"/>
+                            <constraint firstItem="K0y-qm-BJv" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Hdt-e0-S4H"/>
+                            <constraint firstItem="K0y-qm-BJv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="797" id="HzP-Zj-NoD"/>
+                            <constraint firstItem="a51-3L-P48" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="WWt-iJ-3jf"/>
+                            <constraint firstItem="PJL-f3-HFy" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="i0c-Nb-phi"/>
+                            <constraint firstItem="LRN-C5-0Dw" firstAttribute="leading" secondItem="a51-3L-P48" secondAttribute="leading" constant="224" id="oao-V1-GfF"/>
+                            <constraint firstItem="LRN-C5-0Dw" firstAttribute="trailing" secondItem="a51-3L-P48" secondAttribute="trailingMargin" constant="-44" id="tf3-Kg-pE8"/>
+                            <constraint firstItem="K0y-qm-BJv" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="vOu-wi-jug"/>
+                            <constraint firstItem="a51-3L-P48" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="yN4-No-TTH"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.173913043478265" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="CHBCL" width="24" height="24"/>
+        <image name="laptopcomputer.and.iphone" catalog="system" width="128" height="74"/>
+    </resources>
+</document>
