@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		18AC8181C88949E20775BF53 /* Pods_StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C1291E3E0F4BE9CB3BFCE2 /* Pods_StorageService.framework */; };
+		451798FC2771C202004DCACB /* SlideMenuContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451798FB2771C202004DCACB /* SlideMenuContainerViewController.swift */; };
+		451798FE2771C27A004DCACB /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451798FD2771C27A004DCACB /* SlideMenuViewController.swift */; };
+		451799002771EAAA004DCACB /* SlideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451798FF2771EAAA004DCACB /* SlideMenuTableViewCell.swift */; };
+		4517990227725C01004DCACB /* SlideMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517990127725C01004DCACB /* SlideMenuModel.swift */; };
+		45179906277262ED004DCACB /* SlideMenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45179905277262ED004DCACB /* SlideMenuCoordinator.swift */; };
+		4517990827730D53004DCACB /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517990727730D53004DCACB /* AudioViewController.swift */; };
+		4517990A27730D67004DCACB /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517990927730D67004DCACB /* VideoViewController.swift */; };
 		45306B1527390B7200D1516B /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B1427390B7200D1516B /* CoordinatorProtocol.swift */; };
 		45306B1B27390D7900D1516B /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B1A27390D7900D1516B /* FeedViewModel.swift */; };
 		45306B1D27390D9500D1516B /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B1C27390D9500D1516B /* FeedCoordinator.swift */; };
@@ -91,6 +98,13 @@
 		20C1291E3E0F4BE9CB3BFCE2 /* Pods_StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		23BFA7C0F62E273954E08492 /* Pods-Navigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.release.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.release.xcconfig"; sourceTree = "<group>"; };
 		37985909E3167867533EF7C9 /* Pods-StorageService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService.debug.xcconfig"; path = "Target Support Files/Pods-StorageService/Pods-StorageService.debug.xcconfig"; sourceTree = "<group>"; };
+		451798FB2771C202004DCACB /* SlideMenuContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuContainerViewController.swift; sourceTree = "<group>"; };
+		451798FD2771C27A004DCACB /* SlideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
+		451798FF2771EAAA004DCACB /* SlideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuTableViewCell.swift; sourceTree = "<group>"; };
+		4517990127725C01004DCACB /* SlideMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuModel.swift; sourceTree = "<group>"; };
+		45179905277262ED004DCACB /* SlideMenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuCoordinator.swift; sourceTree = "<group>"; };
+		4517990727730D53004DCACB /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
+		4517990927730D67004DCACB /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		45306B1427390B7200D1516B /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		45306B1A27390D7900D1516B /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		45306B1C27390D9500D1516B /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
@@ -180,6 +194,34 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		451798FA2771BFE6004DCACB /* SlideMenuModule */ = {
+			isa = PBXGroup;
+			children = (
+				45179905277262ED004DCACB /* SlideMenuCoordinator.swift */,
+				451798FB2771C202004DCACB /* SlideMenuContainerViewController.swift */,
+				451798FD2771C27A004DCACB /* SlideMenuViewController.swift */,
+				451798FF2771EAAA004DCACB /* SlideMenuTableViewCell.swift */,
+				4517990127725C01004DCACB /* SlideMenuModel.swift */,
+			);
+			path = SlideMenuModule;
+			sourceTree = "<group>";
+		};
+		451799032772607C004DCACB /* AudioModule */ = {
+			isa = PBXGroup;
+			children = (
+				4517990727730D53004DCACB /* AudioViewController.swift */,
+			);
+			path = AudioModule;
+			sourceTree = "<group>";
+		};
+		4517990427726090004DCACB /* VideoModule */ = {
+			isa = PBXGroup;
+			children = (
+				4517990927730D67004DCACB /* VideoViewController.swift */,
+			);
+			path = VideoModule;
+			sourceTree = "<group>";
+		};
 		45306B1627390C0500D1516B /* FeedTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,7 +264,10 @@
 			isa = PBXGroup;
 			children = (
 				45306B2527390EC500D1516B /* LoginModule */,
+				451798FA2771BFE6004DCACB /* SlideMenuModule */,
 				45306B26273910B400D1516B /* ProfileModule */,
+				451799032772607C004DCACB /* AudioModule */,
+				4517990427726090004DCACB /* VideoModule */,
 				45306B27273910C600D1516B /* PhotoModule */,
 			);
 			path = ProfileTab;
@@ -601,6 +646,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4517990227725C01004DCACB /* SlideMenuModel.swift in Sources */,
 				45306B2127390E6600D1516B /* PostViewModel.swift in Sources */,
 				45E2C687270F227200B58BC3 /* CustomTextField.swift in Sources */,
 				45D503AA26F5236500387102 /* TestUser.swift in Sources */,
@@ -608,6 +654,7 @@
 				4586111B26FA0BA300269593 /* Checker.swift in Sources */,
 				45D503A426F5231400387102 /* UserServiceProtocol.swift in Sources */,
 				458CBBDE26E0F93600915CA1 /* PhotosViewController.swift in Sources */,
+				4517990A27730D67004DCACB /* VideoViewController.swift in Sources */,
 				45306B2D273913CA00D1516B /* LoginCoordinator.swift in Sources */,
 				45306B1F27390E5500D1516B /* PostCoordinator.swift in Sources */,
 				45E2C689270F229400B58BC3 /* CheckerText.swift in Sources */,
@@ -615,11 +662,13 @@
 				45E2C685270F224300B58BC3 /* CustomButton.swift in Sources */,
 				45306B3127391C4D00D1516B /* ProfileCoordinator.swift in Sources */,
 				4586112126FA0C1000269593 /* LoginFactoryProtocol.swift in Sources */,
+				451798FE2771C27A004DCACB /* SlideMenuViewController.swift in Sources */,
 				45D503AF26F5241900387102 /* ImageAlpha.swift in Sources */,
 				458CBBB926E0E53100915CA1 /* AppDelegate.swift in Sources */,
 				45306B1D27390D9500D1516B /* FeedCoordinator.swift in Sources */,
 				458CBBE226E0F96C00915CA1 /* PhotosTableViewCell.swift in Sources */,
 				458CBBD426E0F8D800915CA1 /* FeedViewController.swift in Sources */,
+				451798FC2771C202004DCACB /* SlideMenuContainerViewController.swift in Sources */,
 				4586111D26FA0BE000269593 /* LoginVCDelegateProtocol.swift in Sources */,
 				458CBBE426E0F98800915CA1 /* PhotosCollectionViewCell.swift in Sources */,
 				45653B41275A573A0079AA67 /* AuthenticationErrors.swift in Sources */,
@@ -638,12 +687,15 @@
 				45306B2F27391C1100D1516B /* LoginViewModel.swift in Sources */,
 				45D503AD26F523FC00387102 /* UIColor.swift in Sources */,
 				4586111F26FA0BF700269593 /* LoginInspector.swift in Sources */,
+				4517990827730D53004DCACB /* AudioViewController.swift in Sources */,
 				458CBBDC26E0F92200915CA1 /* ProfileViewController.swift in Sources */,
 				458CBBD626E0F8EF00915CA1 /* PostViewController.swift in Sources */,
 				45D503A826F5234C00387102 /* CurrentUser.swift in Sources */,
 				45306B3327391C6900D1516B /* ProfileViewModel.swift in Sources */,
 				45D503A226F522E600387102 /* PhotoViewController.swift in Sources */,
 				45306B362739244100D1516B /* CreateModuleProtocol.swift in Sources */,
+				451799002771EAAA004DCACB /* SlideMenuTableViewCell.swift in Sources */,
+				45179906277262ED004DCACB /* SlideMenuCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

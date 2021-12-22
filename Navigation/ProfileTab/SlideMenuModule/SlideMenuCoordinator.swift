@@ -1,13 +1,13 @@
 //
-//  ProfileCoordinator.swift
+//  SlideMenuCoordinator.swift
 //  Navigation
 //
-//  Created by Миша on 08.11.2021.
+//  Created by Миша on 21.12.2021.
 //
 
 import UIKit
 
-class ProfileCoordinator: Coordinator {
+class SlideMenuCoordinator: Coordinator {
     
     weak var parentCoordinator: Coordinator?
     var childCoordinators = [Coordinator]()
@@ -23,7 +23,7 @@ class ProfileCoordinator: Coordinator {
     }
     
     func start() {
-        module.profileVC.viewModel.coordinator = self
+        //module.profileVC.viewModel.coordinator = self
         navigationController.pushViewController(module, animated: true)
     }
     
@@ -32,4 +32,3 @@ class ProfileCoordinator: Coordinator {
         let photoViewController = PhotosViewController()
         navigationController.pushViewController(photoViewController, animated: true)}
 }
-

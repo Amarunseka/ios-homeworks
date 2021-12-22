@@ -9,14 +9,31 @@
 import UIKit
 import StorageService
 
+protocol ProfileViewControllerDelegate: AnyObject {
+    func toggleMenu()
+}
 
 class ProfileViewController: UIViewController {
     
     var viewModel: ProfileViewModel
-    private let activityIndicator = UIActivityIndicatorView(style: .large)
-    let profileHeader = ProfileHeaderView()
+    weak var delegate: ProfileViewControllerDelegate?
     private let tableView = UITableView(frame: .zero, style: .plain)
+    let profileHeader = ProfileHeaderView()
+    
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
     var timer = Timer()
+    
+    
+    private lazy var menuButton: UIButton = {
+        let button = CustomButton(
+            titleColor: .black,
+            backgroundImage: UIImage(systemName: "list.dash"),
+            highlighted: .yes) { [weak self] in
+                self?.delegate?.toggleMenu()
+            }
+        button.tintColor = .customColorBlue
+        return button
+    }()
 
     
     init(viewModel: ProfileViewModel) {
@@ -72,18 +89,18 @@ class ProfileViewController: UIViewController {
         tableView.delegate = self
         
         tableView.register(
-            PostTableViewCell.self,
-            forCellReuseIdentifier: String(describing: PostTableViewCell.self))
-        
-        tableView.register(
             PhotosTableViewCell.self,
             forCellReuseIdentifier: String(describing: PhotosTableViewCell.self))
+        
+        tableView.register(
+            PostTableViewCell.self,
+            forCellReuseIdentifier: String(describing: PostTableViewCell.self))
     }
     
     
     private func setupActivityIndicator(){
-        activityIndicator.center = self.view.center
         view.addSubview(activityIndicator)
+        activityIndicator.center = self.view.center
         activityIndicator.startAnimating()
     }
     
@@ -94,7 +111,14 @@ class ProfileViewController: UIViewController {
 
     
     private func setupConstraints(){
+        menuButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(menuButton)
         let constraints = [
+            menuButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            menuButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            menuButton.heightAnchor.constraint(equalToConstant: 30),
+            menuButton.widthAnchor.constraint(equalToConstant: 30),
+
             
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -306,11 +330,11 @@ extension ProfileViewController {
                     self?.profileHeader.timerUntilReload.text = "RELOAD DATA"
                 }
             })
-        RunLoop.current.add(timer, forMode: .common)//
+        RunLoop.current.add(timer, forMode: .common)
     }
     
     func stopTimer(){
         timer.invalidate()
-        self.profileHeader.timerUntilReload.text = "RELOAD DATA"//
+        self.profileHeader.timerUntilReload.text = "RELOAD DATA"
     }
 }
