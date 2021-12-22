@@ -27,13 +27,24 @@ class VideoViewController: UIViewController {
             highlighted: .yes) { [weak self] in
                 self?.toggleMenu()
             }
+        button.tintColor = .systemGreen
         return button
+    }()
+    
+    private var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Video Player"
+        label.textColor = .systemGreen
+        label.numberOfLines = 1
+        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.sizeToFit()
+        label.backgroundColor = .clear
+        return label
     }()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Video Player"
         view.backgroundColor = .systemRed
         setupConstraints()
     }
@@ -45,15 +56,19 @@ class VideoViewController: UIViewController {
     
     private func setupConstraints(){
         menuButton.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(menuButton)
+        view.addSubview(titleLabel)
+
         let constraints = [
             menuButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             menuButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             menuButton.heightAnchor.constraint(equalToConstant: 30),
             menuButton.widthAnchor.constraint(equalToConstant: 30),
+            
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ]
-        
         NSLayoutConstraint.activate(constraints)
     }
-
 }

@@ -128,7 +128,6 @@ extension SlideMenuContainerViewController: SlideMenuViewControllerDelegate {
         profileVC.view.addSubview(vc.view)
         vc.view.frame = view.bounds
         vc.didMove(toParent: profileVC)
-        profileVC.title = vc.title
         currentVC = vc
     }
     
@@ -140,7 +139,6 @@ extension SlideMenuContainerViewController: SlideMenuViewControllerDelegate {
         profileVC.view.addSubview(vc.view)
         vc.view.frame = view.bounds
         vc.didMove(toParent: profileVC)
-        profileVC.title = vc.title
         currentVC = vc
     }
     
@@ -148,7 +146,6 @@ extension SlideMenuContainerViewController: SlideMenuViewControllerDelegate {
     private func resetToProfile() {
         currentVC?.view.removeFromSuperview()
         currentVC?.didMove(toParent: nil)
-        profileVC.title = nil
         currentVC = nil
     }
 }

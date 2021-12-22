@@ -262,7 +262,6 @@ class LogInViewController: UIViewController {
         else {return}
         
         
-        // MARK: - ДЗ-11 Задача 1 (2)
         do {
             try viewModel.checkAuthorization(login: login, password: password)
             viewModel.segueToProfile()

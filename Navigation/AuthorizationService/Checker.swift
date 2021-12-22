@@ -16,9 +16,9 @@ class Checker {
     
     private init(){
         #if DEBUG
-        self.authorizationUserInfo = ["Test": "22"]
+        self.authorizationUserInfo = ["A": "22"]
         #else
-        self.authorizationUserInfo = ["Amarunseka": "22"]
+        self.authorizationUserInfo = ["Test": "22"]
         #endif
     }
      
