@@ -14,12 +14,12 @@ class MainTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        feedCoordinator.start()
         loginCoordinator.start()
+        feedCoordinator.start()
 
         
         viewControllers = [
-            feedCoordinator.navigationController,
-            loginCoordinator.navigationController]
+            loginCoordinator.navigationController,
+            feedCoordinator.navigationController]
     }
 }

@@ -7,7 +7,6 @@
 
 import UIKit
 
-// протокол для переключения между VC
 protocol SlideMenuViewControllerDelegate: AnyObject {
     func didSelect(menuItem: SlideMenuModel)
 }
@@ -62,7 +61,6 @@ extension SlideMenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // метод переключения между VC
         let item = SlideMenuModel.allCases[indexPath.row]
         delegate?.didSelect(menuItem: item)
     }

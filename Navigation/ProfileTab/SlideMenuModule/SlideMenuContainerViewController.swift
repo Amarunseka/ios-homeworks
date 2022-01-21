@@ -8,7 +8,6 @@
 import UIKit
 
 
-
 class SlideMenuContainerViewController: UIViewController {
    
     private let menuVC: SlideMenuViewController
@@ -16,8 +15,9 @@ class SlideMenuContainerViewController: UIViewController {
     private var menuIsOpen = false
     
     let profileVC: ProfileViewController
-    lazy var audioVC = AudioViewController(toggleMenu: toggleMenu)
+    lazy var audioVC = AudioViewController(toggleMenu: toggleMenu, viewModel: AudioViewModel())
     lazy var videoVC = VideoViewController(toggleMenu: toggleMenu)
+    lazy var localVideoVC = LocalVideoViewController(toggleMenu: toggleMenu)
     private var currentVC: UIViewController?
 
     init(menuVC: SlideMenuViewController, profileVC: ProfileViewController) {
@@ -36,7 +36,6 @@ class SlideMenuContainerViewController: UIViewController {
         setupProfileVC()
     }
     
-    // добавляем одного child 
     private func setupProfileVC() {
         profileVC.delegate = self
         addChild(profileVC)
@@ -45,7 +44,6 @@ class SlideMenuContainerViewController: UIViewController {
     }
     
     
-    // добавляем второго child
     private func setupMenuVC() {
         if !menuIsCreated {
             menuVC.delegate = self
@@ -117,6 +115,9 @@ extension SlideMenuContainerViewController: SlideMenuViewControllerDelegate {
             self.addAudioVC()
         case .video:
             self.addVideoVC()
+        case .localVideo:
+            self.addLocalVideoVC()
+            
         }
     }
     
@@ -135,6 +136,18 @@ extension SlideMenuContainerViewController: SlideMenuViewControllerDelegate {
         currentVC?.view.removeFromSuperview()
         currentVC?.didMove(toParent: nil)
         let vc = videoVC
+        profileVC.addChild(vc)
+        profileVC.view.addSubview(vc.view)
+        vc.view.frame = view.bounds
+        vc.didMove(toParent: profileVC)
+        currentVC = vc
+    }
+    
+    
+    private func addLocalVideoVC() {
+        currentVC?.view.removeFromSuperview()
+        currentVC?.didMove(toParent: nil)
+        let vc = localVideoVC
         profileVC.addChild(vc)
         profileVC.view.addSubview(vc.view)
         vc.view.frame = view.bounds

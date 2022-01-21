@@ -11,7 +11,7 @@ import UIKit
 class CurrentUserService: UserServiceProtocol {
     
     private var currentUser = User(
-        userName: "A",
+        userName: "Amarunseka",
         userAvatar: UIImage(named: "honeybadger") ?? UIImage(),
         userStatus: "Looking to fress somebody")
     
