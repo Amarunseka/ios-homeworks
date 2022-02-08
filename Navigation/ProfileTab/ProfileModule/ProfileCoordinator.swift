@@ -5,7 +5,6 @@
 //  Created by Миша on 08.11.2021.
 //
 
-import Foundation
 import UIKit
 
 class ProfileCoordinator: Coordinator {
@@ -24,7 +23,7 @@ class ProfileCoordinator: Coordinator {
     }
     
     func start() {
-        module.viewModel.coordinator = self
+        module.profileVC.viewModel.coordinator = self
         navigationController.pushViewController(module, animated: true)
     }
     

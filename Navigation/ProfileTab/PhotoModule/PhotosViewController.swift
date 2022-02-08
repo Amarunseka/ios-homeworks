@@ -71,7 +71,7 @@ class PhotosViewController: UIViewController {
         imageProcessor.processImagesOnThread(
             sourceImages: photoForUse,
             filter: .noir,
-            qos: .default) { [self]
+            qos: .default) { [weak self]
                 images in
                 for image in images {
                     if let image = image {
@@ -80,15 +80,15 @@ class PhotosViewController: UIViewController {
                 }
                 
                 DispatchQueue.main.async {
-                    imagePublisherFacade.subscribe(self)
+                    self?.imagePublisherFacade.subscribe(self!)
                     
-                    imagePublisherFacade.addImagesWithTimer(
+                    self?.imagePublisherFacade.addImagesWithTimer(
                         time: 0.8,
                         repeat: currentPhotoForPublisher.count * 2,
                         userImages: currentPhotoForPublisher)
                     
-                    self.collectionView.reloadData()
-                    activityIndicator.stopAnimating()
+                    self?.collectionView.reloadData()
+                    self?.activityIndicator.stopAnimating()
                 }
             }
     }

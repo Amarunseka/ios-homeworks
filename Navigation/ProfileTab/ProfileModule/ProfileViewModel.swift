@@ -22,8 +22,6 @@ class ProfileViewModel {
     init(inputUserName: String){
         self.inputUserName = inputUserName
         
-        
-        // MARK: - ДЗ-11 задача №2 (2)
         self.createUser {user in
             switch user {
             case.success(let user):
@@ -40,13 +38,11 @@ class ProfileViewModel {
         var user: UserServiceProtocol
         
         #if DEBUG
-        user = TestUserService()
-        #else
         user = CurrentUserService()
+        #else
+        user = TestUserService()
         #endif
         
-        // MARK: - ДЗ-11 задача №2 (1)
-
         if let user = user.createUser(userName: inputUserName) {
             completion(.success(user))
         } else {
