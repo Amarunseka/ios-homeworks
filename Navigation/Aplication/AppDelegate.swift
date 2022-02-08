@@ -11,7 +11,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
+    //
     let appearanceNB = UINavigationBarAppearance()
     let appearanceTB = UITabBarAppearance()
 
