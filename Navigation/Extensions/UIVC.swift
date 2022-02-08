@@ -29,4 +29,15 @@ extension UIViewController {
         
         return button
     }
+    
+    func createMP3PlayerButton(_ button: UIButton, image: String) -> UIButton {
+        
+        view.addSubview(button)
+        button.setImage(UIImage(named: image), for: .normal)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        button.contentMode = .scaleToFill
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }
 }

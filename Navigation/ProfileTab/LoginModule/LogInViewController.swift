@@ -88,7 +88,6 @@ class LogInViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
         setupAuthenticationLabelConstraints()
     }
     
@@ -169,6 +168,8 @@ class LogInViewController: UIViewController {
         logInTextField.layer.borderColor = UIColor.lightGray.cgColor
         logInTextField.layer.borderWidth = 0.5
         logInTextField.delegate = self
+        ///
+        logInTextField.text = "Amarunseka"
     }
     
     
@@ -185,7 +186,8 @@ class LogInViewController: UIViewController {
         passwordTextField.layer.borderWidth = 0.5
         passwordTextField.isSecureTextEntry = true
         passwordTextField.delegate = self
-
+        ///
+        passwordTextField.text = "22"
     }
     
     
@@ -262,7 +264,6 @@ class LogInViewController: UIViewController {
         else {return}
         
         
-        // MARK: - ДЗ-11 Задача 1 (2)
         do {
             try viewModel.checkAuthorization(login: login, password: password)
             viewModel.segueToProfile()

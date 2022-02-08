@@ -22,9 +22,10 @@ class LoginCoordinator: NSObject, Coordinator {
         navigationController.pushViewController(module, animated: true)
     }
     
-    
+    // MARK: - ДЗ-11 Задача №4
     func segueToProfile(){
-        guard let userName = userName else {return}
+        guard let userName = userName else {
+            preconditionFailure("User isn't found")}
         
         let child = ProfileCoordinator(navigationController: navigationController, userName: userName)
         childCoordinators.append(child)

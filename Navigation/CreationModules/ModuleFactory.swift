@@ -32,9 +32,11 @@ class ModuleFactory: CreateModuleProtocol {
     }
     
     
-    static func createProfileCoordinator(user: String) -> ProfileViewController {
+    static func createProfileCoordinator(user: String) -> SlideMenuContainerViewController {
         let vm = ProfileViewModel(inputUserName: user)
-        let vc = ProfileViewController(viewModel: vm)
-        return vc
+        let menuVC = SlideMenuViewController()
+        let profileVC = ProfileViewController(viewModel: vm)
+        let containerVC = SlideMenuContainerViewController(menuVC: menuVC, profileVC: profileVC)
+        return containerVC
     }
 }
