@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
             case .failure(let error):
                 print(error.localizedDescription)
-                // (error code: -1009 [1:50])
+                /// (error code: -1009 [1:50])
             }
         }
         
