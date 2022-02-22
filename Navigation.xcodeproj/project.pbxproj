@@ -35,6 +35,9 @@
 		45306B382739246100D1516B /* ModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B372739246100D1516B /* ModuleFactory.swift */; };
 		45653B41275A573A0079AA67 /* AuthenticationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45653B40275A573A0079AA67 /* AuthenticationErrors.swift */; };
 		45653B43275AA3100079AA67 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45653B42275AA30F0079AA67 /* ErrorAlert.swift */; };
+		4565D3C327B5A47E007557A0 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3C227B5A47E007557A0 /* NetworkService.swift */; };
+		4565D3C527B5A85F007557A0 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3C427B5A85F007557A0 /* AppConfiguration.swift */; };
+		4565D3C727B6E719007557A0 /* ShipInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3C627B6E719007557A0 /* ShipInfo.swift */; };
 		4573324F279966020060B2DA /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4573324E279966020060B2DA /* VideoTableViewCell.swift */; };
 		45733251279966140060B2DA /* VideoTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45733250279966140060B2DA /* VideoTableHeaderView.swift */; };
 		45733253279966270060B2DA /* YoutubePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45733252279966270060B2DA /* YoutubePlayerView.swift */; };
@@ -148,6 +151,9 @@
 		45306B372739246100D1516B /* ModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactory.swift; sourceTree = "<group>"; };
 		45653B40275A573A0079AA67 /* AuthenticationErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrors.swift; sourceTree = "<group>"; };
 		45653B42275AA30F0079AA67 /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
+		4565D3C227B5A47E007557A0 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		4565D3C427B5A85F007557A0 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		4565D3C627B6E719007557A0 /* ShipInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipInfo.swift; sourceTree = "<group>"; };
 		4573324C2799651F0060B2DA /* Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
 		4573324E279966020060B2DA /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		45733250279966140060B2DA /* VideoTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableHeaderView.swift; sourceTree = "<group>"; };
@@ -377,6 +383,16 @@
 			path = CreationModules;
 			sourceTree = "<group>";
 		};
+		4565D3C127B5A455007557A0 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4565D3C227B5A47E007557A0 /* NetworkService.swift */,
+				4565D3C427B5A85F007557A0 /* AppConfiguration.swift */,
+				4565D3C627B6E719007557A0 /* ShipInfo.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		4573325727998F130060B2DA /* LocalVideModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,6 +425,7 @@
 				4586111E26FA0BF700269593 /* LoginInspector.swift */,
 				4586112026FA0C1000269593 /* LoginFactoryProtocol.swift */,
 				4586112226FA0C3200269593 /* LoginFactory.swift */,
+				4565D3C127B5A455007557A0 /* Network */,
 			);
 			path = AuthorizationService;
 			sourceTree = "<group>";
@@ -763,12 +780,14 @@
 				45306B2D273913CA00D1516B /* LoginCoordinator.swift in Sources */,
 				45306B1F27390E5500D1516B /* PostCoordinator.swift in Sources */,
 				45E2C689270F229400B58BC3 /* CheckerText.swift in Sources */,
+				4565D3C327B5A47E007557A0 /* NetworkService.swift in Sources */,
 				45F30FA5273D4F580016DEC0 /* BruteForse.swift in Sources */,
 				45E2C685270F224300B58BC3 /* CustomButton.swift in Sources */,
 				45306B3127391C4D00D1516B /* ProfileCoordinator.swift in Sources */,
 				4586112126FA0C1000269593 /* LoginFactoryProtocol.swift in Sources */,
 				451798FE2771C27A004DCACB /* SlideMenuViewController.swift in Sources */,
 				45D503AF26F5241900387102 /* ImageAlpha.swift in Sources */,
+				4565D3C727B6E719007557A0 /* ShipInfo.swift in Sources */,
 				45733256279974F90060B2DA /* Videos.swift in Sources */,
 				458CBBB926E0E53100915CA1 /* AppDelegate.swift in Sources */,
 				45306B1D27390D9500D1516B /* FeedCoordinator.swift in Sources */,
@@ -791,6 +810,7 @@
 				458CBBEC26E0FA5300915CA1 /* MainTabBarController.swift in Sources */,
 				458CBBD826E0F8FF00915CA1 /* InfoViewController.swift in Sources */,
 				45306B2B273911B100D1516B /* UIVC.swift in Sources */,
+				4565D3C527B5A85F007557A0 /* AppConfiguration.swift in Sources */,
 				45306B382739246100D1516B /* ModuleFactory.swift in Sources */,
 				458CBBE026E0F95A00915CA1 /* PostTableViewCell.swift in Sources */,
 				4573325927998F470060B2DA /* LocalVideoViewController.swift in Sources */,
