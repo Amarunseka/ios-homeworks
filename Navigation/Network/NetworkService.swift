@@ -7,60 +7,100 @@
 
 import Foundation
 
-// MARK: - Вариант 1 (простой)
-//struct NetworkService {
-//
-//
-//    static func receivePost(url: URL?){
-//        let session = URLSession.shared
-//
-//        guard let url = url else {return}
-//
-//        session.dataTask(with: url) { (data, response, error) in
-//            if let response = response as? HTTPURLResponse {
-//                print("Headers: \n\(response.allHeaderFields), \n Codes: \n\(response.statusCode)\n")
-//            }
-//
-//            guard let data = data else {return}
-//
-//            do {
-//                let json = try JSONSerialization.jsonObject(with: data, options: [])
-//                print(json)
-//            } catch {
-//                print(error.localizedDescription)
-//                // error code: -1009
-//            }
-//
-//        }.resume()
-//    }
-//}
+// MARK: - Задача №1
+struct SerializationNetworkService {
+
+    static func receivePost() -> String {
+        let url = URL(string: "https://jsonplaceholder.typicode.com/todos/")
+        let session = URLSession.shared
+        var answer = "Can't receive data"
+
+        guard let url = url else {return "incorrect URL"}
+        
+            session.dataTask(with: url) { (data, response, error) in
+                guard let data = data else {return}
+
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
+                        if let result = json[2]["title"] as? String {
+                            answer = result
+                        }
+                    }
+                } catch {
+                    answer = "Failed to load: \(error.localizedDescription)"
+                }
+
+            }.resume()
+        sleep(1)
+        return answer
+    }
+}
 
 
-// MARK: - Вариант 2 (поинтересней)
 
-enum ObtainShipResult {
+// MARK: - Задача №2
+
+enum ObtainDataResult {
     
-    case success(shipInfo: ShipInfo?)
+    case success(objectInfo: Codable?)
     case failure(error: Error)
 }
 
-class NetworkService {
+// MARK: - Planets
+class PlanetNetworkService {
     
-    
-    class func receiveShipInfo(url: URL?, completion: @escaping (ObtainShipResult) -> Void){
+    class func receivePlanetInfo(url: URL?, completion: @escaping (ObtainDataResult) -> Void){
         let sessionConfiguration = URLSessionConfiguration.default
-        /// знаю в данном случае можно просто URLSession.shared, просто мне так больше нравиться
         lazy var session = URLSession(configuration: sessionConfiguration)
         let decoder = JSONDecoder()
 
         guard let url = url else {return}
         session.dataTask(with: url) { (data, response, error) in
             
-            if let response = response as? HTTPURLResponse {
-                print("Headers: \n\(response.allHeaderFields), \n Codes: \n\(response.statusCode)\n\n")
+            let result: ObtainDataResult
+            
+            defer {
+                DispatchQueue.main.async {
+                    completion(result)
+                }
             }
 
-            let result: ObtainShipResult
+            if error == nil, let parsData = data {
+                guard
+                    let planetInfo = try?
+                        decoder.decode(Planet.self, from: parsData)
+                else {
+                    result = .success(objectInfo: nil)
+                    return}
+                
+                result = .success(objectInfo: planetInfo)
+                
+            } else {
+                if let error = error {
+                    result = .failure(error: error)
+                } else {
+                    result = .failure(error: NSError())
+                }
+            }
+        }.resume()
+    }
+}
+
+
+
+// MARK: - StarShips
+class StarshipNetworkService {
+    
+    class func receiveShipInfo(url: URL?, completion: @escaping (ObtainDataResult) -> Void){
+        let sessionConfiguration = URLSessionConfiguration.default
+        lazy var session = URLSession(configuration: sessionConfiguration)
+        let decoder = JSONDecoder()
+
+        guard let url = url else {return}
+        
+        session.dataTask(with: url) { (data, response, error) in
+            
+            let result: ObtainDataResult
             
             defer {
                 DispatchQueue.main.async {
@@ -73,10 +113,10 @@ class NetworkService {
                     let shipInfo = try?
                         decoder.decode(ShipInfo.self, from: parsData)
                 else {
-                    result = .success(shipInfo: nil)
+                    result = .success(objectInfo: nil)
                     return}
                 
-                result = .success(shipInfo: shipInfo)
+                result = .success(objectInfo: shipInfo)
                 
             } else {
                 if let error = error {
@@ -88,3 +128,6 @@ class NetworkService {
         }.resume()
     }
 }
+
+
+

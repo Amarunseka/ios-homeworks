@@ -3,17 +3,20 @@
 //  Navigation
 //
 //  Created by Миша on 02.09.2021.
+//
 
 import UIKit
+import AVFoundation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    //
     let appearanceNB = UINavigationBarAppearance()
     let appearanceTB = UITabBarAppearance()
     let url = URL(string: AppConfiguration.first.rawValue)
+    private let planetURL = URL(string: "https://swapi.dev/api/planets/1")
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -22,30 +25,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = MainTabBarController()
         
         UITabBar.appearance().backgroundColor = .customColorGray
-        setupNB()
-        
-        // реализация варианта 1
-        /// NetworkService.receivePost(url: url)
 
-        // реализация варианта 2
-        NetworkService.receiveShipInfo(url: url) { result in
+        PlanetNetworkService.receivePlanetInfo(url: planetURL) { result in
             switch result {
-            case .success(let shipInfo):
-                guard let shipInfo = shipInfo else {return}
-                print(shipInfo)
-                // так же можно каждую по отдельности
-                print("\nShip's Name: \(shipInfo.Name)")
-
-                
+            case .success(let objectInfo):
+                if let info = objectInfo as? Planet {
+                    print(info.residents.count)
+                    for inhabitant in info.residents {
+                        print(inhabitant)
+                    }
+                }
             case .failure(let error):
-                print(error.localizedDescription)
-                /// (error code: -1009 [1:50])
+                print(error)
             }
         }
         
+        
         return true
     }
-    
+
     
     func setupNB(){
         appearanceNB.configureWithOpaqueBackground()
