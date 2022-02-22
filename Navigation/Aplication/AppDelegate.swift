@@ -26,19 +26,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UITabBar.appearance().backgroundColor = .customColorGray
 
-        PlanetNetworkService.receivePlanetInfo(url: planetURL) { result in
-            switch result {
-            case .success(let objectInfo):
-                if let info = objectInfo as? Planet {
-                    print(info.residents.count)
-                    for inhabitant in info.residents {
-                        print(inhabitant)
-                    }
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
+//        PlanetNetworkService.receivePlanetInfo(url: planetURL) { result in
+//            switch result {
+//            case .success(let objectInfo):
+//                if let info = objectInfo as? Planet {
+//                    print(info.residents.count)
+//                    for inhabitant in info.residents {
+//                        print(inhabitant)
+//                    }
+//                }
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
         
         
         return true

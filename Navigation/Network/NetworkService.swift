@@ -88,6 +88,48 @@ class PlanetNetworkService {
 
 
 
+// MARK: - Residens
+class ResidentNetworkService {
+    
+    class func receiveResidentInfo(url: URL?, completion: @escaping (ObtainDataResult) -> Void){
+        let sessionConfiguration = URLSessionConfiguration.default
+        lazy var session = URLSession(configuration: sessionConfiguration)
+        let decoder = JSONDecoder()
+
+        guard let url = url else {return}
+        session.dataTask(with: url) { (data, response, error) in
+            
+            let result: ObtainDataResult
+            
+            defer {
+                DispatchQueue.main.async {
+                    completion(result)
+                }
+            }
+
+            if error == nil, let parsData = data {
+                guard
+                    let residentInfo = try?
+                        decoder.decode(Resident.self, from: parsData)
+                else {
+                    result = .success(objectInfo: nil)
+                    return}
+                
+                result = .success(objectInfo: residentInfo)
+                
+            } else {
+                if let error = error {
+                    result = .failure(error: error)
+                } else {
+                    result = .failure(error: NSError())
+                }
+            }
+        }.resume()
+    }
+}
+
+
+
 // MARK: - StarShips
 class StarshipNetworkService {
     

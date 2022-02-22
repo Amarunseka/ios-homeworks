@@ -265,7 +265,7 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
             
         default:
-            return UITableViewCell ()
+            return UITableViewCell()
         }
     }
 
