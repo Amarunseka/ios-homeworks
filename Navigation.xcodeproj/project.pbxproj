@@ -425,7 +425,6 @@
 				4586111E26FA0BF700269593 /* LoginInspector.swift */,
 				4586112026FA0C1000269593 /* LoginFactoryProtocol.swift */,
 				4586112226FA0C3200269593 /* LoginFactory.swift */,
-				4565D3C127B5A455007557A0 /* Network */,
 			);
 			path = AuthorizationService;
 			sourceTree = "<group>";
@@ -454,6 +453,7 @@
 			isa = PBXGroup;
 			children = (
 				458CBBED26E0FAE200915CA1 /* Aplication */,
+				4565D3C127B5A455007557A0 /* Network */,
 				4586111926FA0B8000269593 /* AuthorizationService */,
 				45306B342739240600D1516B /* CreationModules */,
 				45306B2427390EB100D1516B /* ProfileTab */,
