@@ -40,6 +40,7 @@
 		4565D3C727B6E719007557A0 /* ShipInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3C627B6E719007557A0 /* ShipInfo.swift */; };
 		4565D3CB27C4FFB8007557A0 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3CA27C4FFB8007557A0 /* Planet.swift */; };
 		4565D3CD27C56ACF007557A0 /* Resident.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3CC27C56ACF007557A0 /* Resident.swift */; };
+		4565D3CF27C78283007557A0 /* DecoderDataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3CE27C78283007557A0 /* DecoderDataStrategy.swift */; };
 		4573324F279966020060B2DA /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4573324E279966020060B2DA /* VideoTableViewCell.swift */; };
 		45733251279966140060B2DA /* VideoTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45733250279966140060B2DA /* VideoTableHeaderView.swift */; };
 		45733253279966270060B2DA /* YoutubePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45733252279966270060B2DA /* YoutubePlayerView.swift */; };
@@ -158,6 +159,7 @@
 		4565D3C627B6E719007557A0 /* ShipInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipInfo.swift; sourceTree = "<group>"; };
 		4565D3CA27C4FFB8007557A0 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		4565D3CC27C56ACF007557A0 /* Resident.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resident.swift; sourceTree = "<group>"; };
+		4565D3CE27C78283007557A0 /* DecoderDataStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderDataStrategy.swift; sourceTree = "<group>"; };
 		4573324C2799651F0060B2DA /* Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
 		4573324E279966020060B2DA /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		45733250279966140060B2DA /* VideoTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableHeaderView.swift; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				4565D3C227B5A47E007557A0 /* NetworkService.swift */,
+				4565D3CE27C78283007557A0 /* DecoderDataStrategy.swift */,
 				4565D3C427B5A85F007557A0 /* AppConfiguration.swift */,
 				4565D3C627B6E719007557A0 /* ShipInfo.swift */,
 				4565D3CA27C4FFB8007557A0 /* Planet.swift */,
@@ -828,6 +831,7 @@
 				4586111F26FA0BF700269593 /* LoginInspector.swift in Sources */,
 				4583A13627955AD30054E377 /* MP3Player.swift in Sources */,
 				4583A13827955CDE0054E377 /* MP3FilesReader.swift in Sources */,
+				4565D3CF27C78283007557A0 /* DecoderDataStrategy.swift in Sources */,
 				4517990827730D53004DCACB /* AudioViewController.swift in Sources */,
 				458CBBDC26E0F92200915CA1 /* ProfileViewController.swift in Sources */,
 				458CBBD626E0F8EF00915CA1 /* PostViewController.swift in Sources */,

@@ -30,10 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            switch result {
 //            case .success(let objectInfo):
 //                if let info = objectInfo as? Planet {
-//                    print(info.residents.count)
-//                    for inhabitant in info.residents {
-//                        print(inhabitant)
-//                    }
+//                    print(info.created)
+////                    for inhabitant in info.residents {
+////                        print(inhabitant)
+////                    }
 //                }
 //            case .failure(let error):
 //                print(error)

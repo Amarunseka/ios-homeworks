@@ -53,6 +53,8 @@ class PlanetNetworkService {
         let sessionConfiguration = URLSessionConfiguration.default
         lazy var session = URLSession(configuration: sessionConfiguration)
         let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(decoder.dateFormater)
+
 
         guard let url = url else {return}
         session.dataTask(with: url) { (data, response, error) in
@@ -95,6 +97,7 @@ class ResidentNetworkService {
         let sessionConfiguration = URLSessionConfiguration.default
         lazy var session = URLSession(configuration: sessionConfiguration)
         let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(decoder.dateFormater)
 
         guard let url = url else {return}
         session.dataTask(with: url) { (data, response, error) in
@@ -128,8 +131,7 @@ class ResidentNetworkService {
     }
 }
 
-
-
+ 
 // MARK: - StarShips
 class StarshipNetworkService {
     
@@ -137,6 +139,8 @@ class StarshipNetworkService {
         let sessionConfiguration = URLSessionConfiguration.default
         lazy var session = URLSession(configuration: sessionConfiguration)
         let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(decoder.dateFormater)
+
 
         guard let url = url else {return}
         
