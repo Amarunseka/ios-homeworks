@@ -37,7 +37,7 @@
 		45653B43275AA3100079AA67 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45653B42275AA30F0079AA67 /* ErrorAlert.swift */; };
 		4565D3C327B5A47E007557A0 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3C227B5A47E007557A0 /* NetworkService.swift */; };
 		4565D3C527B5A85F007557A0 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3C427B5A85F007557A0 /* AppConfiguration.swift */; };
-		4565D3C727B6E719007557A0 /* ShipInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3C627B6E719007557A0 /* ShipInfo.swift */; };
+		4565D3C727B6E719007557A0 /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3C627B6E719007557A0 /* Ship.swift */; };
 		4565D3CB27C4FFB8007557A0 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3CA27C4FFB8007557A0 /* Planet.swift */; };
 		4565D3CD27C56ACF007557A0 /* Resident.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3CC27C56ACF007557A0 /* Resident.swift */; };
 		4565D3CF27C78283007557A0 /* DecoderDataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3CE27C78283007557A0 /* DecoderDataStrategy.swift */; };
@@ -156,7 +156,7 @@
 		45653B42275AA30F0079AA67 /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		4565D3C227B5A47E007557A0 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		4565D3C427B5A85F007557A0 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
-		4565D3C627B6E719007557A0 /* ShipInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipInfo.swift; sourceTree = "<group>"; };
+		4565D3C627B6E719007557A0 /* Ship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ship.swift; sourceTree = "<group>"; };
 		4565D3CA27C4FFB8007557A0 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
 		4565D3CC27C56ACF007557A0 /* Resident.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resident.swift; sourceTree = "<group>"; };
 		4565D3CE27C78283007557A0 /* DecoderDataStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderDataStrategy.swift; sourceTree = "<group>"; };
@@ -393,13 +393,20 @@
 			isa = PBXGroup;
 			children = (
 				4565D3C227B5A47E007557A0 /* NetworkService.swift */,
-				4565D3CE27C78283007557A0 /* DecoderDataStrategy.swift */,
 				4565D3C427B5A85F007557A0 /* AppConfiguration.swift */,
-				4565D3C627B6E719007557A0 /* ShipInfo.swift */,
+				4565D3D027C7859B007557A0 /* NetModels */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		4565D3D027C7859B007557A0 /* NetModels */ = {
+			isa = PBXGroup;
+			children = (
+				4565D3C627B6E719007557A0 /* Ship.swift */,
 				4565D3CA27C4FFB8007557A0 /* Planet.swift */,
 				4565D3CC27C56ACF007557A0 /* Resident.swift */,
 			);
-			path = Network;
+			path = NetModels;
 			sourceTree = "<group>";
 		};
 		4573325727998F130060B2DA /* LocalVideModule */ = {
@@ -543,6 +550,7 @@
 		45D503AB26F523D300387102 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4565D3CE27C78283007557A0 /* DecoderDataStrategy.swift */,
 				45D503AC26F523FC00387102 /* UIColor.swift */,
 				45D503AE26F5241900387102 /* ImageAlpha.swift */,
 				45306B282739119500D1516B /* UITabBarItem.swift */,
@@ -797,7 +805,7 @@
 				4586112126FA0C1000269593 /* LoginFactoryProtocol.swift in Sources */,
 				451798FE2771C27A004DCACB /* SlideMenuViewController.swift in Sources */,
 				45D503AF26F5241900387102 /* ImageAlpha.swift in Sources */,
-				4565D3C727B6E719007557A0 /* ShipInfo.swift in Sources */,
+				4565D3C727B6E719007557A0 /* Ship.swift in Sources */,
 				45733256279974F90060B2DA /* Videos.swift in Sources */,
 				458CBBB926E0E53100915CA1 /* AppDelegate.swift in Sources */,
 				45306B1D27390D9500D1516B /* FeedCoordinator.swift in Sources */,

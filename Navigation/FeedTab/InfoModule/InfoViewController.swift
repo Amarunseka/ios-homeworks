@@ -87,14 +87,14 @@ class InfoViewController: UIViewController {
     
     private func receivePlanetInfo(){
         
-        PlanetNetworkService.receivePlanetInfo(url: self.planetURL) { [weak self ] result in
+        NetworkService.receiveObject(url: self.planetURL, model: Planet.self) { [weak self ] result in
             switch result {
             case .success(let objectInfo):
                 if let planetInfo = objectInfo as? Planet {
                     self?.secondTaskLabel.text = "TASK №2\nOrbital period of Tatooine: \(planetInfo.orbitalPeriod) days"
                     
-                    for resident in planetInfo.residents {
-                        self?.receiveResidentInfo(url: resident)
+                    for residentURL in planetInfo.residents {
+                        self?.receiveResidentInfo(url: residentURL)
                     }
                 }
             case .failure(let error):
@@ -106,7 +106,7 @@ class InfoViewController: UIViewController {
     
     private func receiveResidentInfo(url: String) {
         let url = URL(string: url)
-        ResidentNetworkService.receiveResidentInfo(url: url) { [weak self ] result in
+        NetworkService.receiveObject(url: url, model: Resident.self) { [weak self ] result in
             switch result {
             case .success(let objectInfo):
                 if let residentInfo = objectInfo as? Resident {

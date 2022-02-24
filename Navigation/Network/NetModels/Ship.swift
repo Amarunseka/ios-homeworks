@@ -1,5 +1,5 @@
 //
-//  ShipInfo.swift
+//  Ship.swift
 //  Navigation
 //
 //  Created by Миша on 11.02.2022.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ShipInfo: Codable {
+struct Ship: Codable {
     
     let Name: String
     let Model: String

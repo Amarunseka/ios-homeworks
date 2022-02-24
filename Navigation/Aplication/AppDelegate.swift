@@ -14,9 +14,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let appearanceNB = UINavigationBarAppearance()
     let appearanceTB = UITabBarAppearance()
-    let url = URL(string: AppConfiguration.first.rawValue)
-    private let planetURL = URL(string: "https://swapi.dev/api/planets/1")
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -26,21 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UITabBar.appearance().backgroundColor = .customColorGray
 
-//        PlanetNetworkService.receivePlanetInfo(url: planetURL) { result in
-//            switch result {
-//            case .success(let objectInfo):
-//                if let info = objectInfo as? Planet {
-//                    print(info.created)
-////                    for inhabitant in info.residents {
-////                        print(inhabitant)
-////                    }
-//                }
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-        
-        
         return true
     }
 

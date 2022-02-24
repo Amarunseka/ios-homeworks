@@ -46,96 +46,9 @@ enum ObtainDataResult {
     case failure(error: Error)
 }
 
-// MARK: - Planets
-class PlanetNetworkService {
+class NetworkService {
     
-    class func receivePlanetInfo(url: URL?, completion: @escaping (ObtainDataResult) -> Void){
-        let sessionConfiguration = URLSessionConfiguration.default
-        lazy var session = URLSession(configuration: sessionConfiguration)
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(decoder.dateFormater)
-
-
-        guard let url = url else {return}
-        session.dataTask(with: url) { (data, response, error) in
-            
-            let result: ObtainDataResult
-            
-            defer {
-                DispatchQueue.main.async {
-                    completion(result)
-                }
-            }
-
-            if error == nil, let parsData = data {
-                guard
-                    let planetInfo = try?
-                        decoder.decode(Planet.self, from: parsData)
-                else {
-                    result = .success(objectInfo: nil)
-                    return}
-                
-                result = .success(objectInfo: planetInfo)
-                
-            } else {
-                if let error = error {
-                    result = .failure(error: error)
-                } else {
-                    result = .failure(error: NSError())
-                }
-            }
-        }.resume()
-    }
-}
-
-
-
-// MARK: - Residens
-class ResidentNetworkService {
-    
-    class func receiveResidentInfo(url: URL?, completion: @escaping (ObtainDataResult) -> Void){
-        let sessionConfiguration = URLSessionConfiguration.default
-        lazy var session = URLSession(configuration: sessionConfiguration)
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(decoder.dateFormater)
-
-        guard let url = url else {return}
-        session.dataTask(with: url) { (data, response, error) in
-            
-            let result: ObtainDataResult
-            
-            defer {
-                DispatchQueue.main.async {
-                    completion(result)
-                }
-            }
-
-            if error == nil, let parsData = data {
-                guard
-                    let residentInfo = try?
-                        decoder.decode(Resident.self, from: parsData)
-                else {
-                    result = .success(objectInfo: nil)
-                    return}
-                
-                result = .success(objectInfo: residentInfo)
-                
-            } else {
-                if let error = error {
-                    result = .failure(error: error)
-                } else {
-                    result = .failure(error: NSError())
-                }
-            }
-        }.resume()
-    }
-}
-
- 
-// MARK: - StarShips
-class StarshipNetworkService {
-    
-    class func receiveShipInfo(url: URL?, completion: @escaping (ObtainDataResult) -> Void){
+    class func receiveObject<Model: Codable>(url: URL?, model: Model.Type, completion: @escaping (ObtainDataResult) -> Void){
         let sessionConfiguration = URLSessionConfiguration.default
         lazy var session = URLSession(configuration: sessionConfiguration)
         let decoder = JSONDecoder()
@@ -153,16 +66,16 @@ class StarshipNetworkService {
                     completion(result)
                 }
             }
-
+            
             if error == nil, let parsData = data {
                 guard
-                    let shipInfo = try?
-                        decoder.decode(ShipInfo.self, from: parsData)
+                    let objectInfo = try?
+                        decoder.decode(model.self, from: parsData)
                 else {
                     result = .success(objectInfo: nil)
                     return}
                 
-                result = .success(objectInfo: shipInfo)
+                result = .success(objectInfo: objectInfo)
                 
             } else {
                 if let error = error {
@@ -174,6 +87,3 @@ class StarshipNetworkService {
         }.resume()
     }
 }
-
-
-
