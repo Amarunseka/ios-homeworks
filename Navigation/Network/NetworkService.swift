@@ -7,10 +7,17 @@
 
 import Foundation
 
-// MARK: - Задача №1
-struct SerializationNetworkService {
 
-    static func receivePost() -> String {
+enum ObtainDataResult {
+    
+    case success(objectInfo: Codable?)
+    case failure(error: Error)
+}
+
+class NetworkService {
+    
+    // MARK: - Задача №1
+    static func receivePostSerialization() -> String {
         let url = URL(string: "https://jsonplaceholder.typicode.com/todos/")
         let session = URLSession.shared
         var answer = "Can't receive data"
@@ -34,20 +41,9 @@ struct SerializationNetworkService {
         sleep(1)
         return answer
     }
-}
-
-
-
+    
 // MARK: - Задача №2
 
-enum ObtainDataResult {
-    
-    case success(objectInfo: Codable?)
-    case failure(error: Error)
-}
-
-class NetworkService {
-    
     class func receiveObject<Model: Codable>(url: URL?, model: Model.Type, completion: @escaping (ObtainDataResult) -> Void){
         let sessionConfiguration = URLSessionConfiguration.default
         lazy var session = URLSession(configuration: sessionConfiguration)

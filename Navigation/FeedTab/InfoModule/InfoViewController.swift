@@ -53,7 +53,7 @@ class InfoViewController: UIViewController {
         setupTableView()
         setupConstraints()
         setupButtonAlert()
-        firstTaskLabel.text = "TASK №1\nTitle: \(SerializationNetworkService.receivePost())"
+        firstTaskLabel.text = "TASK №1\nTitle: \(NetworkService.receivePostSerialization())"
         receivePlanetInfo()
         
     }
