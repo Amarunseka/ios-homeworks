@@ -53,9 +53,13 @@ class InfoViewController: UIViewController {
         setupTableView()
         setupConstraints()
         setupButtonAlert()
-        firstTaskLabel.text = "TASK №1\nTitle: \(NetworkService.receivePostSerialization())"
         receivePlanetInfo()
         
+        NetworkService.receivePostSerialization {  [weak self] result in
+            DispatchQueue.main.async {
+                self?.firstTaskLabel.text = "TASK №1\nTitle: \(result)"
+            }
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -75,9 +79,10 @@ class InfoViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.dataSource = self
         tableView.delegate = self
-
         tableView.backgroundColor = .systemGray2
     }
+    
+    
     
     
     private func setupButtonAlert( ){

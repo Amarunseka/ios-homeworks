@@ -8,21 +8,20 @@
 import Foundation
 
 
-enum ObtainDataResult {
-    
-    case success(objectInfo: Codable?)
-    case failure(error: Error)
-}
+//enum ObtainDataResult {
+//
+//    case success(objectInfo: Codable?)
+//    case failure(error: Error)
+//}
 
 class NetworkService {
     
     // MARK: - Задача №1
-    static func receivePostSerialization() -> String {
+    static func receivePostSerialization(completion: @escaping (String) -> Void){
         let url = URL(string: "https://jsonplaceholder.typicode.com/todos/")
         let session = URLSession.shared
-        var answer = "Can't receive data"
 
-        guard let url = url else {return "incorrect URL"}
+        guard let url = url else {return}
         
             session.dataTask(with: url) { (data, response, error) in
                 guard let data = data else {return}
@@ -30,21 +29,23 @@ class NetworkService {
                 do {
                     if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
                         if let result = json[2]["title"] as? String {
-                            answer = result
+                            completion(result)
                         }
                     }
                 } catch {
-                    answer = "Failed to load: \(error.localizedDescription)"
+                    completion("Failed to load: \(error.localizedDescription)")
                 }
 
             }.resume()
-        sleep(1)
-        return answer
     }
     
 // MARK: - Задача №2
 
-    class func receiveObject<Model: Codable>(url: URL?, model: Model.Type, completion: @escaping (ObtainDataResult) -> Void){
+    class func receiveObject<Model: Codable>(
+        url: URL?,
+        model: Model.Type,
+        completion: @escaping (Result<Any?, Error>) -> Void){
+            
         let sessionConfiguration = URLSessionConfiguration.default
         lazy var session = URLSession(configuration: sessionConfiguration)
         let decoder = JSONDecoder()
@@ -55,7 +56,7 @@ class NetworkService {
         
         session.dataTask(with: url) { (data, response, error) in
             
-            let result: ObtainDataResult
+            let result: Result<Any?, Error>
             
             defer {
                 DispatchQueue.main.async {
@@ -68,16 +69,16 @@ class NetworkService {
                     let objectInfo = try?
                         decoder.decode(model.self, from: parsData)
                 else {
-                    result = .success(objectInfo: nil)
+                    result = .success(nil)
                     return}
                 
-                result = .success(objectInfo: objectInfo)
+                result = .success(objectInfo)
                 
             } else {
                 if let error = error {
-                    result = .failure(error: error)
+                    result = .failure(error)
                 } else {
-                    result = .failure(error: NSError())
+                    result = .failure(NSError())
                 }
             }
         }.resume()
