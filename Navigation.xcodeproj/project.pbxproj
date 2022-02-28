@@ -56,6 +56,7 @@
 		457332772799A0400060B2DA /* Dune.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 457332712799A03F0060B2DA /* Dune.mp4 */; };
 		457332782799A0400060B2DA /* MatrixResurrections.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 457332722799A0400060B2DA /* MatrixResurrections.mp4 */; };
 		457332792799A0400060B2DA /* Tenet.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 457332732799A0400060B2DA /* Tenet.mp4 */; };
+		457B8FE627CABBFD001AE209 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 457B8FE527CABBFD001AE209 /* GoogleService-Info.plist */; };
 		4583A13627955AD30054E377 /* MP3Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4583A13527955AD30054E377 /* MP3Player.swift */; };
 		4583A13827955CDE0054E377 /* MP3FilesReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4583A13727955CDE0054E377 /* MP3FilesReader.swift */; };
 		4583A13A2795714E0054E377 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4583A1392795714E0054E377 /* AudioViewModel.swift */; };
@@ -175,6 +176,7 @@
 		457332712799A03F0060B2DA /* Dune.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Dune.mp4; path = ../Music/Dune.mp4; sourceTree = "<group>"; };
 		457332722799A0400060B2DA /* MatrixResurrections.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = MatrixResurrections.mp4; path = ../Music/MatrixResurrections.mp4; sourceTree = "<group>"; };
 		457332732799A0400060B2DA /* Tenet.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Tenet.mp4; path = ../Music/Tenet.mp4; sourceTree = "<group>"; };
+		457B8FE527CABBFD001AE209 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4583A13527955AD30054E377 /* MP3Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP3Player.swift; sourceTree = "<group>"; };
 		4583A13727955CDE0054E377 /* MP3FilesReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP3FilesReader.swift; sourceTree = "<group>"; };
 		4583A1392795714E0054E377 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 				45E2C68A270F262F00B58BC3 /* CustomElements */,
 				458CBBC126E0E53400915CA1 /* Assets.xcassets */,
 				458CBBC326E0E53400915CA1 /* LaunchScreen.storyboard */,
+				457B8FE527CABBFD001AE209 /* GoogleService-Info.plist */,
 				458CBBC626E0E53400915CA1 /* Info.plist */,
 			);
 			path = Resources;
@@ -703,6 +706,7 @@
 				457332792799A0400060B2DA /* Tenet.mp4 in Resources */,
 				4517991227732B27004DCACB /* Helele.mp3 in Resources */,
 				457332782799A0400060B2DA /* MatrixResurrections.mp4 in Resources */,
+				457B8FE627CABBFD001AE209 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

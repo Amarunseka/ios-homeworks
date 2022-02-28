@@ -18,7 +18,6 @@ class LoginViewModel {
     }
 
     
-    // MARK: - ДЗ-11 Задача №1 (1)
     func checkAuthorization(login: String, password: String) throws {
 
         var user: [String] = []

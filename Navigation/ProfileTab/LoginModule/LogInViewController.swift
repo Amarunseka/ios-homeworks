@@ -102,6 +102,7 @@ class LogInViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        logInTextField.becomeFirstResponder()
         viewModel.coordinator?.childDidFinish(viewModel.coordinator)
     }
     
