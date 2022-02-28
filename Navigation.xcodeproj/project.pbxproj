@@ -37,7 +37,10 @@
 		45653B43275AA3100079AA67 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45653B42275AA30F0079AA67 /* ErrorAlert.swift */; };
 		4565D3C327B5A47E007557A0 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3C227B5A47E007557A0 /* NetworkService.swift */; };
 		4565D3C527B5A85F007557A0 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3C427B5A85F007557A0 /* AppConfiguration.swift */; };
-		4565D3C727B6E719007557A0 /* ShipInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3C627B6E719007557A0 /* ShipInfo.swift */; };
+		4565D3C727B6E719007557A0 /* Ship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3C627B6E719007557A0 /* Ship.swift */; };
+		4565D3CB27C4FFB8007557A0 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3CA27C4FFB8007557A0 /* Planet.swift */; };
+		4565D3CD27C56ACF007557A0 /* Resident.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3CC27C56ACF007557A0 /* Resident.swift */; };
+		4565D3CF27C78283007557A0 /* DecoderDataStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3CE27C78283007557A0 /* DecoderDataStrategy.swift */; };
 		4573324F279966020060B2DA /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4573324E279966020060B2DA /* VideoTableViewCell.swift */; };
 		45733251279966140060B2DA /* VideoTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45733250279966140060B2DA /* VideoTableHeaderView.swift */; };
 		45733253279966270060B2DA /* YoutubePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45733252279966270060B2DA /* YoutubePlayerView.swift */; };
@@ -153,7 +156,10 @@
 		45653B42275AA30F0079AA67 /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		4565D3C227B5A47E007557A0 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		4565D3C427B5A85F007557A0 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
-		4565D3C627B6E719007557A0 /* ShipInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipInfo.swift; sourceTree = "<group>"; };
+		4565D3C627B6E719007557A0 /* Ship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ship.swift; sourceTree = "<group>"; };
+		4565D3CA27C4FFB8007557A0 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		4565D3CC27C56ACF007557A0 /* Resident.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resident.swift; sourceTree = "<group>"; };
+		4565D3CE27C78283007557A0 /* DecoderDataStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderDataStrategy.swift; sourceTree = "<group>"; };
 		4573324C2799651F0060B2DA /* Videos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
 		4573324E279966020060B2DA /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		45733250279966140060B2DA /* VideoTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableHeaderView.swift; sourceTree = "<group>"; };
@@ -388,9 +394,19 @@
 			children = (
 				4565D3C227B5A47E007557A0 /* NetworkService.swift */,
 				4565D3C427B5A85F007557A0 /* AppConfiguration.swift */,
-				4565D3C627B6E719007557A0 /* ShipInfo.swift */,
+				4565D3D027C7859B007557A0 /* NetModels */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		4565D3D027C7859B007557A0 /* NetModels */ = {
+			isa = PBXGroup;
+			children = (
+				4565D3C627B6E719007557A0 /* Ship.swift */,
+				4565D3CA27C4FFB8007557A0 /* Planet.swift */,
+				4565D3CC27C56ACF007557A0 /* Resident.swift */,
+			);
+			path = NetModels;
 			sourceTree = "<group>";
 		};
 		4573325727998F130060B2DA /* LocalVideModule */ = {
@@ -425,7 +441,6 @@
 				4586111E26FA0BF700269593 /* LoginInspector.swift */,
 				4586112026FA0C1000269593 /* LoginFactoryProtocol.swift */,
 				4586112226FA0C3200269593 /* LoginFactory.swift */,
-				4565D3C127B5A455007557A0 /* Network */,
 			);
 			path = AuthorizationService;
 			sourceTree = "<group>";
@@ -454,6 +469,7 @@
 			isa = PBXGroup;
 			children = (
 				458CBBED26E0FAE200915CA1 /* Aplication */,
+				4565D3C127B5A455007557A0 /* Network */,
 				4586111926FA0B8000269593 /* AuthorizationService */,
 				45306B342739240600D1516B /* CreationModules */,
 				45306B2427390EB100D1516B /* ProfileTab */,
@@ -534,6 +550,7 @@
 		45D503AB26F523D300387102 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4565D3CE27C78283007557A0 /* DecoderDataStrategy.swift */,
 				45D503AC26F523FC00387102 /* UIColor.swift */,
 				45D503AE26F5241900387102 /* ImageAlpha.swift */,
 				45306B282739119500D1516B /* UITabBarItem.swift */,
@@ -774,6 +791,7 @@
 				45653B43275AA3100079AA67 /* ErrorAlert.swift in Sources */,
 				4586111B26FA0BA300269593 /* Checker.swift in Sources */,
 				45D503A426F5231400387102 /* UserServiceProtocol.swift in Sources */,
+				4565D3CD27C56ACF007557A0 /* Resident.swift in Sources */,
 				458CBBDE26E0F93600915CA1 /* PhotosViewController.swift in Sources */,
 				45733255279966380060B2DA /* ShowVideoViewController.swift in Sources */,
 				4517990A27730D67004DCACB /* VideoViewController.swift in Sources */,
@@ -787,7 +805,7 @@
 				4586112126FA0C1000269593 /* LoginFactoryProtocol.swift in Sources */,
 				451798FE2771C27A004DCACB /* SlideMenuViewController.swift in Sources */,
 				45D503AF26F5241900387102 /* ImageAlpha.swift in Sources */,
-				4565D3C727B6E719007557A0 /* ShipInfo.swift in Sources */,
+				4565D3C727B6E719007557A0 /* Ship.swift in Sources */,
 				45733256279974F90060B2DA /* Videos.swift in Sources */,
 				458CBBB926E0E53100915CA1 /* AppDelegate.swift in Sources */,
 				45306B1D27390D9500D1516B /* FeedCoordinator.swift in Sources */,
@@ -802,6 +820,7 @@
 				45306B1527390B7200D1516B /* CoordinatorProtocol.swift in Sources */,
 				458CBBE626E0F9B600915CA1 /* ProfileHeaderView.swift in Sources */,
 				45306B1B27390D7900D1516B /* FeedViewModel.swift in Sources */,
+				4565D3CB27C4FFB8007557A0 /* Planet.swift in Sources */,
 				45306B292739119500D1516B /* UITabBarItem.swift in Sources */,
 				45733253279966270060B2DA /* YoutubePlayerView.swift in Sources */,
 				458CBBDA26E0F90E00915CA1 /* LogInViewController.swift in Sources */,
@@ -820,6 +839,7 @@
 				4586111F26FA0BF700269593 /* LoginInspector.swift in Sources */,
 				4583A13627955AD30054E377 /* MP3Player.swift in Sources */,
 				4583A13827955CDE0054E377 /* MP3FilesReader.swift in Sources */,
+				4565D3CF27C78283007557A0 /* DecoderDataStrategy.swift in Sources */,
 				4517990827730D53004DCACB /* AudioViewController.swift in Sources */,
 				458CBBDC26E0F92200915CA1 /* ProfileViewController.swift in Sources */,
 				458CBBD626E0F8EF00915CA1 /* PostViewController.swift in Sources */,
