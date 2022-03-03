@@ -119,7 +119,6 @@ class LogInViewController: UIViewController {
         
         logInTextField.text = nil
         passwordTextField.text = nil
-        navigationController?.navigationBar.isHidden = false
     }
     
     // MARK: - Setups
@@ -138,6 +137,7 @@ class LogInViewController: UIViewController {
         setupScrollView()
         setupAuthenticationLabel()
         setupMainViewConstraints()
+        viewModel.checkCurrentUser()
     }
     
     

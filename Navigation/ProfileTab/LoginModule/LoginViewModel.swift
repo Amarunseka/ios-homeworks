@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import FirebaseAuth
+import Firebase
 
 
 class LoginViewModel {
@@ -17,6 +17,14 @@ class LoginViewModel {
     
     init(delegate: LoginViewControllerDelegateProtocol) {
         self.delegate = delegate
+    }
+
+    
+    func checkCurrentUser(){
+        if let user = Firebase.Auth.auth().currentUser,
+           let email = user.email {
+            coordinator?.segueToProfile(email: UserStorage.shared.users[email]?.login ?? "Default")
+        }
     }
 
     

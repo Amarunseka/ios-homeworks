@@ -11,8 +11,6 @@ class SlideMenuTableViewCell: UITableViewCell {
     
     static let reuseId = "MenuTableCell"
     
-    
-    // записать 111
     let iconImageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false

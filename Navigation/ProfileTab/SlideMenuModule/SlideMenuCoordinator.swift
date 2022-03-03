@@ -23,7 +23,6 @@ class SlideMenuCoordinator: Coordinator {
     }
     
     func start() {
-        //module.profileVC.viewModel.coordinator = self
         navigationController.pushViewController(module, animated: true)
     }
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 
 class SlideMenuContainerViewController: UIViewController {
@@ -117,7 +118,8 @@ extension SlideMenuContainerViewController: SlideMenuViewControllerDelegate {
             self.addVideoVC()
         case .localVideo:
             self.addLocalVideoVC()
-            
+        case .logout:
+            self.logout()
         }
     }
     
@@ -155,10 +157,25 @@ extension SlideMenuContainerViewController: SlideMenuViewControllerDelegate {
         currentVC = vc
     }
     
-    
+
     private func resetToProfile() {
         currentVC?.view.removeFromSuperview()
         currentVC?.didMove(toParent: nil)
         currentVC = nil
+    }
+    
+    
+    private func logout() {
+        currentVC?.view.removeFromSuperview()
+        currentVC?.didMove(toParent: nil)
+        currentVC = nil
+
+        do {
+            try Firebase.Auth.auth().signOut()
+            navigationController?.popToRootViewController(animated: true)
+        }
+        catch {
+            print("An error occured")
+        }
     }
 }

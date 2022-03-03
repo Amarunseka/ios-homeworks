@@ -10,6 +10,7 @@ import Firebase
 
 class CreateNewUserViewModel {
     weak var coordinator: CreateNewUserCoordinator?
+    
 
     func createNewUser(email: String, login: String, password: String){
         Firebase.Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in

@@ -48,7 +48,6 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .systemGray6
         setupActivityIndicator()
         
