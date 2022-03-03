@@ -46,8 +46,8 @@ class LoginViewModel {
     func showCreateAccount(){
 
         let alert = UIAlertController(
-            title: "Create Account",
-            message: "Would you like to create an account",
+            title: "Account not found",
+            message: "Would you like to create an account?",
             preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(

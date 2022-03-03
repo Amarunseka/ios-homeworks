@@ -164,7 +164,7 @@ class CreateNewUserViewController: UIViewController {
     @objc private func saveUser(){
 
         guard passwordTextField.text == password2TextField.text else {
-            print("пароли не совпадают")
+            present(ShowAlert.showAlert("пароли не совпадают"), animated: true)
             return}
 
 
@@ -172,7 +172,7 @@ class CreateNewUserViewController: UIViewController {
            let login = loginTextField.text,
            let password = passwordTextField.text {
 
-            viewModel.createNewUser(email: email, login: login, password: password)
+            viewModel.createNewUser(email: email, login: login, password: password, controller: self)
         }
     }
     
