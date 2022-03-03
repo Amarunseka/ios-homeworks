@@ -9,5 +9,5 @@ import Foundation
 
 protocol LoginViewControllerDelegateProtocol: AnyObject {
     
-    func checkUserAuthentication(login: String, password:String) -> Bool
+    func checkUserAuthentication(email: String, password:String, completion: @escaping (Bool)->Void)
 }

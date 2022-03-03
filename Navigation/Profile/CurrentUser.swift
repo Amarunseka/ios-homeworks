@@ -10,10 +10,16 @@ import UIKit
 
 class CurrentUserService: UserServiceProtocol {
     
-    private var currentUser = User(
-        userName: "Amarunseka",
-        userAvatar: UIImage(named: "honeybadger") ?? UIImage(),
-        userStatus: "Looking to fress somebody")
+    private var user: String
+    private var currentUser: User
+    
+    init(user:String){
+        self.user = user
+        currentUser = User(
+            userName: user,
+            userAvatar: UIImage(named: "honeybadger") ?? UIImage(),
+            userStatus: "Looking to fress somebody")
+    }
     
     func createUser(userName: String) -> User? {
         

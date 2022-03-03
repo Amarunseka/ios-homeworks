@@ -22,14 +22,21 @@ class LoginCoordinator: NSObject, Coordinator {
         navigationController.pushViewController(module, animated: true)
     }
     
-    func segueToProfile(){
-        guard let userName = userName else {
-            preconditionFailure("User isn't found")}
-        
-        let child = ProfileCoordinator(navigationController: navigationController, userName: userName)
+    
+    func segueToProfile(email: String){
+        let child = ProfileCoordinator(navigationController: navigationController, userName: email)
+        childCoordinators.append(child)
+        child.start()
+        child.parentCoordinator = self
+    }
+    
+    
+    func segueToCreateNewUser(){
+        let child = CreateNewUserCoordinator(navigationController: navigationController)
         childCoordinators.append(child)
         child.start()
         child.parentCoordinator = self
     }
 }
+
 

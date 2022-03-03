@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>972597403195-h0apraa5cl28rtmm9aephf89u9rtl2jk.apps.googleusercontent.com</string>
+	<string>219626489177-3qi7p3bbl1iqassc4bvtckak9ar22soa.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.972597403195-h0apraa5cl28rtmm9aephf89u9rtl2jk</string>
+	<string>com.googleusercontent.apps.219626489177-3qi7p3bbl1iqassc4bvtckak9ar22soa</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCo0oDhx_3UNgKlv7HYT_cn_IHQWOl239w</string>
+	<string>AIzaSyADzFB0mOeJWuer26vGIhNE56mJu-7UfhE</string>
 	<key>GCM_SENDER_ID</key>
-	<string>972597403195</string>
+	<string>219626489177</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>Amarunseka.Navigation</string>
 	<key>PROJECT_ID</key>
-	<string>navigationamaru</string>
+	<string>amarunsekanavigation</string>
 	<key>STORAGE_BUCKET</key>
-	<string>navigationamaru.appspot.com</string>
+	<string>amarunsekanavigation.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:972597403195:ios:7b77c6fc05605335c6861e</string>
+	<string>1:219626489177:ios:3b7eece18919aedfd9b848</string>
 </dict>
 </plist>

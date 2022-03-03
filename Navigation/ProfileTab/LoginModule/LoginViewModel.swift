@@ -6,42 +6,63 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 
 class LoginViewModel {
     
     weak var coordinator: LoginCoordinator?
     var delegate: LoginViewControllerDelegateProtocol
+
     
     init(delegate: LoginViewControllerDelegateProtocol) {
         self.delegate = delegate
     }
 
     
-    func checkAuthorization(login: String, password: String) throws {
+    func checkAuthorization(email: String, password: String) throws {
 
-        var user: [String] = []
+        delegate.checkUserAuthentication(email: email, password: password) { [weak self] result in
+            guard let strongSelf = self else {return}
+            if result {
+                strongSelf.coordinator?.segueToProfile(
+                    email: UserStorage.shared.users[email]?.login ?? "Default email")
 
-        if login.count > 0, password.count > 0 {
-            user.append(login)
-            user.append(password)
-        } else if login.count <= 0 {
-            throw AuthenticationErrors.loginIsEmpty
-        } else if password.count <= 0 {
-            throw AuthenticationErrors.passwordIsEmpty
-        }
-
-
-        if delegate.checkUserAuthentication(login: user[0], password: user[1]) {
-            coordinator?.userName = user[0]
-        } else {
-            throw AuthenticationErrors.userNotFound
+            } else {
+                strongSelf.showCreateAccount()
+            }
         }
     }
     
     
-    func segueToProfile() {
-        coordinator?.segueToProfile()
+    func showCreateAccount(){
+
+        let alert = UIAlertController(
+            title: "Create Account",
+            message: "Would you like to create an account",
+            preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(
+            title: "Continue",
+            style: .default,
+            handler: { _ in
+                
+                self.segueToCreateNewUser()
+            }))
+        
+        alert.addAction(UIAlertAction(
+            title: "Cancel",
+            style: .cancel,
+            handler: { _ in
+            }))
+        
+        UIApplication.shared.windows.last?.rootViewController?.present(alert, animated: true)
+    }
+
+    
+    func segueToCreateNewUser(){
+        coordinator?.segueToCreateNewUser()
     }
 }
+
 
