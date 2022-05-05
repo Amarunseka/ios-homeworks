@@ -202,8 +202,81 @@ class LogInViewController: UIViewController {
         logInButton.setBackgroundImage(backgroundOtherStates, for: .disabled)
     }
     
+    // MARK: - target functions
     
-    // MARK: - Constraints
+    @objc
+    func enableLogInButton(){
+        guard
+            let login = logInTextField.text,
+            let password = passwordTextField.text
+
+        else {return}
+        if !login.isEmpty, !password.isEmpty  {
+            logInButton.isEnabled = true
+        } else {
+            logInButton.isEnabled = false
+        }
+    }
+    
+    
+    @objc
+    private func pushLogInButton(){
+        
+        guard
+            let login = logInTextField.text,
+            let password = passwordTextField.text
+        else {return}
+ 
+        do {
+            try viewModel.checkAuthorization(email: login, password: password)
+        } catch AuthenticationErrors.loginIsEmpty {
+            showAlert(for: .loginIsEmpty)
+        } catch AuthenticationErrors.passwordIsEmpty {
+            showAlert(for: .passwordIsEmpty)
+        } catch AuthenticationErrors.userNotFound {
+            showAlert(for: .userNotFound)
+        } catch {
+            print("")
+        }
+        
+    }
+    
+    func showAlert(for error: AuthenticationErrors) {
+        let alert = ShowAlert.showAlert(error.localizedDescription)
+        present(alert, animated: true)
+    }
+    
+    
+    @objc
+    private func keyboardWillShow(notification: NSNotification){
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue{
+            scrollView.contentInset.bottom = keyboardSize.height
+            scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        }
+    }
+    
+    
+    @objc
+    private func keyboardWillHide(notification: NSNotification){
+        scrollView.contentInset.bottom = .zero
+        scrollView.verticalScrollIndicatorInsets = .zero
+    }
+}
+
+
+// MARK: - other extensions
+
+extension LogInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        pushLogInButton()
+        return true
+    }
+}
+
+
+// MARK: - Constraints
+extension LogInViewController {
     
     private func setupMainViewConstraints(){
         logInButton.translatesAutoresizingMaskIntoConstraints = false
@@ -239,7 +312,7 @@ class LogInViewController: UIViewController {
             logInButton.heightAnchor.constraint(equalToConstant: 50),
             logInButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
         ]
-
+        
         NSLayoutConstraint.activate(constraints)
     }
     
@@ -256,72 +329,5 @@ class LogInViewController: UIViewController {
         ]
         
         NSLayoutConstraint.activate(constraints)
-    }
-    
-    // MARK: - target functions
-    
-    @objc func enableLogInButton(){
-        guard
-            let login = logInTextField.text,
-            let password = passwordTextField.text
-
-        else {return}
-        if !login.isEmpty, !password.isEmpty  {
-            logInButton.isEnabled = true
-        } else {
-            logInButton.isEnabled = false
-        }
-    }
-    
-    
-    @objc private func pushLogInButton(){
-        
-        guard
-            let login = logInTextField.text,
-            let password = passwordTextField.text
-        else {return}
- 
-        do {
-            try viewModel.checkAuthorization(email: login, password: password)
-        } catch AuthenticationErrors.loginIsEmpty {
-            showAlert(for: .loginIsEmpty)
-        } catch AuthenticationErrors.passwordIsEmpty {
-            showAlert(for: .passwordIsEmpty)
-        } catch AuthenticationErrors.userNotFound {
-            showAlert(for: .userNotFound)
-        } catch {
-            print("")
-        }
-        
-    }
-    
-    func showAlert(for error: AuthenticationErrors) {
-        let alert = ShowAlert.showAlert(error.localizedDescription)
-        present(alert, animated: true)
-    }
-    
-    
-    @objc private func keyboardWillShow(notification: NSNotification){
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue{
-            scrollView.contentInset.bottom = keyboardSize.height
-            scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
-        }
-    }
-    
-    
-    @objc private func keyboardWillHide(notification: NSNotification){
-        scrollView.contentInset.bottom = .zero
-        scrollView.verticalScrollIndicatorInsets = .zero
-    }
-}
-
-
-// MARK: - other extensions
-
-extension LogInViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        pushLogInButton()
-        return true
     }
 }

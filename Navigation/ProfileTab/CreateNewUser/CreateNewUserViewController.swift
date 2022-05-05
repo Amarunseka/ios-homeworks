@@ -10,8 +10,6 @@ import UIKit
 
 class CreateNewUserViewController: UIViewController {
 
-    let defaults = UserDefaults.standard
-    let coordinator = LoginCoordinator()
     let viewModel: CreateNewUserViewModel
     
     let titleLabel: UILabel = {
