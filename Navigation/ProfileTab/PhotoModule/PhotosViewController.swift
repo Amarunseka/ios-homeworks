@@ -146,6 +146,7 @@ extension PhotosViewController: UICollectionViewDataSource {
 
 
 // MARK: - UICollectionViewDelegateFlowLayout
+
 extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -185,6 +186,8 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
 }
 
 
+
+// MARK: - Other extensions
 extension PhotosViewController: ImageLibrarySubscriber {
     func receive(images: [UIImage]) {
         photoForPublisher = images
@@ -194,8 +197,6 @@ extension PhotosViewController: ImageLibrarySubscriber {
     }
 }
 
-// MARK: - ДЗ-11 задача №3 (2)
-// не смог найти подходящую функцию поэтому придумал такой вариант
 extension PhotosViewController {
     
     func receivePhotoError() throws -> [UIImage] {

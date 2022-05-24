@@ -38,7 +38,7 @@ class ProfileViewModel {
         var user: UserServiceProtocol
         
         #if DEBUG
-        user = CurrentUserService()
+        user = CurrentUserService(user: inputUserName)
         #else
         user = TestUserService()
         #endif

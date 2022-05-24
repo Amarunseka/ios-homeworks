@@ -39,4 +39,10 @@ class ModuleFactory: CreateModuleProtocol {
         let containerVC = SlideMenuContainerViewController(menuVC: menuVC, profileVC: profileVC)
         return containerVC
     }
+    
+    static func createNewUserModule() -> CreateNewUserViewController {
+        let vm = CreateNewUserViewModel()
+        let vc = CreateNewUserViewController(viewModel: vm)
+        return vc
+    }
 }

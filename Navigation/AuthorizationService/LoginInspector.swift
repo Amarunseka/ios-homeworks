@@ -9,7 +9,9 @@ import Foundation
 
 class LoginInspector: LoginViewControllerDelegateProtocol {
     
-    func checkUserAuthentication(login: String, password: String) -> Bool {
-        return Checker.shared.checkAuthentication(login: login, password: password)
+    func checkUserAuthentication(email: String, password: String, completion: @escaping (Bool)->Void) {
+        return Checker.shared.checkAuthentication(email: email, password: password){ result in
+            completion(result)
+        }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 class Checker {
     
@@ -16,15 +17,21 @@ class Checker {
     
     private init(){
         #if DEBUG
-        self.authorizationUserInfo = ["Amarunseka": "22"]
+        self.authorizationUserInfo = ["Amarunseka@gmail.com": "22"]
         #else
-        self.authorizationUserInfo = ["Test": "22"]
+        self.authorizationUserInfo = ["Test@gmail.com": "22"]
         #endif
     }
      
     
-    func checkAuthentication(login:String, password: String) -> Bool{
+    func checkAuthentication(email:String, password: String, completion: @escaping (Bool)->Void){
         
-        return authorizationUserInfo[login] == password
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) {result, error in
+            guard error == nil else {
+                completion(false)
+                return
+            }
+            completion(true)
+        }
     }
 }

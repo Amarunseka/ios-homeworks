@@ -14,6 +14,7 @@ enum SlideMenuModel: String, CaseIterable {
     case audio = "Audio"
     case video = "Video"
     case localVideo = "LocalVideo"
+    case logout
 
     var image: UIImage {
         switch self {
@@ -21,7 +22,7 @@ enum SlideMenuModel: String, CaseIterable {
             case .audio: return UIImage(systemName: "beats.headphones") ?? UIImage()
             case .video: return UIImage(systemName: "play.rectangle.on.rectangle.fill") ?? UIImage()
             case .localVideo: return UIImage(systemName: "play.rectangle") ?? UIImage()
-
+        case.logout: return UIImage(systemName: "return") ?? UIImage()
         }
     }
 }

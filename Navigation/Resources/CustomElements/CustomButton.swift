@@ -10,13 +10,14 @@ import UIKit
 
 class CustomButton: UIButton {
     
-    private var buttonAction: (()->())
+    private var buttonAction: (()->())!
     
     enum ChoiceParameter {
         case yes, no
     }
-        
-    init(
+   
+    convenience init(
+        type: UIButton.ButtonType = .system,
         title: String? = nil,
         titleColor: UIColor = .white,
         backgroundColor: UIColor = .clear,
@@ -28,21 +29,27 @@ class CustomButton: UIButton {
         lineBreak: NSLineBreakMode = .byTruncatingTail,
         buttonAction: @escaping (()-> ())
     ) {
+        self.init(type: type)
         self.buttonAction = buttonAction
-        super.init(frame: .zero)
-
-
         self.setTitle(title, for: .normal)
         self.setTitleColor(titleColor, for: .normal)
         self.backgroundColor = backgroundColor
         if (backgroundImage != nil) {self.setBackgroundImage(backgroundImage, for: .normal)}
         self.titleLabel?.font = .systemFont(ofSize: fontSize, weight: fontWeight)
         self.titleLabel?.textAlignment = textAlignment
-        
-        if highlighted == .yes {self.showsTouchWhenHighlighted = true}
-        
+
+
+        if highlighted == .yes {
+            self.showsTouchWhenHighlighted = true
+        }
+
         self.titleLabel?.lineBreakMode = lineBreak
         self.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    }
+    
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
     
     
@@ -51,7 +58,8 @@ class CustomButton: UIButton {
     }
     
     
-    @objc private func buttonTapped() {
+    @objc
+    private func buttonTapped() {
         self.buttonAction()
     }
 }

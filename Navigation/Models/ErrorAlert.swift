@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShowAlert {
+class ShowAlert: VideoViewController {
     
     class func showAlert(_ text: String) -> UIAlertController{
         let alertController = UIAlertController(
@@ -16,7 +16,7 @@ class ShowAlert {
             preferredStyle: .alert)
         
         
-        let okAction = UIAlertAction(title: "ОK.", style: .default)
+        let okAction = UIAlertAction(title: "ОK", style: .default)
         
         alertController.view.tintColor = .customColorBlue
         alertController.addAction(okAction)

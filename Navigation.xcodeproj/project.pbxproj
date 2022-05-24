@@ -56,6 +56,12 @@
 		457332772799A0400060B2DA /* Dune.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 457332712799A03F0060B2DA /* Dune.mp4 */; };
 		457332782799A0400060B2DA /* MatrixResurrections.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 457332722799A0400060B2DA /* MatrixResurrections.mp4 */; };
 		457332792799A0400060B2DA /* Tenet.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 457332732799A0400060B2DA /* Tenet.mp4 */; };
+		457B8FE827CCDC7D001AE209 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 457B8FE727CCDC7D001AE209 /* GoogleService-Info.plist */; };
+		457B904527CF52A0001AE209 /* CreateNewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B904427CF52A0001AE209 /* CreateNewUserViewController.swift */; };
+		457B904727CF55C9001AE209 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B904627CF55C9001AE209 /* UserStorage.swift */; };
+		457B904927CF55F2001AE209 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B904827CF55F2001AE209 /* UserInfo.swift */; };
+		457B904B27CF606B001AE209 /* CreateNewUserCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B904A27CF606B001AE209 /* CreateNewUserCoordinator.swift */; };
+		457B904D27CF607F001AE209 /* CreateNewUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B904C27CF607F001AE209 /* CreateNewUserViewModel.swift */; };
 		4583A13627955AD30054E377 /* MP3Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4583A13527955AD30054E377 /* MP3Player.swift */; };
 		4583A13827955CDE0054E377 /* MP3FilesReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4583A13727955CDE0054E377 /* MP3FilesReader.swift */; };
 		4583A13A2795714E0054E377 /* AudioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4583A1392795714E0054E377 /* AudioViewModel.swift */; };
@@ -175,6 +181,12 @@
 		457332712799A03F0060B2DA /* Dune.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Dune.mp4; path = ../Music/Dune.mp4; sourceTree = "<group>"; };
 		457332722799A0400060B2DA /* MatrixResurrections.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = MatrixResurrections.mp4; path = ../Music/MatrixResurrections.mp4; sourceTree = "<group>"; };
 		457332732799A0400060B2DA /* Tenet.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Tenet.mp4; path = ../Music/Tenet.mp4; sourceTree = "<group>"; };
+		457B8FE727CCDC7D001AE209 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		457B904427CF52A0001AE209 /* CreateNewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewUserViewController.swift; sourceTree = "<group>"; };
+		457B904627CF55C9001AE209 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
+		457B904827CF55F2001AE209 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		457B904A27CF606B001AE209 /* CreateNewUserCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewUserCoordinator.swift; sourceTree = "<group>"; };
+		457B904C27CF607F001AE209 /* CreateNewUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewUserViewModel.swift; sourceTree = "<group>"; };
 		4583A13527955AD30054E377 /* MP3Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP3Player.swift; sourceTree = "<group>"; };
 		4583A13727955CDE0054E377 /* MP3FilesReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MP3FilesReader.swift; sourceTree = "<group>"; };
 		4583A1392795714E0054E377 /* AudioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewModel.swift; sourceTree = "<group>"; };
@@ -340,6 +352,7 @@
 		45306B2427390EB100D1516B /* ProfileTab */ = {
 			isa = PBXGroup;
 			children = (
+				457B904327CF5272001AE209 /* CreateNewUser */,
 				45306B2527390EC500D1516B /* LoginModule */,
 				451798FA2771BFE6004DCACB /* SlideMenuModule */,
 				45306B26273910B400D1516B /* ProfileModule */,
@@ -433,6 +446,18 @@
 			path = Videos;
 			sourceTree = "<group>";
 		};
+		457B904327CF5272001AE209 /* CreateNewUser */ = {
+			isa = PBXGroup;
+			children = (
+				457B904A27CF606B001AE209 /* CreateNewUserCoordinator.swift */,
+				457B904C27CF607F001AE209 /* CreateNewUserViewModel.swift */,
+				457B904427CF52A0001AE209 /* CreateNewUserViewController.swift */,
+				457B904627CF55C9001AE209 /* UserStorage.swift */,
+				457B904827CF55F2001AE209 /* UserInfo.swift */,
+			);
+			path = CreateNewUser;
+			sourceTree = "<group>";
+		};
 		4586111926FA0B8000269593 /* AuthorizationService */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +517,7 @@
 				458CBBC126E0E53400915CA1 /* Assets.xcassets */,
 				458CBBC326E0E53400915CA1 /* LaunchScreen.storyboard */,
 				458CBBC626E0E53400915CA1 /* Info.plist */,
+				457B8FE727CCDC7D001AE209 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -703,6 +729,7 @@
 				457332792799A0400060B2DA /* Tenet.mp4 in Resources */,
 				4517991227732B27004DCACB /* Helele.mp3 in Resources */,
 				457332782799A0400060B2DA /* MatrixResurrections.mp4 in Resources */,
+				457B8FE827CCDC7D001AE209 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -795,6 +822,7 @@
 				458CBBDE26E0F93600915CA1 /* PhotosViewController.swift in Sources */,
 				45733255279966380060B2DA /* ShowVideoViewController.swift in Sources */,
 				4517990A27730D67004DCACB /* VideoViewController.swift in Sources */,
+				457B904D27CF607F001AE209 /* CreateNewUserViewModel.swift in Sources */,
 				45306B2D273913CA00D1516B /* LoginCoordinator.swift in Sources */,
 				45306B1F27390E5500D1516B /* PostCoordinator.swift in Sources */,
 				45E2C689270F229400B58BC3 /* CheckerText.swift in Sources */,
@@ -810,6 +838,7 @@
 				458CBBB926E0E53100915CA1 /* AppDelegate.swift in Sources */,
 				45306B1D27390D9500D1516B /* FeedCoordinator.swift in Sources */,
 				458CBBE226E0F96C00915CA1 /* PhotosTableViewCell.swift in Sources */,
+				457B904727CF55C9001AE209 /* UserStorage.swift in Sources */,
 				458CBBD426E0F8D800915CA1 /* FeedViewController.swift in Sources */,
 				45733260279992AC0060B2DA /* LocalVideoTableHeaderView.swift in Sources */,
 				451798FC2771C202004DCACB /* SlideMenuContainerViewController.swift in Sources */,
@@ -834,6 +863,7 @@
 				458CBBE026E0F95A00915CA1 /* PostTableViewCell.swift in Sources */,
 				4573325927998F470060B2DA /* LocalVideoViewController.swift in Sources */,
 				45306B2F27391C1100D1516B /* LoginViewModel.swift in Sources */,
+				457B904927CF55F2001AE209 /* UserInfo.swift in Sources */,
 				4583A13A2795714E0054E377 /* AudioViewModel.swift in Sources */,
 				45D503AD26F523FC00387102 /* UIColor.swift in Sources */,
 				4586111F26FA0BF700269593 /* LoginInspector.swift in Sources */,
@@ -847,6 +877,8 @@
 				45306B3327391C6900D1516B /* ProfileViewModel.swift in Sources */,
 				45D503A226F522E600387102 /* PhotoViewController.swift in Sources */,
 				45306B362739244100D1516B /* CreateModuleProtocol.swift in Sources */,
+				457B904527CF52A0001AE209 /* CreateNewUserViewController.swift in Sources */,
+				457B904B27CF606B001AE209 /* CreateNewUserCoordinator.swift in Sources */,
 				451799002771EAAA004DCACB /* SlideMenuTableViewCell.swift in Sources */,
 				45179906277262ED004DCACB /* SlideMenuCoordinator.swift in Sources */,
 				4573324F279966020060B2DA /* VideoTableViewCell.swift in Sources */,
@@ -937,7 +969,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -992,7 +1024,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
