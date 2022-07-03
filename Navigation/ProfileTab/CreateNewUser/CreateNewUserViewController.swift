@@ -12,7 +12,7 @@ class CreateNewUserViewController: UIViewController {
 
     let viewModel: CreateNewUserViewModel
     
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
@@ -24,7 +24,7 @@ class CreateNewUserViewController: UIViewController {
     }()
     
     
-    let emailTextField: UITextField = {
+    private lazy var emailTextField: UITextField = {
         let emailTextField = UITextField()
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         emailTextField.placeholder = "Email"
@@ -44,7 +44,7 @@ class CreateNewUserViewController: UIViewController {
 
     
     
-    let loginTextField: UITextField = {
+    private lazy var loginTextField: UITextField = {
         let loginTextField = UITextField()
         loginTextField.translatesAutoresizingMaskIntoConstraints = false
         loginTextField.placeholder = "Login"
@@ -63,7 +63,7 @@ class CreateNewUserViewController: UIViewController {
     }()
 
     
-    let passwordTextField: UITextField = {
+    private lazy var passwordTextField: UITextField = {
         let passwordTextField = UITextField()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.placeholder = "Password"
@@ -83,7 +83,7 @@ class CreateNewUserViewController: UIViewController {
     }()
     
     
-    let password2TextField: UITextField = {
+    private lazy var password2TextField: UITextField = {
         let password2TextField = UITextField()
         password2TextField.translatesAutoresizingMaskIntoConstraints = false
         password2TextField.placeholder = "Again Password"
@@ -103,7 +103,7 @@ class CreateNewUserViewController: UIViewController {
     }()
     
     
-    let createButton: UIButton = {
+    private lazy var createButton: UIButton = {
         let createButton = UIButton()
         createButton.translatesAutoresizingMaskIntoConstraints = false
         createButton.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
@@ -138,11 +138,10 @@ class CreateNewUserViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
         navigationController?.navigationBar.isHidden = false
     }
     
-    func setupView(){
+    private func setupView(){
         view.backgroundColor = .white
 
         view.addSubview(titleLabel)
@@ -189,7 +188,7 @@ class CreateNewUserViewController: UIViewController {
         }
     }
 
-    func setupConstraints(){
+    private func setupConstraints(){
         let constraints = [
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),

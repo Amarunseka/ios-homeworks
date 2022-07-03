@@ -168,8 +168,8 @@ class ProfileViewController: UIViewController {
             crossButton = CustomButton(
                 backgroundColor: .clear,
                 backgroundImage: UIImage(systemName: "multiply.circle")) {
-                    [weak self] in
-                    self?.reversViewAnimate()}
+                    [self] in
+                    self.reversViewAnimate()}
             crossButton?.sizeToFit()
             crossButton?.tintColor = .black
             crossButton?.transform = crossButton!.transform.scaledBy(x: 1.5, y: 1.5)
@@ -188,7 +188,7 @@ class ProfileViewController: UIViewController {
     
         
         UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: { [self] in
-            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1){
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1){ [self] in
                 avatarImageView?.bounds.size.width = UIScreen.main.bounds.width
                 avatarImageView?.bounds.size.height = UIScreen.main.bounds.width * heightAvatar
                 avatarImageView?.center = CGPoint(
@@ -200,7 +200,7 @@ class ProfileViewController: UIViewController {
             
         }, completion: {finished in
             UIView.animateKeyframes(withDuration: 0.3, delay: 0, options: [], animations: { [self] in
-                UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.2) {
+                UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.2) { [self] in
                     if avatarImageView != nil && crossButton != nil{
                         crossButton?.frame.origin = CGPoint(
                             x: avatarImageView!.frame.maxX - crossButton!.bounds.size.width * 1.5,
@@ -223,7 +223,7 @@ class ProfileViewController: UIViewController {
     @objc func reversViewAnimate(){
         self.view.layoutIfNeeded()
         UIView.animateKeyframes(withDuration: 0.5, delay: 0, options: [], animations: { [self] in
-            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){
+            UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 1){ [self] in
                 crossButton?.alpha = 0
                 crossButton = nil
                 backgroundView?.alpha = 0
