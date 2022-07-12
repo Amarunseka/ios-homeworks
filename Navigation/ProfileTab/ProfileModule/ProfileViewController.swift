@@ -18,7 +18,7 @@ class ProfileViewController: UIViewController {
     var viewModel: ProfileViewModel
     weak var delegate: ProfileViewControllerDelegate?
     private let tableView = UITableView(frame: .zero, style: .plain)
-    let profileHeader = ProfileHeaderView()
+    lazy var profileHeader = ProfileHeaderView(navigation2: self)
     
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     var timer = Timer()

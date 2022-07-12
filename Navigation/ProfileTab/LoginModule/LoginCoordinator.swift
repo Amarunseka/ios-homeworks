@@ -23,8 +23,8 @@ class LoginCoordinator: NSObject, Coordinator {
     }
     
     
-    func segueToProfile(email: String){
-        let child = ProfileCoordinator(navigationController: navigationController, userName: email)
+    func segueToProfile(login: String){
+        let child = ProfileCoordinator(navigationController: navigationController, userName: login)
         childCoordinators.append(child)
         child.start()
         child.parentCoordinator = self

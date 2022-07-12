@@ -90,6 +90,10 @@
 		458CBC3426E107F900915CA1 /* PhotosStorageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CBBE926E0F9E000915CA1 /* PhotosStorageFile.swift */; };
 		458CBC8D26EF877700915CA1 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 458CBC8C26EF877700915CA1 /* iOSIntPackage */; };
 		458CBC8F26EF988300915CA1 /* PostsStorageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CBBE726E0F9D200915CA1 /* PostsStorageFile.swift */; };
+		45D0C216287D93DC00E2E181 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 45D0C215287D93DC00E2E181 /* Realm */; };
+		45D0C218287D93DC00E2E181 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 45D0C217287D93DC00E2E181 /* RealmSwift */; };
+		45D0C21A287D96CE00E2E181 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D0C219287D96CE00E2E181 /* RealmManager.swift */; };
+		45D0C21C287D976300E2E181 /* UserRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D0C21B287D976300E2E181 /* UserRealmModel.swift */; };
 		45D503A226F522E600387102 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D503A126F522E600387102 /* PhotoViewController.swift */; };
 		45D503A426F5231400387102 /* UserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D503A326F5231400387102 /* UserServiceProtocol.swift */; };
 		45D503A626F5232D00387102 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D503A526F5232D00387102 /* User.swift */; };
@@ -216,6 +220,8 @@
 		458CBC2726E107C300915CA1 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		458CBC2926E107C300915CA1 /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		458CBC2A26E107C300915CA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45D0C219287D96CE00E2E181 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		45D0C21B287D976300E2E181 /* UserRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRealmModel.swift; sourceTree = "<group>"; };
 		45D503A126F522E600387102 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		45D503A326F5231400387102 /* UserServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceProtocol.swift; sourceTree = "<group>"; };
 		45D503A526F5232D00387102 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -238,6 +244,8 @@
 			files = (
 				458CBC8D26EF877700915CA1 /* iOSIntPackage in Frameworks */,
 				458CBC2E26E107C300915CA1 /* StorageService.framework in Frameworks */,
+				45D0C216287D93DC00E2E181 /* Realm in Frameworks */,
+				45D0C218287D93DC00E2E181 /* RealmSwift in Frameworks */,
 				F47C8C17850C5C48D5CE7146 /* Pods_Navigation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,7 +360,7 @@
 		45306B2427390EB100D1516B /* ProfileTab */ = {
 			isa = PBXGroup;
 			children = (
-				457B904327CF5272001AE209 /* CreateNewUser */,
+				457B904327CF5272001AE209 /* CreateNewUserModule */,
 				45306B2527390EC500D1516B /* LoginModule */,
 				451798FA2771BFE6004DCACB /* SlideMenuModule */,
 				45306B26273910B400D1516B /* ProfileModule */,
@@ -446,16 +454,14 @@
 			path = Videos;
 			sourceTree = "<group>";
 		};
-		457B904327CF5272001AE209 /* CreateNewUser */ = {
+		457B904327CF5272001AE209 /* CreateNewUserModule */ = {
 			isa = PBXGroup;
 			children = (
 				457B904A27CF606B001AE209 /* CreateNewUserCoordinator.swift */,
 				457B904C27CF607F001AE209 /* CreateNewUserViewModel.swift */,
 				457B904427CF52A0001AE209 /* CreateNewUserViewController.swift */,
-				457B904627CF55C9001AE209 /* UserStorage.swift */,
-				457B904827CF55F2001AE209 /* UserInfo.swift */,
 			);
-			path = CreateNewUser;
+			path = CreateNewUserModule;
 			sourceTree = "<group>";
 		};
 		4586111926FA0B8000269593 /* AuthorizationService */ = {
@@ -499,6 +505,7 @@
 				45306B342739240600D1516B /* CreationModules */,
 				45306B2427390EB100D1516B /* ProfileTab */,
 				45306B1627390C0500D1516B /* FeedTab */,
+				45D0C21D287DB50000E2E181 /* DataBase */,
 				458CBBCF26E0F84400915CA1 /* Cells */,
 				458CBBD026E0F84E00915CA1 /* Profile */,
 				45E2C68B270F267400B58BC3 /* Models */,
@@ -571,6 +578,33 @@
 				458CBC2A26E107C300915CA1 /* Info.plist */,
 			);
 			path = StorageService;
+			sourceTree = "<group>";
+		};
+		45D0C21D287DB50000E2E181 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				45D0C21F287DB53900E2E181 /* Realm */,
+				45D0C21E287DB52800E2E181 /* UserDefaults */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		45D0C21E287DB52800E2E181 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				457B904627CF55C9001AE209 /* UserStorage.swift */,
+				457B904827CF55F2001AE209 /* UserInfo.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		45D0C21F287DB53900E2E181 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				45D0C219287D96CE00E2E181 /* RealmManager.swift */,
+				45D0C21B287D976300E2E181 /* UserRealmModel.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		45D503AB26F523D300387102 /* Extensions */ = {
@@ -648,6 +682,8 @@
 			name = Navigation;
 			packageProductDependencies = (
 				458CBC8C26EF877700915CA1 /* iOSIntPackage */,
+				45D0C215287D93DC00E2E181 /* Realm */,
+				45D0C217287D93DC00E2E181 /* RealmSwift */,
 			);
 			productName = Navigation;
 			productReference = 458CBBB526E0E53100915CA1 /* Navigation.app */;
@@ -700,6 +736,7 @@
 			mainGroup = 458CBBAC26E0E53100915CA1;
 			packageReferences = (
 				458CBC8B26EF877700915CA1 /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
+				45D0C214287D93DC00E2E181 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 458CBBB626E0E53100915CA1 /* Products */;
 			projectDirPath = "";
@@ -852,6 +889,7 @@
 				4565D3CB27C4FFB8007557A0 /* Planet.swift in Sources */,
 				45306B292739119500D1516B /* UITabBarItem.swift in Sources */,
 				45733253279966270060B2DA /* YoutubePlayerView.swift in Sources */,
+				45D0C21A287D96CE00E2E181 /* RealmManager.swift in Sources */,
 				458CBBDA26E0F90E00915CA1 /* LogInViewController.swift in Sources */,
 				45D503A626F5232D00387102 /* User.swift in Sources */,
 				4586112326FA0C3200269593 /* LoginFactory.swift in Sources */,
@@ -865,6 +903,7 @@
 				45306B2F27391C1100D1516B /* LoginViewModel.swift in Sources */,
 				457B904927CF55F2001AE209 /* UserInfo.swift in Sources */,
 				4583A13A2795714E0054E377 /* AudioViewModel.swift in Sources */,
+				45D0C21C287D976300E2E181 /* UserRealmModel.swift in Sources */,
 				45D503AD26F523FC00387102 /* UIColor.swift in Sources */,
 				4586111F26FA0BF700269593 /* LoginInspector.swift in Sources */,
 				4583A13627955AD30054E377 /* MP3Player.swift in Sources */,
@@ -1169,6 +1208,14 @@
 				minimumVersion = 3.2.3;
 			};
 		};
+		45D0C214287D93DC00E2E181 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1176,6 +1223,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 458CBC8B26EF877700915CA1 /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
 			productName = iOSIntPackage;
+		};
+		45D0C215287D93DC00E2E181 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 45D0C214287D93DC00E2E181 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		45D0C217287D93DC00E2E181 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 45D0C214287D93DC00E2E181 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
