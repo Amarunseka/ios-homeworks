@@ -81,9 +81,11 @@ class ProfileHeaderView: UIView {
         return label
     }()
     
+    let navigation: UIViewController
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(navigation: UIViewController) {
+        self.navigation = navigation
+        super.init()
         self.backgroundColor = .systemGray6
 
         setupView()
@@ -94,12 +96,15 @@ class ProfileHeaderView: UIView {
         setupTimerUntilReload()
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
         setupAvatar()
     }
-    
-    
+
 // MARK: - Setups
     
     func setupView(){
@@ -231,12 +236,7 @@ class ProfileHeaderView: UIView {
     func clearStatus(){
         statusLabel.text = nil
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
+
     func showAlertDeleteStatus () {
         let alert = UIAlertController(
             title: "Внимание!",
@@ -266,7 +266,7 @@ class ProfileHeaderView: UIView {
                            forKey: "attributedMessage")
         }
         
-        UIApplication.shared.windows.last?.rootViewController?.present(alert, animated: true)
+            navigation.present(alert, animated: true)
     }
 }
 

@@ -3,7 +3,7 @@
 //  Navigation
 //
 //  Created by Миша on 08.11.2021.
-//
+
 
 import Foundation
 import Firebase
@@ -23,27 +23,33 @@ class LoginViewModel {
     func checkCurrentUser(){
         if let user = Firebase.Auth.auth().currentUser,
            let email = user.email {
-            coordinator?.segueToProfile(email: UserStorage.shared.users[email]?.login ?? "Default")
+            if let userLogin = RealmManager.shared.fetchUserLogin(email: email) {
+                coordinator?.segueToProfile(login: userLogin)
+            }
+//            coordinator?.segueToProfile(email: UserStorage.shared.users[email]?.login ?? "Default")
         }
     }
 
     
-    func checkAuthorization(email: String, password: String) throws {
+    func checkAuthorization(email: String, password: String, navigation: UIViewController) throws {
 
         delegate.checkUserAuthentication(email: email, password: password) { [weak self] result in
-            guard let strongSelf = self else {return}
+            guard let self = self else {return}
             if result {
-                strongSelf.coordinator?.segueToProfile(
-                    email: UserStorage.shared.users[email]?.login ?? "Default email")
+                if let userLogin = RealmManager.shared.fetchUserLogin(email: email) {
+                    self.coordinator?.segueToProfile(login: userLogin)
+                }
+//                self.coordinator?.segueToProfile(
+//                    login: UserStorage.shared.users[email]?.login ?? "Default email")
 
             } else {
-                strongSelf.showCreateAccount()
+                self.showCreateAccount(navigation: navigation)
             }
         }
     }
     
     
-    func showCreateAccount(){
+    func showCreateAccount(navigation: UIViewController){
 
         let alert = UIAlertController(
             title: "Account not found",
@@ -64,7 +70,7 @@ class LoginViewModel {
             handler: { _ in
             }))
         
-        UIApplication.shared.windows.last?.rootViewController?.present(alert, animated: true)
+        navigation.present(alert, animated: true)
     }
 
     

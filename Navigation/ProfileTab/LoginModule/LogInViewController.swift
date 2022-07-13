@@ -228,7 +228,7 @@ class LogInViewController: UIViewController {
         else {return}
  
         do {
-            try viewModel.checkAuthorization(email: login, password: password)
+            try viewModel.checkAuthorization(email: login, password: password, navigation: self)
         } catch AuthenticationErrors.loginIsEmpty {
             showAlert(for: .loginIsEmpty)
         } catch AuthenticationErrors.passwordIsEmpty {

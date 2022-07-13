@@ -14,24 +14,32 @@ class CreateNewUserViewModel {
     
 
     func createNewUser(email: String, login: String, password: String, controller: UIViewController){
+        controller.navigationController?.isNavigationBarHidden = true
         guard password.count >= 6 else {
             controller.present(ShowAlert.showAlert("Пароль должен содержать как минимум 6 символов"), animated: true)
             return
         }
         
         Firebase.Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
-            guard let strongSelf = self else {return}
+            guard let self = self else {return}
 
             guard error == nil else {
                 controller.present(ShowAlert.showAlert("Account creation failed"), animated: true)
                 return
             }
+            
+            let userModel = UserRealmModel(userLogin: login, userEmail: email, userPassword: password)
+            RealmManager.shared.saveUserModel(model: userModel)
+            
+            if let userLogin = RealmManager.shared.fetchUserLogin(email: email) {
+                self.coordinator?.segueToProfile(email: userLogin)}
 
-            UserStorage.shared.saveUser(
-                login: login,
-                email: email)
 
-            strongSelf.coordinator?.segueToProfile(email: UserStorage.shared.users[email]?.login ?? "Default")
+//            UserStorage.shared.saveUser(
+//                login: login,
+//                email: email)
+//
+//            strongSelf.coordinator?.segueToProfile(email: UserStorage.shared.users[email]?.login ?? "Default")
         }
     }
 }
