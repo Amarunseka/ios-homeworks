@@ -13,10 +13,12 @@ class CreateNewUserCoordinator: Coordinator {
     lazy var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     private let module = ModuleFactory.createNewUserModule()
+    private let coreDataCoordinator: CoreDataCoordinator
 
     
-    init(navigationController: UINavigationController){
+    init(navigationController: UINavigationController, coreDataCoordinator: CoreDataCoordinator){
         self.navigationController = navigationController
+        self.coreDataCoordinator = coreDataCoordinator
     }
     
     
@@ -26,8 +28,7 @@ class CreateNewUserCoordinator: Coordinator {
     }
     
     func segueToProfile(email: String){
-        
-        let child = ProfileCoordinator(navigationController: navigationController, userName: email)
+        let child = ProfileCoordinator(navigationController: navigationController, userName: email, coreDataCoordinator: coreDataCoordinator)
         childCoordinators.append(child)
         child.start()
         child.parentCoordinator = self

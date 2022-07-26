@@ -14,12 +14,14 @@ class ProfileCoordinator: Coordinator {
     var navigationController: UINavigationController
     
     var userName: String
-    private lazy var module = ModuleFactory.createProfileCoordinator(user: userName)
+    private var coreDataCoordinator: CoreDataCoordinator
+    private lazy var module = ModuleFactory.createProfileCoordinator(user: userName, coreDataCoordinator: coreDataCoordinator)
 
     
-    init(navigationController:UINavigationController, userName: String){
+    init(navigationController: UINavigationController, userName: String, coreDataCoordinator: CoreDataCoordinator){
         self.navigationController = navigationController
         self.userName = userName
+        self.coreDataCoordinator = coreDataCoordinator
     }
     
     func start() {

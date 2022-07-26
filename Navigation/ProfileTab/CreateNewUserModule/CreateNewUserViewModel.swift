@@ -12,7 +12,6 @@ import UIKit
 class CreateNewUserViewModel {
     weak var coordinator: CreateNewUserCoordinator?
     
-
     func createNewUser(email: String, login: String, password: String, controller: UIViewController){
         controller.navigationController?.isNavigationBarHidden = true
         guard password.count >= 6 else {
@@ -27,19 +26,11 @@ class CreateNewUserViewModel {
                 controller.present(ShowAlert.showAlert("Account creation failed"), animated: true)
                 return
             }
+            UserDefaultsStorage.shared.saveUser(
+                login: login,
+                email: email)
             
-            let userModel = UserRealmModel(userLogin: login, userEmail: email, userPassword: password)
-            RealmManager.shared.saveUserModel(model: userModel)
-            
-            if let userLogin = RealmManager.shared.fetchUserLogin(email: email) {
-                self.coordinator?.segueToProfile(email: userLogin)}
-
-
-//            UserStorage.shared.saveUser(
-//                login: login,
-//                email: email)
-//
-//            strongSelf.coordinator?.segueToProfile(email: UserStorage.shared.users[email]?.login ?? "Default")
+            self.coordinator?.segueToProfile(email: UserDefaultsStorage.shared.users[email]?.login ?? "Default")
         }
     }
 }

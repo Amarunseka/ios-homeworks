@@ -12,9 +12,13 @@ class LoginCoordinator: NSObject, Coordinator {
     var navigationController = UINavigationController()
     
     var userName: String?
+    private let coreDataCoordinator: CoreDataCoordinator
     
     private let module = ModuleFactory.createLoginModule()
     
+    init(coreDataCoordinator: CoreDataCoordinator) {
+        self.coreDataCoordinator = coreDataCoordinator
+    }
     
     func start() {
         module.viewModel.coordinator = self
@@ -24,7 +28,7 @@ class LoginCoordinator: NSObject, Coordinator {
     
     
     func segueToProfile(login: String){
-        let child = ProfileCoordinator(navigationController: navigationController, userName: login)
+        let child = ProfileCoordinator(navigationController: navigationController, userName: login, coreDataCoordinator: coreDataCoordinator)
         childCoordinators.append(child)
         child.start()
         child.parentCoordinator = self
@@ -32,7 +36,7 @@ class LoginCoordinator: NSObject, Coordinator {
     
     
     func segueToCreateNewUser(){
-        let child = CreateNewUserCoordinator(navigationController: navigationController)
+        let child = CreateNewUserCoordinator(navigationController: navigationController, coreDataCoordinator: coreDataCoordinator)
         childCoordinators.append(child)
         child.start()
         child.parentCoordinator = self

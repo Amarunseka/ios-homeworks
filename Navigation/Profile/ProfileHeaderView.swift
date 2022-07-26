@@ -85,7 +85,7 @@ class ProfileHeaderView: UIView {
     
     init(navigation: UIViewController) {
         self.navigation = navigation
-        super.init()
+        super.init(frame: .zero)
         self.backgroundColor = .systemGray6
 
         setupView()

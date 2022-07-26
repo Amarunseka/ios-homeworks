@@ -23,10 +23,7 @@ class LoginViewModel {
     func checkCurrentUser(){
         if let user = Firebase.Auth.auth().currentUser,
            let email = user.email {
-            if let userLogin = RealmManager.shared.fetchUserLogin(email: email) {
-                coordinator?.segueToProfile(login: userLogin)
-            }
-//            coordinator?.segueToProfile(email: UserStorage.shared.users[email]?.login ?? "Default")
+            coordinator?.segueToProfile(login: UserDefaultsStorage.shared.users[email]?.login ?? "Default")
         }
     }
 
@@ -36,12 +33,8 @@ class LoginViewModel {
         delegate.checkUserAuthentication(email: email, password: password) { [weak self] result in
             guard let self = self else {return}
             if result {
-                if let userLogin = RealmManager.shared.fetchUserLogin(email: email) {
-                    self.coordinator?.segueToProfile(login: userLogin)
-                }
-//                self.coordinator?.segueToProfile(
-//                    login: UserStorage.shared.users[email]?.login ?? "Default email")
-
+                self.coordinator?.segueToProfile(
+                    login: UserDefaultsStorage.shared.users[email]?.login ?? "Default email")
             } else {
                 self.showCreateAccount(navigation: navigation)
             }
