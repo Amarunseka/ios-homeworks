@@ -13,7 +13,6 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var coreDataCoordinator: CoreDataCoordinator?
 
     let appearanceNB = UINavigationBarAppearance()
     let appearanceTB = UITabBarAppearance()
@@ -21,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
-        coreDataCoordinator = setCoreDataCoordinator()
         
         appearanceNB.configureWithDefaultBackground()
         appearanceTB.configureWithDefaultBackground()
@@ -30,22 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        guard let coreDataCoordinator = coreDataCoordinator else {return true}
-        window?.rootViewController = MainTabBarController(coreDataCoordinator: coreDataCoordinator)
+        window?.rootViewController = MainTabBarController()
         return true
-    }
-    
-    
-    private func setCoreDataCoordinator() ->CoreDataCoordinator {
-        var coreDataCoordinator: CoreDataCoordinator {
-            switch CoreDataCoordinator.create() {
-            case .success(let coordinator):
-                return coordinator
-            case .failure(let error):
-                fatalError("\(error.localizedDescription)")
-            }
-        }
-        return coreDataCoordinator
     }
 }
 

@@ -9,14 +9,11 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
-    private var coreDataCoordinator: CoreDataCoordinator
-    
     private let feedCoordinator = FeedCoordinator(navigationController: UINavigationController())
-    private lazy var loginCoordinator = LoginCoordinator(coreDataCoordinator: coreDataCoordinator)
-    private lazy var favoritesCoordinator = FavoritesCoordinator(navigationController: UINavigationController(), coreDataCoordinator: coreDataCoordinator)
+    private lazy var loginCoordinator = LoginCoordinator()
+    private lazy var favoritesCoordinator = FavoritesCoordinator(navigationController: UINavigationController())
 
-    init(coreDataCoordinator: CoreDataCoordinator) {
-        self.coreDataCoordinator = coreDataCoordinator
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
     

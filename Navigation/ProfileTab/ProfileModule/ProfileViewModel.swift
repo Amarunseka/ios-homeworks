@@ -20,11 +20,10 @@ class ProfileViewModel {
     var outputPosts = PostsStorage.posts
     
     private let inputUserName: String
-    private let coreDataCoordinator: CoreDataCoordinator
+    private let coreDataCoordinator = CoreDataCoordinatorManager.shared.coreDataCoordinator
 
-    init(inputUserName: String, coreDataCoordinator: CoreDataCoordinator){
+    init(inputUserName: String){
         self.inputUserName = inputUserName
-        self.coreDataCoordinator = coreDataCoordinator
         
         fetchData()
         

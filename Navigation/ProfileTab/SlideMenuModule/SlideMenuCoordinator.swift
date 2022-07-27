@@ -15,7 +15,7 @@ class SlideMenuCoordinator: Coordinator {
     
     private var userName: String
     private var coreDataCoordinator: CoreDataCoordinator
-    private lazy var module = ModuleFactory.createProfileCoordinator(user: userName, coreDataCoordinator: coreDataCoordinator)
+    private lazy var module = ModuleFactory.createProfileCoordinator(user: userName)
 
     
     init(navigationController:UINavigationController, userName: String, coreDataCoordinator: CoreDataCoordinator){

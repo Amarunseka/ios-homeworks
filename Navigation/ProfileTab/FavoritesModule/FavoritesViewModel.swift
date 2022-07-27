@@ -11,12 +11,11 @@ import StorageService
 class FavoritesViewModel {
     
     weak var coordinator: FavoritesCoordinator?
-    private let coreDataCoordinator: CoreDataCoordinator
+    private let coreDataCoordinator = CoreDataCoordinatorManager.shared.coreDataCoordinator
     var posts: [Post] = []
     var outputReloadTableView: (()->())?
     
-    init(coreDataCoordinator: CoreDataCoordinator){
-        self.coreDataCoordinator = coreDataCoordinator
+    init(){
         fetchData()
         setupNotificationCenter()
     }

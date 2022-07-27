@@ -36,6 +36,7 @@
 		453CB21F288FFB1700110514 /* CoreDataCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CB21E288FFB1700110514 /* CoreDataCoordinator.swift */; };
 		453CB222288FFBF200110514 /* PostsCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 453CB220288FFBF200110514 /* PostsCoreData.xcdatamodeld */; };
 		453CB22428900F3D00110514 /* PostsStorageFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CBBE726E0F9D200915CA1 /* PostsStorageFile.swift */; };
+		453CB2262891CB3B00110514 /* CoreDataCoordinatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453CB2252891CB3B00110514 /* CoreDataCoordinatorManager.swift */; };
 		45653B41275A573A0079AA67 /* AuthenticationErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45653B40275A573A0079AA67 /* AuthenticationErrors.swift */; };
 		45653B43275AA3100079AA67 /* ErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45653B42275AA30F0079AA67 /* ErrorAlert.swift */; };
 		4565D3C327B5A47E007557A0 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4565D3C227B5A47E007557A0 /* NetworkService.swift */; };
@@ -156,6 +157,7 @@
 		453CB21C288FFA0E00110514 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		453CB21E288FFB1700110514 /* CoreDataCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataCoordinator.swift; sourceTree = "<group>"; };
 		453CB221288FFBF200110514 /* PostsCoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PostsCoreData.xcdatamodel; sourceTree = "<group>"; };
+		453CB2252891CB3B00110514 /* CoreDataCoordinatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCoordinatorManager.swift; sourceTree = "<group>"; };
 		45653B40275A573A0079AA67 /* AuthenticationErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationErrors.swift; sourceTree = "<group>"; };
 		45653B42275AA30F0079AA67 /* ErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlert.swift; sourceTree = "<group>"; };
 		4565D3C227B5A47E007557A0 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				453CB21E288FFB1700110514 /* CoreDataCoordinator.swift */,
+				453CB2252891CB3B00110514 /* CoreDataCoordinatorManager.swift */,
 				453CB220288FFBF200110514 /* PostsCoreData.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -885,6 +888,7 @@
 				4583A13827955CDE0054E377 /* MP3FilesReader.swift in Sources */,
 				4565D3CF27C78283007557A0 /* DecoderDataStrategy.swift in Sources */,
 				4517990827730D53004DCACB /* AudioViewController.swift in Sources */,
+				453CB2262891CB3B00110514 /* CoreDataCoordinatorManager.swift in Sources */,
 				458CBBDC26E0F92200915CA1 /* ProfileViewController.swift in Sources */,
 				458CBBD626E0F8EF00915CA1 /* PostViewController.swift in Sources */,
 				45D503A826F5234C00387102 /* CurrentUser.swift in Sources */,

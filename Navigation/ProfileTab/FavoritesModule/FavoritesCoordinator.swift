@@ -14,9 +14,9 @@ class FavoritesCoordinator: Coordinator {
     var navigationController: UINavigationController
     var module: FavoritesViewController
     
-    init(navigationController: UINavigationController, coreDataCoordinator: CoreDataCoordinator){
+    init(navigationController: UINavigationController){
         self.navigationController = navigationController
-        self.module = ModuleFactory.createFavoritesModule(coreDataCoordinator: coreDataCoordinator)
+        self.module = ModuleFactory.createFavoritesModule()
     }
     
     func start() {
