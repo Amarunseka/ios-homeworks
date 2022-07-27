@@ -15,11 +15,6 @@
 		45179906277262ED004DCACB /* SlideMenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45179905277262ED004DCACB /* SlideMenuCoordinator.swift */; };
 		4517990827730D53004DCACB /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517990727730D53004DCACB /* AudioViewController.swift */; };
 		4517990A27730D67004DCACB /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4517990927730D67004DCACB /* VideoViewController.swift */; };
-		4517991127732B27004DCACB /* I_will_always_love_you.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4517990C27732B26004DCACB /* I_will_always_love_you.mp3 */; };
-		4517991227732B27004DCACB /* Helele.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4517990D27732B26004DCACB /* Helele.mp3 */; };
-		4517991327732B27004DCACB /* Happy_birthday.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4517990E27732B26004DCACB /* Happy_birthday.mp3 */; };
-		4517991427732B27004DCACB /* Galvanize.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4517990F27732B27004DCACB /* Galvanize.mp3 */; };
-		4517991527732B27004DCACB /* Apologize.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4517991027732B27004DCACB /* Apologize.mp3 */; };
 		45306B1527390B7200D1516B /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B1427390B7200D1516B /* CoordinatorProtocol.swift */; };
 		45306B1B27390D7900D1516B /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B1A27390D7900D1516B /* FeedViewModel.swift */; };
 		45306B1D27390D9500D1516B /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45306B1C27390D9500D1516B /* FeedCoordinator.swift */; };
@@ -141,11 +136,6 @@
 		45179905277262ED004DCACB /* SlideMenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuCoordinator.swift; sourceTree = "<group>"; };
 		4517990727730D53004DCACB /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 		4517990927730D67004DCACB /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
-		4517990C27732B26004DCACB /* I_will_always_love_you.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = I_will_always_love_you.mp3; sourceTree = "<group>"; };
-		4517990D27732B26004DCACB /* Helele.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Helele.mp3; sourceTree = "<group>"; };
-		4517990E27732B26004DCACB /* Happy_birthday.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Happy_birthday.mp3; sourceTree = "<group>"; };
-		4517990F27732B27004DCACB /* Galvanize.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Galvanize.mp3; sourceTree = "<group>"; };
-		4517991027732B27004DCACB /* Apologize.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Apologize.mp3; sourceTree = "<group>"; };
 		45306B1427390B7200D1516B /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		45306B1A27390D7900D1516B /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		45306B1C27390D9500D1516B /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
@@ -303,11 +293,6 @@
 		4517990B27732B0A004DCACB /* Music */ = {
 			isa = PBXGroup;
 			children = (
-				4517991027732B27004DCACB /* Apologize.mp3 */,
-				4517990F27732B27004DCACB /* Galvanize.mp3 */,
-				4517990E27732B26004DCACB /* Happy_birthday.mp3 */,
-				4517990D27732B26004DCACB /* Helele.mp3 */,
-				4517990C27732B26004DCACB /* I_will_always_love_you.mp3 */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -751,11 +736,6 @@
 			files = (
 				458CBBC526E0E53400915CA1 /* LaunchScreen.storyboard in Resources */,
 				453CB213288FF8D100110514 /* Assets.xcassets in Resources */,
-				4517991327732B27004DCACB /* Happy_birthday.mp3 in Resources */,
-				4517991427732B27004DCACB /* Galvanize.mp3 in Resources */,
-				4517991127732B27004DCACB /* I_will_always_love_you.mp3 in Resources */,
-				4517991527732B27004DCACB /* Apologize.mp3 in Resources */,
-				4517991227732B27004DCACB /* Helele.mp3 in Resources */,
 				457B8FE827CCDC7D001AE209 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
