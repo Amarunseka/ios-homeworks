@@ -22,6 +22,7 @@ class MP3Player: NSObject, AVAudioPlayerDelegate {
     
     // MARK: - getting a track
     private func queueTrack(){
+        guard !tracks.isEmpty else {return}
         if (player != nil) {
             player = nil
         }

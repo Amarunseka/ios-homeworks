@@ -17,7 +17,7 @@ class ProfileCoordinator: Coordinator {
     private lazy var module = ModuleFactory.createProfileCoordinator(user: userName)
 
     
-    init(navigationController:UINavigationController, userName: String){
+    init(navigationController: UINavigationController, userName: String){
         self.navigationController = navigationController
         self.userName = userName
     }

@@ -14,9 +14,10 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+
     let appearanceNB = UINavigationBarAppearance()
     let appearanceTB = UITabBarAppearance()
-
+  
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
@@ -29,18 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = MainTabBarController()
-        
-//        UITabBar.appearance().backgroundColor = .customColorGray
-
         return true
     }
-//
-//
-//    func setupNB(){
-//        appearanceNB.configureWithOpaqueBackground()
-//        appearanceNB.backgroundColor = .customColorGray
-//        UINavigationBar.appearance().scrollEdgeAppearance = appearanceNB
-//    }
-//
 }
 

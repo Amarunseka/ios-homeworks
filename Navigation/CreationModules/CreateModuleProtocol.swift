@@ -19,4 +19,6 @@ protocol CreateModuleProtocol {
     static func createProfileCoordinator(user: String) -> SlideMenuContainerViewController
     
     static func createNewUserModule() -> CreateNewUserViewController
+    
+    static func createFavoritesModule() -> FavoritesViewController
 }

@@ -26,7 +26,6 @@ class CreateNewUserCoordinator: Coordinator {
     }
     
     func segueToProfile(email: String){
-        
         let child = ProfileCoordinator(navigationController: navigationController, userName: email)
         childCoordinators.append(child)
         child.start()

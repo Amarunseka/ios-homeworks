@@ -14,8 +14,7 @@ class LoginCoordinator: NSObject, Coordinator {
     var userName: String?
     
     private let module = ModuleFactory.createLoginModule()
-    
-    
+   
     func start() {
         module.viewModel.coordinator = self
         module.tabBarItem = UITabBarItem.createCustomItem(title: "Profile", image: "Computer")

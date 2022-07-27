@@ -31,7 +31,6 @@ class ModuleFactory: CreateModuleProtocol {
         return vc
     }
     
-    
     static func createProfileCoordinator(user: String) -> SlideMenuContainerViewController {
         let vm = ProfileViewModel(inputUserName: user)
         let menuVC = SlideMenuViewController()
@@ -43,6 +42,12 @@ class ModuleFactory: CreateModuleProtocol {
     static func createNewUserModule() -> CreateNewUserViewController {
         let vm = CreateNewUserViewModel()
         let vc = CreateNewUserViewController(viewModel: vm)
+        return vc
+    }
+    
+    static func createFavoritesModule() -> FavoritesViewController {
+        let vm = FavoritesViewModel()
+        let vc = FavoritesViewController(viewModel: vm)
         return vc
     }
 }
